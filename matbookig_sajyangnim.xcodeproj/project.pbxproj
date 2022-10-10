@@ -11,6 +11,12 @@
 		1E36D3E128F04FDC00F228A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D3E028F04FDC00F228A7 /* ContentView.swift */; };
 		1E36D3E328F04FDD00F228A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E36D3E228F04FDD00F228A7 /* Assets.xcassets */; };
 		1E36D3E628F04FDD00F228A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E36D3E528F04FDD00F228A7 /* Preview Assets.xcassets */; };
+		1E36D3EE28F0511800F228A7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1E36D3ED28F0511800F228A7 /* Alamofire */; };
+		1E36D3F228F051E200F228A7 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D3F128F051E200F228A7 /* KeyChain.swift */; };
+		1E36D3F428F0522B00F228A7 /* SettingRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D3F328F0522B00F228A7 /* SettingRestaurantView.swift */; };
+		1E36D3F628F3EE7C00F228A7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D3F528F3EE7C00F228A7 /* LoginView.swift */; };
+		1E36D3FE28F401DB00F228A7 /* Auth0 in Frameworks */ = {isa = PBXBuildFile; productRef = 1E36D3FD28F401DB00F228A7 /* Auth0 */; };
+		1E36D40128F4053A00F228A7 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E36D40028F4053A00F228A7 /* Auth0.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,11 @@
 		1E36D3E028F04FDC00F228A7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1E36D3E228F04FDD00F228A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E36D3E528F04FDD00F228A7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1E36D3F128F051E200F228A7 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
+		1E36D3F328F0522B00F228A7 /* SettingRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRestaurantView.swift; sourceTree = "<group>"; };
+		1E36D3F528F3EE7C00F228A7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1E36D3FF28F4049B00F228A7 /* matbookig-sajyangnim-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "matbookig-sajyangnim-Info.plist"; sourceTree = SOURCE_ROOT; };
+		1E36D40028F4053A00F228A7 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E36D3EE28F0511800F228A7 /* Alamofire in Frameworks */,
+				1E36D3FE28F401DB00F228A7 /* Auth0 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,8 +64,11 @@
 		1E36D3DD28F04FDC00F228A7 /* matbookig_sajyangnim */ = {
 			isa = PBXGroup;
 			children = (
+				1E36D40028F4053A00F228A7 /* Auth0.plist */,
+				1E36D3FF28F4049B00F228A7 /* matbookig-sajyangnim-Info.plist */,
+				1E36D3F028F051C900F228A7 /* Security */,
+				1E36D3EF28F0517200F228A7 /* Views */,
 				1E36D3DE28F04FDC00F228A7 /* matbookig_sajyangnimApp.swift */,
-				1E36D3E028F04FDC00F228A7 /* ContentView.swift */,
 				1E36D3E228F04FDD00F228A7 /* Assets.xcassets */,
 				1E36D3E428F04FDD00F228A7 /* Preview Content */,
 			);
@@ -65,6 +81,24 @@
 				1E36D3E528F04FDD00F228A7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1E36D3EF28F0517200F228A7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1E36D3E028F04FDC00F228A7 /* ContentView.swift */,
+				1E36D3F528F3EE7C00F228A7 /* LoginView.swift */,
+				1E36D3F328F0522B00F228A7 /* SettingRestaurantView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1E36D3F028F051C900F228A7 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				1E36D3F128F051E200F228A7 /* KeyChain.swift */,
+			);
+			path = Security;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +117,10 @@
 			dependencies = (
 			);
 			name = matbookig_sajyangnim;
+			packageProductDependencies = (
+				1E36D3ED28F0511800F228A7 /* Alamofire */,
+				1E36D3FD28F401DB00F228A7 /* Auth0 */,
+			);
 			productName = matbookig_sajyangnim;
 			productReference = 1E36D3DB28F04FDC00F228A7 /* matbookig_sajyangnim.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +149,10 @@
 				Base,
 			);
 			mainGroup = 1E36D3D228F04FDC00F228A7;
+			packageReferences = (
+				1E36D3EC28F0511800F228A7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				1E36D3FC28F401DB00F228A7 /* XCRemoteSwiftPackageReference "Auth0" */,
+			);
 			productRefGroup = 1E36D3DC28F04FDC00F228A7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E36D3E628F04FDD00F228A7 /* Preview Assets.xcassets in Resources */,
+				1E36D40128F4053A00F228A7 /* Auth0.plist in Resources */,
 				1E36D3E328F04FDD00F228A7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +181,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E36D3E128F04FDC00F228A7 /* ContentView.swift in Sources */,
+				1E36D3F428F0522B00F228A7 /* SettingRestaurantView.swift in Sources */,
+				1E36D3F228F051E200F228A7 /* KeyChain.swift in Sources */,
+				1E36D3F628F3EE7C00F228A7 /* LoginView.swift in Sources */,
 				1E36D3DF28F04FDC00F228A7 /* matbookig_sajyangnimApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +316,7 @@
 				DEVELOPMENT_TEAM = QCV7RG73DZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "matbookig-sajyangnim-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +346,7 @@
 				DEVELOPMENT_TEAM = QCV7RG73DZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "matbookig-sajyangnim-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -339,6 +387,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1E36D3EC28F0511800F228A7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		1E36D3FC28F401DB00F228A7 /* XCRemoteSwiftPackageReference "Auth0" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/Auth0.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1E36D3ED28F0511800F228A7 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E36D3EC28F0511800F228A7 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		1E36D3FD28F401DB00F228A7 /* Auth0 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E36D3FC28F401DB00F228A7 /* XCRemoteSwiftPackageReference "Auth0" */;
+			productName = Auth0;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1E36D3D328F04FDC00F228A7 /* Project object */;
 }
