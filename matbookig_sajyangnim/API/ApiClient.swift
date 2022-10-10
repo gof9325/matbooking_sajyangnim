@@ -15,7 +15,8 @@ final class ApiClient {
     static let BASE_URL = "http://165.22.105.229:3000/"
     
     let interceptors = Interceptor(interceptors: [
-        BaseInterceptor()
+        BaseInterceptor(),
+//        Auth0Interceptor()
     ])
     
     let monitors = [ApiLogger()] as [EventMonitor]

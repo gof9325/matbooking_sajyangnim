@@ -11,7 +11,7 @@ import Alamofire
 // 이벤트 모니터 로거
 // Alamofire 공식 문서 참조
 final class ApiLogger: EventMonitor {
-    let queue = DispatchQueue(label: "matbooking_ApiLogger")
+    let queue = DispatchQueue(label: "matbooking_sajyangnim_ApiLogger")
     
     // Event called when any type of Request is resumed.
     func requestDidResume(_ request: Request) {

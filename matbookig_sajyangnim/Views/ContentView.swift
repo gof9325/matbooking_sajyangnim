@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var UserVM: UserViewModel
+    @EnvironmentObject var userVM: UserViewModel
+    @State var user: User?
     
     var body: some View {
-        if UserVM.auth0User != nil {
-            EmptyView()
-        } else {
-            LoginView()
-        }
+        VStack {
+            if self.user != nil {
+                Text("asdfsdf")
+            } else {
+                LoginView()
+            }
+        }.onReceive(userVM.$user, perform: {self.user = $0})
     }
 }
 

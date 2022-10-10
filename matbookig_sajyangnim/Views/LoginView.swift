@@ -13,7 +13,7 @@ struct LoginView: View {
     
     var body: some View {
         if isJoinViewPresented {
-//            JoinView(isPresented: $isJoinViewPresented)
+            JoinView(isPresented: $isJoinViewPresented)
         } else {
             VStack {
                 Text("맛북킹 사장님")
@@ -28,9 +28,9 @@ struct LoginView: View {
                 .clipShape(Capsule())
             }
             .frame(width: 300, height: 200)
-//            .onReceive(userVM.$haveToJoin, perform: {
-//                    self.isJoinViewPresented = $0
-//            })
+            .onReceive(userVM.haveToJoin, perform: {
+                    self.isJoinViewPresented = true
+            })
         }
     }
 }
