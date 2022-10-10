@@ -22,51 +22,60 @@ struct JoinView: View {
                 Text("맛북킹 사장님 회원가입")
                     .font(.largeTitle)
                     .padding()
-                Spacer()
-                Spacer()
-                Form {
-                    Section("닉네임") {
+                VStack(alignment: .leading) {
+                    VStack {
+                        Text("닉네임")
                         TextField("닉네임", text: $name)
+                            .padding()
+                            .background(.white)
+                            .cornerRadius(20)
                     }
-                    Section("전화번호") {
-                        TextField("000-0000-0000", text: $mobile)
-                            .keyboardType(.phonePad)
-//                            .onChange(of: mobile, perform: { mobile in
-//                                if mobile.validatePhone(number: mobile) {
-//                                    self.mobile = mobile.withHypen
-//                                    validateMobileNumber = true
-//                                } else {
-//                                    validateMobileNumber = false
-//                                }
-//                            })
-//                            .foregroundColor(validateMobileNumber ? Color.black : Color.red)
+                    .padding()
+                    .padding(.top, 20)
+                    VStack {
+                        Text("전화번호")
+                        TextField("000-0000-0000", text: $name)
+                            .padding()
+                            .background(.white)
+                            .cornerRadius(20)
                     }
+                    .padding()
+                    .padding(.bottom, 50)
                 }
+                .background(.gray.opacity(0.1))
                 .padding()
-                .cornerRadius(80)
+                .cornerRadius(70)
+                .scaledToFit()
                 HStack {
                     Spacer()
                     Button("완료") {
                         if let auth0User = userVM.auth0User {
-//                            userVM.join(name: name, mobile: mobile, auth0User)
+                            //                            userVM.join(name: name, mobile: mobile, auth0User)
                         }
                     }
-                    .matbookingButtonStyle(width: 100)
+                    .padding()
+                    .frame(width: 100)
+                    .background(.blue)
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
                     Spacer()
                     Button("취소") {
                         isPresented = false
                     }
-                    .matbookingButtonStyle(width: 100)
+                    .padding()
+                    .frame(width: 100)
+                    .background(.blue)
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
                     Spacer()
                 }
-                .onReceive(userVM.$user, perform: {
-                    if $0 != nil {
-                        isPresented = false
-                    }
-                })
             }
+            .onReceive(userVM.$user, perform: {
+                if $0 != nil {
+                    isPresented = false
+                }
+            })
         }
-        
     }
 }
 

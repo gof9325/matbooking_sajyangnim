@@ -16,7 +16,7 @@ final class ApiClient {
     
     let interceptors = Interceptor(interceptors: [
         BaseInterceptor(),
-//        Auth0Interceptor()
+        Auth0Interceptor()
     ])
     
     let monitors = [ApiLogger()] as [EventMonitor]

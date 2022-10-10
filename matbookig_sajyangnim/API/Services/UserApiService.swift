@@ -13,10 +13,8 @@ enum UserApiService {
     static func getUserInfo() -> AnyPublisher<ApiResponse<UserResponse>, AFError> {
         print("UserApiService - getUserInfo() called")
         
-        let interceptor = Auth0Interceptor()
-        
         return ApiClient.shared.session
-            .request(UserRouter.getUserInfo, interceptor: interceptor)
+            .request(UserRouter.getUserInfo)
             .publishDecodable(type: ApiResponse<UserResponse>.self)
             .value()
             .eraseToAnyPublisher()
