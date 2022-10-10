@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-//    @EnvironmentObject var userVM: UserViewModel
+    @EnvironmentObject var userVM: UserViewModel
     @State var isJoinViewPresented = false
     
     var body: some View {
@@ -20,7 +20,7 @@ struct LoginView: View {
                     .font(.title)
                     .padding([.top, .bottom])
                 Button("시작하기") {
-//                    userVM.login()
+                    userVM.login()
                 }
                 .padding()
                 .background(.blue)

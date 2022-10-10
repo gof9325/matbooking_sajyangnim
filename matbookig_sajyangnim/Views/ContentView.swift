@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var UserVM: UserViewModel
     
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        if UserVM.auth0User != nil {
+            EmptyView()
+        } else {
+            LoginView()
+        }
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -61,7 +61,6 @@ struct SettingRestaurantView: View {
             }
             .navigationTitle("가게 정보 설정")
         }
-        
     }
 }
 

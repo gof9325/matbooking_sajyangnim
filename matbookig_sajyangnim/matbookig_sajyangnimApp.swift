@@ -11,8 +11,7 @@ import SwiftUI
 struct matbookig_sajyangnimApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            SettingRestaurantView()
+            ContentView().environmentObject(UserViewModel(from: ""))
         }
     }
 }
