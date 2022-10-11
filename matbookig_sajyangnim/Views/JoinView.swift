@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct JoinView: View {
-    @EnvironmentObject var userVM: UserViewModel
+    @EnvironmentObject var ownerVM: OwnerViewModel
     @State var name: String = ""
     @State var mobile: String = ""
     
@@ -34,7 +34,7 @@ struct JoinView: View {
                     .padding(.top, 20)
                     VStack {
                         Text("전화번호")
-                        TextField("000-0000-0000", text: $name)
+                        TextField("000-0000-0000", text: $mobile)
                             .padding()
                             .background(.white)
                             .cornerRadius(20)
@@ -49,8 +49,8 @@ struct JoinView: View {
                 HStack {
                     Spacer()
                     Button("완료") {
-                        if let auth0User = userVM.auth0User {
-                            //                            userVM.join(name: name, mobile: mobile, auth0User)
+                        if let auth0Owner = ownerVM.auth0Owner {
+                            ownerVM.join(name: name, mobile: mobile, auth0Owner)
                         }
                     }
                     .padding()
@@ -70,7 +70,7 @@ struct JoinView: View {
                     Spacer()
                 }
             }
-            .onReceive(userVM.$user, perform: {
+            .onReceive(ownerVM.$owner, perform: {
                 if $0 != nil {
                     isPresented = false
                 }

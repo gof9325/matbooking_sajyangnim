@@ -8,13 +8,13 @@
 import Foundation
 import JWTDecode
 
-struct Auth0User {
+struct Auth0Owner {
     let id: String
     let email: String
     let picture: String
 }
 
-extension Auth0User {
+extension Auth0Owner {
     init?(from idToken: String) {
         guard let jwt = try? decode(jwt: idToken),
               let id = jwt.subject,

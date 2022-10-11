@@ -8,17 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var userVM: UserViewModel
-    @State var user: User?
+    @EnvironmentObject var ownerVM: OwnerViewModel
+    @State var owner: Owner?
     
     var body: some View {
         VStack {
-            if self.user != nil {
+            if self.owner != nil {
                 Text("asdfsdf")
+                TabView{
+                    ReservationListView()
+                        .tabItem{
+                            Image(systemName: "book.closed")
+                        }
+                    ChatListView()
+                        .tabItem{
+                            Image(systemName: "message")
+                        }
+                }
             } else {
                 LoginView()
             }
-        }.onReceive(userVM.$user, perform: {self.user = $0})
+        }.onReceive(ownerVM.$owner, perform: {self.owner = $0})
     }
 }
 

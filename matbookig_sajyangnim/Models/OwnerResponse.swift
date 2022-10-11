@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: - UserResponse
-struct UserResponse: Codable {
+// MARK: - OwnerResponse
+struct OwnerResponse: Codable {
     let exists: Bool
     let name: String?
     let mobile: String?

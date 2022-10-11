@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject var userVM: UserViewModel
+    @EnvironmentObject var ownerVM: OwnerViewModel
     @State var isJoinViewPresented = false
     
     var body: some View {
@@ -20,7 +20,7 @@ struct LoginView: View {
                     .font(.title)
                     .padding([.top, .bottom])
                 Button("시작하기") {
-                    userVM.login()
+                    ownerVM.login()
                 }
                 .padding()
                 .background(.blue)
@@ -28,7 +28,7 @@ struct LoginView: View {
                 .clipShape(Capsule())
             }
             .frame(width: 300, height: 200)
-            .onReceive(userVM.haveToJoin, perform: {
+            .onReceive(ownerVM.haveToJoin, perform: {
                     self.isJoinViewPresented = true
             })
         }
