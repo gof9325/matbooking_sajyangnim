@@ -93,5 +93,9 @@ class OwnerViewModel: ObservableObject {
                 self.owner = Owner(id: auth0Owenr.id, name: userInfo.data.name, mobile: userInfo.data.mobile)
             }).store(in: &subscription)
     }
+    
+    func joinCancel() {
+        self.owner = nil
+    }
 }
 
