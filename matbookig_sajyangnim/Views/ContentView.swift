@@ -9,22 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
+    
     @State var owner: Owner?
+    @State var myRestaurant: Restaurant?
+    
+    @State var selection = 0
     
     var body: some View {
         VStack {
-            if self.owner != nil {
+            if self.owner != nil && self.myRestaurant != nil {
                 Text("asdfsdf")
-                TabView{
+                TabView(selection: $selection){
                     ReservationListView()
                         .tabItem{
                             Image(systemName: "book.closed")
                         }
+                        .tag(0)
                     ChatListView()
                         .tabItem{
                             Image(systemName: "message")
                         }
+                        .tag(1)
+                    EmptyView()
+                        .tabItem{
+                            Image(systemName: "fork.knife")
+                        }
+                        .tag(2)
                 }
+            } else if self.owner != nil {
+                RestaurantInfoEditView()
             } else {
                 LoginView()
             }

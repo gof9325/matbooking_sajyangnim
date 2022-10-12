@@ -15,16 +15,12 @@ class OwnerViewModel: ObservableObject {
     
     @Published var auth0Owner: Auth0Owner?
     @Published var owner: Owner?
-    @Published var restaurant: Restaurant?
     
     // 로그인 실패 이벤트
     private var loginFail = PassthroughSubject<(), Never>()
     
     // 회원가입 이벤트
     var haveToJoin = PassthroughSubject<(), Never>()
-    
-    // 가게 정보 생성 이벤트
-    var setRestaurantInfo = PassthroughSubject<(), Never>()
     
     init(from: String) {
         self.auth0Owner = Auth0Owner(from: from)
@@ -86,21 +82,6 @@ class OwnerViewModel: ObservableObject {
                     self.haveToJoin.send()
                 }
             }).store(in: &subscription)
-    }
-    
-    private func getRestaurantInfo() {
-        print("OwnerViewModel - getRestaurantInfo() called")
-        OwnerApiService.getRestaurantInfo()
-            .sink(receiveCompletion: { completion in
-                print("OwnerViewModel getRestaurantInfo completion: \(completion)")
-            }, receiveValue: { restaurantInfo in
-                if restaurantInfo.data.exists {
-                    // 레스토랑 인스턴스 생성 후 대입
-//                    self.restaurant = Restaurant()
-                } else {
-                    self.setRestaurantInfo.send()
-                }
-            })
     }
     
     func join(name: String, mobile: String, _ auth0Owenr: Auth0Owner) {

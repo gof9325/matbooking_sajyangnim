@@ -8,5 +8,7 @@
 import Foundation
 
 struct Restaurant {
-    
+    let id: String
+    let name: String
+    let description: String
 }

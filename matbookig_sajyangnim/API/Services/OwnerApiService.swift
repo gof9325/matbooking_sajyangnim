@@ -20,16 +20,6 @@ enum OwnerApiService {
             .eraseToAnyPublisher()
     }
     
-    static func getRestaurantInfo() -> AnyPublisher<ApiResponse<RestaurantResponse>, AFError> {
-        print("OwnerApiService - getRestaurantInfo() called")
-        
-        return ApiClient.shared.session
-            .request(OwnerRouter.getRestaurantInfo)
-            .publishDecodable(type: ApiResponse<RestaurantResponse>.self)
-            .value()
-            .eraseToAnyPublisher()
-    }
-    
     static func join(name: String, mobile: String) -> AnyPublisher<ApiResponse<JoinResponse>, AFError> {
         print("OwnerApiService - join() called")
         

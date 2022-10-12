@@ -1,17 +1,17 @@
 //
-//  OwnerRouter.swift
+//  RestaurantRouter.swift
 //  matbookig_sajyangnim
 //
-//  Created by 황경원 on 2022/10/10.
+//  Created by 황경원 on 2022/10/11.
 //
 
 import Foundation
 import Alamofire
 
-enum OwnerRouter: URLRequestConvertible {
+enum RestaurantRouter: URLRequestConvertible {
     
-    case getOwnerInfo
-    case join(name: String, mobile: String)
+    case getRestaurantExists
+    case getRestaurantInfo
     
     private var baseURL: URL {
         return URL(string:ApiClient.BASE_URL)!
@@ -19,31 +19,26 @@ enum OwnerRouter: URLRequestConvertible {
     
     private var endPoint: String {
         switch self {
-        case .getOwnerInfo:
-            return "store-owners/me"
-        case .join:
-            return "store-owners"
+        case .getRestaurantExists:
+            return "stores/my"
+        case .getRestaurantInfo:
+            return "stores"
         }
     }
     
     private var method: HTTPMethod {
         switch self {
-        case .getOwnerInfo:
+        case .getRestaurantExists:
             return .get
-        case .join:
+        case .getRestaurantInfo:
             return .post
         }
     }
     
     private var parameters: Parameters {
         switch self {
-        case .getOwnerInfo:
+        case .getRestaurantExists, .getRestaurantInfo:
             return Parameters()
-        case let .join(name, mobile):
-            var parameters = Parameters()
-            parameters["name"] = name
-            parameters["mobile"] = mobile
-            return parameters
         }
     }
     
