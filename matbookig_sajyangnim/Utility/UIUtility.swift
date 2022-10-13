@@ -25,3 +25,16 @@ struct ImageSlider: View {
         .tabViewStyle(PageTabViewStyle())
     }
 }
+
+struct TransparentGroupBox: GroupBoxStyle {
+    
+    let color: Color
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.content
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(RoundedRectangle(cornerRadius: 8).fill(color))
+            .overlay(configuration.label.padding(.leading, 4), alignment: .topLeading)
+    }
+}
