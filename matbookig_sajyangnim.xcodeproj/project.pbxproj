@@ -42,6 +42,7 @@
 		1E36D41128F4080600F228A7 /* OwnerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D41028F4080600F228A7 /* OwnerViewModel.swift */; };
 		1E36D41328F4084F00F228A7 /* Auth0Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D41228F4084F00F228A7 /* Auth0Owner.swift */; };
 		1E72115F28F82397009034E0 /* ReservationEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72115E28F82397009034E0 /* ReservationEditView.swift */; };
+		1E72116428F95CFE009034E0 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = 1E72116328F95CFE009034E0 /* WebView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E72116428F95CFE009034E0 /* WebView in Frameworks */,
 				1E36D3EE28F0511800F228A7 /* Alamofire in Frameworks */,
 				1E36D3FE28F401DB00F228A7 /* Auth0 in Frameworks */,
 			);
@@ -251,6 +253,7 @@
 			packageProductDependencies = (
 				1E36D3ED28F0511800F228A7 /* Alamofire */,
 				1E36D3FD28F401DB00F228A7 /* Auth0 */,
+				1E72116328F95CFE009034E0 /* WebView */,
 			);
 			productName = matbookig_sajyangnim;
 			productReference = 1E36D3DB28F04FDC00F228A7 /* matbookig_sajyangnim.app */;
@@ -283,6 +286,7 @@
 			packageReferences = (
 				1E36D3EC28F0511800F228A7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				1E36D3FC28F401DB00F228A7 /* XCRemoteSwiftPackageReference "Auth0" */,
+				1E72116228F95CFE009034E0 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
 			);
 			productRefGroup = 1E36D3DC28F04FDC00F228A7 /* Products */;
 			projectDirPath = "";
@@ -561,6 +565,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		1E72116228F95CFE009034E0 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kylehickinson/SwiftUI-WebView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -573,6 +585,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1E36D3FC28F401DB00F228A7 /* XCRemoteSwiftPackageReference "Auth0" */;
 			productName = Auth0;
+		};
+		1E72116328F95CFE009034E0 /* WebView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E72116228F95CFE009034E0 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */;
+			productName = WebView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

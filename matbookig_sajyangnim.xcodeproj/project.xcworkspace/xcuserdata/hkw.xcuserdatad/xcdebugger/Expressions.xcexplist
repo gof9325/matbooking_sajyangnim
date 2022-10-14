@@ -3,6 +3,17 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "closure #1 in closure #1 in closure #1 in closure #3 in closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in InPutField.body.getter:RestaurantInfoEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "restaurantDescription.isEmpty">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in closure #1 in closure #3 in closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
          <PersistentStrings>
             <PersistentString
@@ -17,7 +28,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in closure #1 in closure #3 in closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
+         contextName = "YeoboViewModel.userContentController(_:didReceive:):RestaurantInfoEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "chosenAddress">
+            </PersistentString>
+            <PersistentString
+               value = "message.body">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "Auth0Interceptor.adapt(_:for:completion:):Auth0Interceptor.swift">
@@ -35,14 +54,6 @@
       </ContextState>
       <ContextState
          contextName = "Color.init(r:g:b:):Extensions.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in InPutField.body.getter:RestaurantInfoEditView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "restaurantDescription.isEmpty">
-            </PersistentString>
-         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

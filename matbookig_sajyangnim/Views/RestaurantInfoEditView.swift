@@ -6,6 +6,10 @@
 //
 
 import SwiftUI
+import WebKit
+import Combine
+import WebView
+
 
 struct RestaurantInfoEditView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
@@ -80,6 +84,59 @@ struct PictureContentView: View {
     }
 }
 
+struct KakaoAddress: Codable {
+    let jibunAddress: String
+    let roadAddress: String
+    let zonecode: String
+}
+
+class KakaoPostViewModel: NSObject, WKScriptMessageHandler, ObservableObject {
+    @Published var chosenAddress: KakaoAddress?
+    @Published var webViewStore: WebViewStore
+
+    override init() {
+        let userContentController = WKUserContentController() // Handler 등록 위해 생성
+        let configuration = WKWebViewConfiguration() // Webview의 세팅
+        configuration.userContentController = userContentController
+        
+        let webView = WKWebView(frame: .zero, configuration: configuration)
+        webViewStore = WebViewStore(webView: webView)
+        super.init()
+        
+        userContentController.add(self, name: "chooseAddress") // chooseAddress란 handler 등록
+    }
+    
+    // 브라우저에서 handler 통해 iOS로 데이터 보낼 때 실행됨
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if message.name == "chooseAddress" {
+            let decoder = JSONDecoder()
+            
+            do {
+                chosenAddress = try decoder.decode(KakaoAddress.self, from: (message.body as! String).data(using: .utf8)!)
+            } catch let err {
+                print(err)
+            }
+        }
+   }
+}
+
+struct KakaoPostView: View {
+    @StateObject private var viewModel: KakaoPostViewModel
+    init() {
+        let viewModel = KakaoPostViewModel()
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
+    var body: some View {
+        NavigationView {
+            WebView(webView: viewModel.webViewStore.webView)
+                .navigationBarTitle(Text(verbatim: viewModel.webViewStore.title ?? ""), displayMode: .inline)
+        }.onAppear {
+            self.viewModel.webViewStore.webView.load(URLRequest(url: URL(string: "https://gof9325.github.io/Kakao-Post/")!))
+        }
+    }
+}
+
 struct InPutFieldsView: View {
     
     @State var restaurantName = ""
@@ -87,14 +144,15 @@ struct InPutFieldsView: View {
     @State var restaurantDescription = ""
     @State var openTimeDescription = ""
     
+    @State var addressSearch = false
+    
     var body: some View {
         VStack {
-            
             InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름", inputContent: $restaurantName)
             ZStack(alignment: .bottomTrailing) {
                 InputFieldContentView(title: "가게 주소", placeHolder: "00시 00동 000-000", inputContent: $restaurantName)
                 Button(action: {
-                    
+                    addressSearch = true
                 }, label: {
                     Image(systemName: "magnifyingglass")
                 })
@@ -107,7 +165,10 @@ struct InPutFieldsView: View {
             DescriptionContentView(title: "가게 설명", placeHolder: "가게에 대한 설명을 200자 이내로 서술하세요")
             DescriptionContentView(title: "영업 설명", placeHolder: "영업과 관련된 설명을 200자 이내로 서술하세요")
         }
-        
+        .sheet(isPresented: $addressSearch) {
+            KakaoPostView()
+                .padding()
+        }
     }
 }
 

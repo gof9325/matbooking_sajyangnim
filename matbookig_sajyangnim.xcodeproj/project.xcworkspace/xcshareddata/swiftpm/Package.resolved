@@ -35,6 +35,15 @@
         "revision" : "7f7be4a7dfc9164c2c66f95193cec9df9ac47d58",
         "version" : "1.0.1"
       }
+    },
+    {
+      "identity" : "swiftui-webview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kylehickinson/SwiftUI-WebView",
+      "state" : {
+        "revision" : "a67dcaff2377573a51f75761bb6e768b78931909",
+        "version" : "0.3.0"
+      }
     }
   ],
   "version" : 2
