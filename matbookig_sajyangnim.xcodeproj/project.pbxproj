@@ -43,6 +43,8 @@
 		1E36D41328F4084F00F228A7 /* Auth0Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D41228F4084F00F228A7 /* Auth0Owner.swift */; };
 		1E72115F28F82397009034E0 /* ReservationEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72115E28F82397009034E0 /* ReservationEditView.swift */; };
 		1E72116428F95CFE009034E0 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = 1E72116328F95CFE009034E0 /* WebView */; };
+		1E72116628F99AF6009034E0 /* KakaoPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116528F99AF6009034E0 /* KakaoPostView.swift */; };
+		1E72116828F99C15009034E0 /* KaKaoAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116728F99C15009034E0 /* KaKaoAddress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +83,8 @@
 		1E36D41028F4080600F228A7 /* OwnerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerViewModel.swift; sourceTree = "<group>"; };
 		1E36D41228F4084F00F228A7 /* Auth0Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth0Owner.swift; sourceTree = "<group>"; };
 		1E72115E28F82397009034E0 /* ReservationEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationEditView.swift; sourceTree = "<group>"; };
+		1E72116528F99AF6009034E0 /* KakaoPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoPostView.swift; sourceTree = "<group>"; };
+		1E72116728F99C15009034E0 /* KaKaoAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAddress.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 				1E21560028F4161300B03EFB /* ChatDetailView.swift */,
 				1E21560228F4164300B03EFB /* ChatListView.swift */,
 				1E21562828F4573100B03EFB /* JoinView.swift */,
+				1E72116528F99AF6009034E0 /* KakaoPostView.swift */,
 				1E21563328F54A6800B03EFB /* ReservationListView.swift */,
 			);
 			path = Views;
@@ -230,6 +235,7 @@
 				1E21563528F54DCD00B03EFB /* RestaurantExistsResponse.swift */,
 				1E21563928F5536F00B03EFB /* RestaurantResponse.swift */,
 				1E21563728F5508900B03EFB /* Restaurant.swift */,
+				1E72116728F99C15009034E0 /* KaKaoAddress.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -338,8 +344,10 @@
 				1E36D41328F4084F00F228A7 /* Auth0Owner.swift in Sources */,
 				1E21563E28F564AD00B03EFB /* RestaurantApiService.swift in Sources */,
 				1E21562728F4561300B03EFB /* ApiResponse.swift in Sources */,
+				1E72116628F99AF6009034E0 /* KakaoPostView.swift in Sources */,
 				1E36D40828F4075100F228A7 /* ApiClient.swift in Sources */,
 				1E21564028F5653A00B03EFB /* RestaurantRouter.swift in Sources */,
+				1E72116828F99C15009034E0 /* KaKaoAddress.swift in Sources */,
 				1E21563828F5508900B03EFB /* Restaurant.swift in Sources */,
 				1E21560328F4164300B03EFB /* ChatListView.swift in Sources */,
 				1E21564228F6993F00B03EFB /* UIUtility.swift in Sources */,

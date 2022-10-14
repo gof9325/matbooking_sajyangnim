@@ -28,6 +28,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "KakaoPostViewModel.userContentController(_:didReceive:):KakaoPostView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "chosenAddress">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "YeoboViewModel.userContentController(_:didReceive:):RestaurantInfoEditView.swift">
          <PersistentStrings>
             <PersistentString
