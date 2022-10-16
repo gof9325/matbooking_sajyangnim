@@ -15,16 +15,18 @@ struct RestaurantInfoEditView: View {
     @State var isCancelled = false
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                PictureContentView()
-                VStack(alignment: .leading) {
-                    InPutFieldsView()
+        GeometryReader { proxy in
+            NavigationView {
+                ScrollView {
+                    PictureContentView()
+                    VStack(alignment: .leading) {
+                        InPutFieldsView(proxy: proxy)
+                    }
+                    .padding()
+                    buttonGroup
                 }
-                .padding()
-                buttonGroup
+                .navigationTitle("가게 정보 설정")
             }
-            .navigationTitle("가게 정보 설정")
         }
     }
     
@@ -82,10 +84,13 @@ struct PictureContentView: View {
 
 struct InPutFieldsView: View {
     
+    let proxy: GeometryProxy
+    
     @StateObject var kakaoPostVM = KakaoPostViewModel()
     
     @State var restaurantName = ""
     @State var restaurantAddress = ""
+    @State var restaurantPhone = ""
     @State var restaurantDescription = ""
     @State var openTimeDescription = ""
     
@@ -97,15 +102,16 @@ struct InPutFieldsView: View {
     
     var body: some View {
         VStack {
-            InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름", inputContent: $restaurantName)
+            InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름 (50자 이내)", textLimit: 50, inputContent: $restaurantName)
             ZStack(alignment: .bottomTrailing) {
-                InputFieldContentView(title: "가게 주소", placeHolder: "00시 00동 000-000", inputContent: $restaurantAddress)
+                InputFieldContentView(title: "가게 주소", placeHolder: "00시 00동 000-000", textLimit: 50, inputContent: $restaurantAddress)
                 Button(action: {
                     addressSearch = true
                 }, label: {
                     Image(systemName: "magnifyingglass")
                 })
-                .padding([.bottom, .trailing], 25)
+                .padding(.bottom, proxy.size.height / 20)
+                .padding(.trailing, proxy.size.height / 35)
                 .foregroundColor(Color.matHavyGreen)
             }
             .onReceive(kakaoPostVM.$chosenAddress, perform: {
@@ -113,7 +119,8 @@ struct InPutFieldsView: View {
                 self.addressSearch = false
                 
             })
-            InputFieldContentView(title: "가게 번호", placeHolder: "000-0000-0000", inputContent: $restaurantName)
+            InputFieldContentView(title: "가게 번호", placeHolder: "000-0000-0000", textLimit: 11, inputContent: $restaurantPhone)
+                .keyboardType(.numberPad)
 
             VStack {
                 Text("음식 종류")
@@ -140,14 +147,27 @@ struct InPutFieldsView: View {
 struct InputFieldContentView: View {
     let title: String
     let placeHolder: String
+    let textLimit: Int
     @Binding var inputContent: String
+    
+    @State var alertMessege = ""
     
     var body: some View {
         VStack {
             Text(title)
                 .padding(.top)
-            TextField(title, text: $inputContent)
+            TextField(placeHolder, text: $inputContent)
                 .underlineTextField(color: Color.matHavyGreen)
+                .onChange(of: inputContent, perform: { text in
+                    if text.count >= textLimit {
+                        alertMessege = "\(textLimit)자 이하로 작성해주세요."
+                    } else {
+                        alertMessege = ""
+                    }
+                })
+                Text(alertMessege)
+                    .foregroundColor(.red)
+                    .animation(.linear, value: alertMessege)
         }
     }
 }
@@ -158,25 +178,40 @@ struct DescriptionContentView: View {
     @State var description: String = ""
     let placeHolder: String
     
+    @State var textColor = Color.black
+    
     var body: some View {
-        VStack {
-            Text(title)
-                .padding(.top)
-            ZStack(alignment: .topLeading) {
-                TextEditor(text: $description)
-                    .padding()
-                    .frame(height: 200, alignment: .leading)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.matHavyGreen)
-                    )
-                if description.isEmpty  {
-                    Text(placeHolder)
-                        .foregroundColor(Color.gray.opacity(0.5))
-                        .padding(.horizontal, 25)
-                        .padding(.vertical, 22)
+        VStack(alignment: .trailing) {
+            VStack(alignment: .center) {
+                Text(title)
+                    .padding(.top)
+                ZStack(alignment: .topLeading) {
+                    TextEditor(text: $description)
+                        .padding()
+                        .frame(height: 200, alignment: .leading)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.matHavyGreen)
+                        )
+                    if description.isEmpty  {
+                        Text(placeHolder)
+                            .foregroundColor(Color.gray.opacity(0.5))
+                            .padding(.horizontal, 25)
+                            .padding(.vertical, 22)
+                    }
                 }
             }
+            .onChange(of: description, perform: { text in
+                if text.count >= 200 {
+                    textColor = Color.red
+                } else {
+                    textColor = Color.gray
+                }
+            })
+            Text("\(description.count) / 200")
+                .foregroundColor(textColor)
+                .padding()
+                .animation(.default, value: textColor)
         }
     }
 }
