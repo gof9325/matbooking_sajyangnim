@@ -16,10 +16,8 @@ struct ReservationEditView: View {
         NavigationView {
             GeometryReader { proxy in
                 ScrollView {
-                    
                     SettingPax()
                         .padding([.top, .bottom])
-                    
                     VStack {
                         Text("영업날짜 & 시간")
                         HStack {
@@ -32,6 +30,9 @@ struct ReservationEditView: View {
                         }
                     }
                     .padding([.top, .bottom])
+                    
+                    SettingSlotGapMinutes()
+                    
                     buttonGroup
                 }
                 .padding()
@@ -80,6 +81,7 @@ struct SettingPax: View {
                     Text("최대인원")
                     Text("\(paxMax)")
                 }
+                
             }
         }
     }
@@ -91,6 +93,9 @@ struct BusinessDayView: View {
     let day: String
     
     @State var isWorkDay = true
+    private var backgroundColor: Color {
+        isWorkDay ? Color.matNature : Color.matPeach
+    }
     
     @State private var startTime = Date()
     @State private var endTime = Date() + 1200
@@ -108,7 +113,7 @@ struct BusinessDayView: View {
                     }
                     .frame(width: proxy.size.width / 9, height: proxy.size.width / 9)
                     .font(.title3)
-                    .background(isWorkDay ? Color.matNature : Color.matPeach)
+                    .background(backgroundColor)
                     .foregroundColor(Color.matBlack)
                     .clipShape(Circle())
                     if isWorkDay {
@@ -125,14 +130,35 @@ struct BusinessDayView: View {
                         }
                     }
                     Toggle("", isOn: $isWorkDay)
-                        .tint(isWorkDay ? Color.matNature : Color.matPeach)
+                        .tint(backgroundColor)
                 }
             }
             .groupBoxStyle(TransparentGroupBox(color: isWorkDay ? Color.matWhiteGreen : Color.matLightPink))
+            .animation(.default, value: backgroundColor)
         }
     }
 }
 
+struct SettingSlotGapMinutes: View {
+    
+    let times = ["60 분", "90 분", "120 분", "150 분"]
+    
+    @State var selectedTime : String = "60 분"
+    
+    var body: some View {
+        VStack {
+            Text("다음 예약까지의 시간")
+                .padding(5)
+            Picker("", selection: $selectedTime) {
+                ForEach(times, id: \.self) {
+                    Text($0)
+                }
+            }
+            .pickerStyle(.segmented)
+            .padding()
+        }
+    }
+}
 
 struct ReservationEditView_Previews: PreviewProvider {
     static var previews: some View {

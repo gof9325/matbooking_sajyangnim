@@ -91,6 +91,10 @@ struct InPutFieldsView: View {
     
     @State var addressSearch = false
     
+    let cuisine = ["한식", "일식", "이탈리아음식"]
+    
+    @State var selectedCuisine: String = "한식"
+    
     var body: some View {
         VStack {
             InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름", inputContent: $restaurantName)
@@ -111,6 +115,18 @@ struct InPutFieldsView: View {
             })
             InputFieldContentView(title: "가게 번호", placeHolder: "000-0000-0000", inputContent: $restaurantName)
 
+            VStack {
+                Text("음식 종류")
+                    .padding(.top)
+                Picker("", selection: $selectedCuisine) {
+                    ForEach(cuisine, id: \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding()
+            }
+            
             DescriptionContentView(title: "가게 설명", placeHolder: "가게에 대한 설명을 200자 이내로 서술하세요")
             DescriptionContentView(title: "영업 설명", placeHolder: "영업과 관련된 설명을 200자 이내로 서술하세요")
         }
