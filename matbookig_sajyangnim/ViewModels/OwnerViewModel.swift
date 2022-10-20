@@ -15,6 +15,7 @@ class OwnerViewModel: ObservableObject {
     
     @Published var auth0Owner: Auth0Owner?
     @Published var owner: Owner?
+    @Published var myRestaurant: Restaurant?
     
     // 로그인 실패 이벤트
     private var loginFail = PassthroughSubject<(), Never>()
@@ -96,6 +97,47 @@ class OwnerViewModel: ObservableObject {
     
     func joinCancel() {
         self.owner = nil
+    }
+    
+    func restaurantEditerValidation(myRestaurant: Restaurant) -> Bool {
+        // name : 띄어쓰기 포함 50자 이내
+        if myRestaurant.name.count <= 50 {
+            
+        }
+        // address : 주소 형식
+        
+        // phone/mobile : -제외 11자 이내, 숫자로만 이루어짐
+        let mobile = myRestaurant.mobile.filter({ c in
+            c != "-"
+        })
+        if mobile.count <= 11 {
+            let mobileNumber = Int(mobile)
+//            if mobileNumber.count == mobile.count {
+//                print("전부다 숫자")
+//                print("mobileNumber: \(mobileNumber)")
+//                print("mobileNumber: \(mobile)")
+//            } else {
+//                print("숫자 아닌거 껴있음")
+//                print("mobileNumber: \(mobileNumber)")
+//                print("mobileNumber: \(mobile)")
+//
+//            }
+        }
+        
+        // desc : 띄어쓰기 포함 200자 이내
+        if myRestaurant.description.count <= 200 {
+            
+        }
+        // opneTimeDesc : 띄어쓰기 포함 200자 이내
+        if myRestaurant.description.count <= 200 {
+            
+        }
+        
+        return true
+    }
+    
+    enum validationResult {
+        case fieldEmpty, nameTooLong, mobileTooLong, descriptionTooLong
     }
 }
 

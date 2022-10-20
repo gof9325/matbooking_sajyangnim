@@ -37,7 +37,7 @@ struct ContentView: View {
                         .tag(2)
                 }
             } else if self.owner != nil {
-                RestaurantInfoEditView()
+                RestaurantInfoEditView(myRestaurant: Restaurant(name: "", address: "", mobile: "", description: "", openTimeDescription: ""))
             } else {
                 LoginView()
             }

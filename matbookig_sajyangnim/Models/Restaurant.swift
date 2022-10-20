@@ -8,7 +8,10 @@
 import Foundation
 
 struct Restaurant {
-    let id: String
-    let name: String
-    let description: String
+    let id = UUID()
+    var name: String
+    var address: String
+    var mobile: String
+    var description: String
+    var openTimeDescription: String
 }

@@ -12,6 +12,8 @@ struct RestaurantInfoEditView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
     @Environment(\.dismiss) var dismiss
     
+    @State var myRestaurant: Restaurant
+    
     @State var isCancelled = false
     
     var body: some View {
@@ -20,7 +22,7 @@ struct RestaurantInfoEditView: View {
                 ScrollView {
                     PictureContentView()
                     VStack(alignment: .leading) {
-                        InPutFieldsView(proxy: proxy)
+                        InPutFieldsView(proxy: proxy, myRestaurant: $myRestaurant)
                     }
                     .padding()
                     buttonGroup
@@ -35,7 +37,9 @@ struct RestaurantInfoEditView: View {
             HStack {
                 Spacer()
                 NavigationLink("다음") {
-                    ReservationEditView()
+                    if ownerVM.restaurantEditerValidation(myRestaurant: myRestaurant) {
+                        ReservationEditView()
+                    }
                 }
                 .padding()
                 .frame(width: 100)
@@ -88,11 +92,7 @@ struct InPutFieldsView: View {
     
     @StateObject var kakaoPostVM = KakaoPostViewModel()
     
-    @State var restaurantName = ""
-    @State var restaurantAddress = ""
-    @State var restaurantPhone = ""
-    @State var restaurantDescription = ""
-    @State var openTimeDescription = ""
+    @Binding var myRestaurant: Restaurant
     
     @State var addressSearch = false
     
@@ -102,9 +102,10 @@ struct InPutFieldsView: View {
     
     var body: some View {
         VStack {
-            InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름 (50자 이내)", textLimit: 50, inputContent: $restaurantName)
+            
+            InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름 (50자 이내)", textLimit: 50, inputContent: $myRestaurant.name)
             ZStack(alignment: .bottomTrailing) {
-                InputFieldContentView(title: "가게 주소", placeHolder: "00시 00동 000-000", textLimit: 50, inputContent: $restaurantAddress)
+                InputFieldContentView(title: "가게 주소", placeHolder: "00시 00동 000-000", textLimit: 50, inputContent: $myRestaurant.address)
                 Button(action: {
                     addressSearch = true
                 }, label: {
@@ -115,16 +116,20 @@ struct InPutFieldsView: View {
                 .foregroundColor(Color.matHavyGreen)
             }
             .onReceive(kakaoPostVM.$chosenAddress, perform: {
-                self.restaurantAddress = $0?.roadAddress ?? ""
+                myRestaurant.address = $0?.roadAddress ?? ""
                 self.addressSearch = false
                 
             })
-            InputFieldContentView(title: "가게 번호", placeHolder: "000-0000-0000", textLimit: 11, inputContent: $restaurantPhone)
+            InputFieldContentView(title: "가게 번호", placeHolder: "000-0000-0000", textLimit: 11, inputContent: $myRestaurant.mobile)
                 .keyboardType(.numberPad)
-
+            
             VStack {
-                Text("음식 종류")
-                    .padding(.top)
+                HStack {
+                    Text("*")
+                        .foregroundColor(.red)
+                    Text("음식 종류")
+                }
+                .padding(.top)
                 Picker("", selection: $selectedCuisine) {
                     ForEach(cuisine, id: \.self) {
                         Text($0)
@@ -133,7 +138,6 @@ struct InPutFieldsView: View {
                 .pickerStyle(.segmented)
                 .padding()
             }
-            
             DescriptionContentView(title: "가게 설명", placeHolder: "가게에 대한 설명을 200자 이내로 서술하세요")
             DescriptionContentView(title: "영업 설명", placeHolder: "영업과 관련된 설명을 200자 이내로 서술하세요")
         }
@@ -154,8 +158,12 @@ struct InputFieldContentView: View {
     
     var body: some View {
         VStack {
-            Text(title)
-                .padding(.top)
+            HStack {
+                Text("*")
+                    .foregroundColor(.red)
+                Text(title)
+            }
+            .padding(.top)
             TextField(placeHolder, text: $inputContent)
                 .underlineTextField(color: Color.matHavyGreen)
                 .onChange(of: inputContent, perform: { text in
@@ -165,9 +173,9 @@ struct InputFieldContentView: View {
                         alertMessege = ""
                     }
                 })
-                Text(alertMessege)
-                    .foregroundColor(.red)
-                    .animation(.linear, value: alertMessege)
+            Text(alertMessege)
+                .foregroundColor(.red)
+                .animation(.linear, value: alertMessege)
         }
     }
 }
@@ -183,8 +191,13 @@ struct DescriptionContentView: View {
     var body: some View {
         VStack(alignment: .trailing) {
             VStack(alignment: .center) {
-                Text(title)
-                    .padding(.top)
+                HStack {
+                    if title == "가게 설명" {
+                        Text("*")
+                            .foregroundColor(.red)
+                    }
+                    Text(title)
+                }.padding(.top)
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $description)
                         .padding()
@@ -218,7 +231,7 @@ struct DescriptionContentView: View {
 
 struct SettingRestaurant_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantInfoEditView()
+        RestaurantInfoEditView(myRestaurant: Restaurant(name: "", address: "", mobile: "", description: "", openTimeDescription: ""))
             .previewInterfaceOrientation(.portraitUpsideDown)
     }
 }
