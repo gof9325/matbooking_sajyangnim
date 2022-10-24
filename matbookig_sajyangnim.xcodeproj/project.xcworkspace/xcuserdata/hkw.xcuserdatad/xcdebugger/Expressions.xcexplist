@@ -3,13 +3,72 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "Color.init(r:g:b:):Extensions.swift">
+      </ContextState>
+      <ContextState
+         contextName = "KakaoPostViewModel.userContentController(_:didReceive:):KakaoPostView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "chosenAddress">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in RestaurantInfoEditView.buttonGroup.getter:RestaurantInfoEditView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in closure #1 in InPutFieldsView.body.getter:RestaurantInfoEditView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #3 in closure #1 in ContentView.body.getter:ContentView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "auth0Owner">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "YeoboViewModel.userContentController(_:didReceive:):RestaurantInfoEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "chosenAddress">
+            </PersistentString>
+            <PersistentString
+               value = "message.body">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in closure #1 in closure #1 in closure #3 in closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in InPutField.body.getter:RestaurantInfoEditView.swift">
+         contextName = "Auth0Interceptor.adapt(_:for:completion:):Auth0Interceptor.swift">
          <PersistentStrings>
             <PersistentString
-               value = "restaurantDescription.isEmpty">
+               value = "request.headers">
+            </PersistentString>
+            <PersistentString
+               value = "KeyChain.read(key: &quot;userAccessToken&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "specialized closure #1 in Interceptor.adapt(_:using:adapters:completion:):RequestInterceptor.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in InPutFieldsView.body.getter:RestaurantInfoEditView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.buttonGroup.getter:RestaurantInfoEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "isFirstValidationPassed">
+            </PersistentString>
+            <PersistentString
+               value = "ownerVM.restaurantEditerValidation(myRestaurant: myRestaurant)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -28,40 +87,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "KakaoPostViewModel.userContentController(_:didReceive:):KakaoPostView.swift">
+         contextName = "OwnerViewModel.restaurantEditerValidation(myRestaurant:):OwnerViewModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in InPutField.body.getter:RestaurantInfoEditView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "chosenAddress">
+               value = "restaurantDescription.isEmpty">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "YeoboViewModel.userContentController(_:didReceive:):RestaurantInfoEditView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "chosenAddress">
-            </PersistentString>
-            <PersistentString
-               value = "message.body">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Auth0Interceptor.adapt(_:for:completion:):Auth0Interceptor.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "KeyChain.read(key: &quot;userAccessToken&quot;)">
-            </PersistentString>
-            <PersistentString
-               value = "request.headers">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "specialized closure #1 in Interceptor.adapt(_:using:adapters:completion:):RequestInterceptor.swift">
-      </ContextState>
-      <ContextState
-         contextName = "Color.init(r:g:b:):Extensions.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

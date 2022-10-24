@@ -15,17 +15,16 @@ class OwnerViewModel: ObservableObject {
     
     @Published var auth0Owner: Auth0Owner?
     @Published var owner: Owner?
-    @Published var myRestaurant: Restaurant?
     
     // 로그인 실패 이벤트
-    private var loginFail = PassthroughSubject<(), Never>()
+    var loginFail = PassthroughSubject<(), AFError>()
     
     // 회원가입 이벤트
     var haveToJoin = PassthroughSubject<(), Never>()
     
-    init(from: String) {
-        self.auth0Owner = Auth0Owner(from: from)
-    }
+//    init(from: String) {
+//        self.auth0Owner = Auth0Owner(from: from)
+//    }
     
     // MARK: Intant functions
     func login() {
@@ -39,7 +38,7 @@ class OwnerViewModel: ObservableObject {
                     print("accessToken : \(credentials.accessToken)")
                     KeyChain.create(key: "ownerAccessToken", token: credentials.accessToken)
                     if let auth0Owner = Auth0Owner(from: credentials.idToken) {
-                        self.getOwnerInfo(auth0Owner)
+//                        self.getOwnerInfo(auth0Owner)
                         self.auth0Owner = auth0Owner
                     }
                 case .failure(let error):
@@ -64,7 +63,7 @@ class OwnerViewModel: ObservableObject {
             }
     }
     
-    private func getOwnerInfo(_ auth0Owner: Auth0Owner) {
+    func getOwnerInfo(_ auth0Owner: Auth0Owner) {
         print("OwnerViewModel - getOwnerInfo() called")
         OwnerApiService.getOwnerInfo()
             .sink(receiveCompletion: { completion in
@@ -74,7 +73,7 @@ class OwnerViewModel: ObservableObject {
                     return
                 case .failure(let error) :
                     print("OwnerViewModel getOwnerInfo error: \(error)")
-                    self.loginFail.send()
+                    self.loginFail.send(completion: completion)
                 }
             }, receiveValue: { ownerInfo in
                 if ownerInfo.data.exists {
@@ -96,7 +95,8 @@ class OwnerViewModel: ObservableObject {
     }
     
     func joinCancel() {
-        self.owner = nil
+        self.auth0Owner = nil
+//        self.owner = nil
     }
     
     func restaurantEditerValidation(myRestaurant: Restaurant) -> Bool {
@@ -107,21 +107,9 @@ class OwnerViewModel: ObservableObject {
         // address : 주소 형식
         
         // phone/mobile : -제외 11자 이내, 숫자로만 이루어짐
-        let mobile = myRestaurant.mobile.filter({ c in
-            c != "-"
-        })
-        if mobile.count <= 11 {
-            let mobileNumber = Int(mobile)
-//            if mobileNumber.count == mobile.count {
-//                print("전부다 숫자")
-//                print("mobileNumber: \(mobileNumber)")
-//                print("mobileNumber: \(mobile)")
-//            } else {
-//                print("숫자 아닌거 껴있음")
-//                print("mobileNumber: \(mobileNumber)")
-//                print("mobileNumber: \(mobile)")
-//
-//            }
+        let mobile = myRestaurant.mobile.filter({ c in c != "-" })
+        if mobile.allSatisfy({ $0.isNumber }) && mobile.count < 12 {
+            
         }
         
         // desc : 띄어쓰기 포함 200자 이내

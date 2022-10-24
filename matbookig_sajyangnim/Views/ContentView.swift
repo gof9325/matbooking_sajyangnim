@@ -6,47 +6,57 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ContentView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
     
-    @State var owner: Owner?
-    @State var myRestaurant: Restaurant?
+    @StateObject var restaurantVM = RestaurantViewModel()
+    
+    @StateObject var contentVM: ContentViewModel
+    
+    @State var auth0Owner: Auth0Owner?
+    
+    @State var ownerAndRestaurant: (Owner?, Restaurant?)?
+    
+    @State var haveToJoin = false
     
     @State var selection = 0
     
     var body: some View {
-        VStack {
-            if self.owner != nil && self.myRestaurant != nil {
-                Text("asdfsdf")
-                TabView(selection: $selection){
-                    ReservationListView()
-                        .tabItem{
-                            Image(systemName: "book.closed")
-                        }
-                        .tag(0)
-                    ChatListView()
-                        .tabItem{
-                            Image(systemName: "message")
-                        }
-                        .tag(1)
-                    EmptyView()
-                        .tabItem{
-                            Image(systemName: "fork.knife")
-                        }
-                        .tag(2)
+        ScrollView {
+            VStack {
+                if auth0Owner != nil {
+                    if ownerAndRestaurant?.0 != nil && ownerAndRestaurant?.1 != nil {
+                        Text("아이디, 레스토랑 둘 다 있음")
+                    } else if ownerAndRestaurant?.0 != nil && ownerAndRestaurant?.1 == nil {
+//                        Text("아이디 있음, 레스토랑 없음")
+                        RestaurantInfoEditView(myRestaurant: Restaurant(name: "", address: "", mobile: "", description: "", openTimeDescription: ""))
+                    } else {
+//                        Text("둘다 없음")
+                        JoinView()
+                    }
+                } else {
+                    LoginView(contentVM: contentVM)
                 }
-            } else if self.owner != nil {
-                RestaurantInfoEditView(myRestaurant: Restaurant(name: "", address: "", mobile: "", description: "", openTimeDescription: ""))
-            } else {
-                LoginView()
             }
-        }.onReceive(ownerVM.$owner, perform: {self.owner = $0})
+            .onReceive(ownerVM.$auth0Owner, perform: {
+                contentVM.getOwnerAndRestaurantExists()
+                self.auth0Owner = $0
+            })
+            .onReceive(contentVM.dataLoaded, perform: {
+                self.ownerAndRestaurant = $0
+            })
+        }.onAppear() {
+            contentVM.ownerVM = ownerVM
+            contentVM.restaurantVM = restaurantVM
+        }
+        EmptyView()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(contentVM: ContentViewModel())
     }
 }

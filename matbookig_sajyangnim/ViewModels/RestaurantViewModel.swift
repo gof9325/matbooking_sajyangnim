@@ -13,6 +13,7 @@ class RestaurantViewModel: ObservableObject {
     private var subscription = Set<AnyCancellable>()
     
     @Published var myRestaurant: Restaurant?
+//    @Published var loadedRestaurant = false
     
     // 가게 정보 생성 이벤트
     var setRestaurantInfo = PassthroughSubject<(), Never>()
@@ -25,9 +26,10 @@ class RestaurantViewModel: ObservableObject {
             }, receiveValue: { restaurantExists in
                 if restaurantExists.data.exists {
                     self.getRestaurantInfo()
-                } else {
-                    self.setRestaurantInfo.send()
                 }
+//                else {
+//                    self.setRestaurantInfo.send()
+//                }
             }).store(in: &subscription)
     }
     

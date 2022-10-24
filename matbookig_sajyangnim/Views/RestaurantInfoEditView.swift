@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-
 struct RestaurantInfoEditView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
     @Environment(\.dismiss) var dismiss
     
     @State var myRestaurant: Restaurant
     
-    @State var isCancelled = false
+    @State private var isCancelled = false
+    @State private var isFirstValidationPassed = false
     
     var body: some View {
         GeometryReader { proxy in
@@ -36,16 +36,11 @@ struct RestaurantInfoEditView: View {
         VStack {
             HStack {
                 Spacer()
-                NavigationLink("다음") {
-                    if ownerVM.restaurantEditerValidation(myRestaurant: myRestaurant) {
-                        ReservationEditView()
+                NavigationLink(destination: ReservationEditView(), isActive: $isFirstValidationPassed) {
+                    Button("다음") {
+                        isFirstValidationPassed = ownerVM.restaurantEditerValidation(myRestaurant: myRestaurant)
                     }
                 }
-                .padding()
-                .frame(width: 100)
-                .background(Color.matNature)
-                .cornerRadius(10)
-                .foregroundColor(.white)
                 Spacer()
                 Button("취소") {
                     isCancelled = true
@@ -93,7 +88,7 @@ struct InPutFieldsView: View {
     @StateObject var kakaoPostVM = KakaoPostViewModel()
     
     @Binding var myRestaurant: Restaurant
-    
+  
     @State var addressSearch = false
     
     let cuisine = ["한식", "일식", "이탈리아음식"]
@@ -102,7 +97,6 @@ struct InPutFieldsView: View {
     
     var body: some View {
         VStack {
-            
             InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름 (50자 이내)", textLimit: 50, inputContent: $myRestaurant.name)
             ZStack(alignment: .bottomTrailing) {
                 InputFieldContentView(title: "가게 주소", placeHolder: "00시 00동 000-000", textLimit: 50, inputContent: $myRestaurant.address)
@@ -122,7 +116,6 @@ struct InPutFieldsView: View {
             })
             InputFieldContentView(title: "가게 번호", placeHolder: "000-0000-0000", textLimit: 11, inputContent: $myRestaurant.mobile)
                 .keyboardType(.numberPad)
-            
             VStack {
                 HStack {
                     Text("*")
@@ -167,7 +160,7 @@ struct InputFieldContentView: View {
             TextField(placeHolder, text: $inputContent)
                 .underlineTextField(color: Color.matHavyGreen)
                 .onChange(of: inputContent, perform: { text in
-                    if text.count >= textLimit {
+                    if text.count > textLimit {
                         alertMessege = "\(textLimit)자 이하로 작성해주세요."
                     } else {
                         alertMessege = ""

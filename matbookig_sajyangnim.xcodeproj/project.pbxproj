@@ -45,6 +45,7 @@
 		1E72116428F95CFE009034E0 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = 1E72116328F95CFE009034E0 /* WebView */; };
 		1E72116628F99AF6009034E0 /* KakaoPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116528F99AF6009034E0 /* KakaoPostView.swift */; };
 		1E72116828F99C15009034E0 /* KaKaoAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116728F99C15009034E0 /* KaKaoAddress.swift */; };
+		1E72116A29062F90009034E0 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116929062F90009034E0 /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		1E72115E28F82397009034E0 /* ReservationEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationEditView.swift; sourceTree = "<group>"; };
 		1E72116528F99AF6009034E0 /* KakaoPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoPostView.swift; sourceTree = "<group>"; };
 		1E72116728F99C15009034E0 /* KaKaoAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAddress.swift; sourceTree = "<group>"; };
+		1E72116929062F90009034E0 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				1E36D41028F4080600F228A7 /* OwnerViewModel.swift */,
+				1E72116929062F90009034E0 /* ContentViewModel.swift */,
 				1E21563B28F5605C00B03EFB /* RestaurantViewModel.swift */,
 			);
 			path = ViewModels;
@@ -350,6 +353,7 @@
 				1E72116828F99C15009034E0 /* KaKaoAddress.swift in Sources */,
 				1E21563828F5508900B03EFB /* Restaurant.swift in Sources */,
 				1E21560328F4164300B03EFB /* ChatListView.swift in Sources */,
+				1E72116A29062F90009034E0 /* ContentViewModel.swift in Sources */,
 				1E21564228F6993F00B03EFB /* UIUtility.swift in Sources */,
 				1E21563428F54A6800B03EFB /* ReservationListView.swift in Sources */,
 				1E21563628F54DCD00B03EFB /* RestaurantExistsResponse.swift in Sources */,

@@ -14,7 +14,7 @@ struct JoinView: View {
     
     @State var validateMobileNumber = true
     
-    @Binding var isPresented: Bool
+//    @Binding var isPresented: Bool
     
     var body: some View {
         VStack {
@@ -60,7 +60,8 @@ struct JoinView: View {
                     .foregroundColor(.white)
                     Spacer()
                     Button("취소") {
-                        isPresented = false
+                        ownerVM.joinCancel()
+//                        isPresented = false
                     }
                     .padding()
                     .frame(width: 100)
@@ -70,17 +71,17 @@ struct JoinView: View {
                     Spacer()
                 }
             }
-            .onReceive(ownerVM.$owner, perform: {
-                if $0 != nil {
-                    isPresented = false
-                }
-            })
+//            .onReceive(ownerVM.$owner, perform: {
+//                if $0 != nil {
+//                    isPresented = false
+//                }
+//            })
         }
     }
 }
 
 struct JoinView_Previews: PreviewProvider {
     static var previews: some View {
-        JoinView(isPresented: .constant(true))
+        JoinView()
     }
 }

@@ -12,7 +12,6 @@ import Combine
 enum OwnerApiService {
     static func getOwnerInfo() -> AnyPublisher<ApiResponse<OwnerResponse>, AFError> {
         print("OwnerApiService - getOwnerInfo() called")
-        
         return ApiClient.shared.session
             .request(OwnerRouter.getOwnerInfo)
             .publishDecodable(type: ApiResponse<OwnerResponse>.self)
@@ -22,7 +21,6 @@ enum OwnerApiService {
     
     static func join(name: String, mobile: String) -> AnyPublisher<ApiResponse<JoinResponse>, AFError> {
         print("OwnerApiService - join() called")
-        
         return ApiClient.shared.session
             .request(OwnerRouter.join(name: name, mobile: mobile))
             .publishDecodable(type: ApiResponse<JoinResponse>.self)

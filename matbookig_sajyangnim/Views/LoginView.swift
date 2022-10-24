@@ -8,36 +8,37 @@
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject var ownerVM: OwnerViewModel
-    @State var isJoinViewPresented = false
+    @StateObject var contentVM: ContentViewModel
+    
+    @Environment(\.dismiss) var dismiss
+
+    @State var loginFailAlertPresented = false
     
     var body: some View {
-        if isJoinViewPresented {
-            JoinView(isPresented: $isJoinViewPresented)
-        } else {
-            VStack {
-                Text("맛북킹 사장님")
-                    .font(.title)
-                    .padding([.top, .bottom])
-                Button("시작하기") {
-                    ownerVM.login()
-                }
-                .padding()
-                .background(.blue)
-                .foregroundColor(.white)
-                .clipShape(Capsule())
+        VStack {
+            Text("맛북킹 사장님")
+                .font(.title)
+                .padding([.top, .bottom])
+            Button("시작하기") {
+                contentVM.ownerVM?.login()
             }
-            .frame(width: 300, height: 200)
-            .onReceive(ownerVM.haveToJoin, perform: {
-                    self.isJoinViewPresented = true
-            })
+            .padding()
+            .background(.blue)
+            .foregroundColor(.white)
+            .clipShape(Capsule())
+            .alert("로그인에 실패하였습니다.", isPresented: $loginFailAlertPresented) {
+                Button("확인", role: .cancel) {
+                    self.dismiss()
+                }
+            }
         }
+        .frame(width: 300, height: 200)
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(contentVM: ContentViewModel())
     }
 }
 

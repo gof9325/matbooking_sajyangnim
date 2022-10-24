@@ -12,7 +12,6 @@ import Combine
 enum RestaurantApiService {
     static func getRestaurantExists() -> AnyPublisher<ApiResponse<RestaurantExistsResponse>, AFError> {
         print("RestaurantApiService - getRestaurantExists() called")
-        
         return ApiClient.shared.session
             .request(RestaurantRouter.getRestaurantExists)
             .publishDecodable(type: ApiResponse<RestaurantExistsResponse>.self)
@@ -22,7 +21,6 @@ enum RestaurantApiService {
     
     static func getRestaurantInfo() -> AnyPublisher<ApiResponse<RestaurantResponse>, AFError> {
         print("RestaurantApiService - getRestaurantInfo() called")
-        
         return ApiClient.shared.session
             .request(RestaurantRouter.getRestaurantInfo)
             .publishDecodable(type: ApiResponse<RestaurantResponse>.self)
