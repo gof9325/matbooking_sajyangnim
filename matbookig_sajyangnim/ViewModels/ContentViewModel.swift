@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class ContentViewModel: ObservableObject {
+class MainViewModel: ObservableObject {
     
     private var subscription = Set<AnyCancellable>()
     

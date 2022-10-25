@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject var contentVM: ContentViewModel
+    @StateObject var mainVM: MainViewModel
     
     @Environment(\.dismiss) var dismiss
 
@@ -20,7 +20,7 @@ struct LoginView: View {
                 .font(.title)
                 .padding([.top, .bottom])
             Button("시작하기") {
-                contentVM.ownerVM?.login()
+                mainVM.ownerVM?.login()
             }
             .padding()
             .background(.blue)
@@ -38,7 +38,7 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(contentVM: ContentViewModel())
+        LoginView(mainVM: MainViewModel())
     }
 }
 

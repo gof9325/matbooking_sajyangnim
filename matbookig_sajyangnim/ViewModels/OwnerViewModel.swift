@@ -38,7 +38,6 @@ class OwnerViewModel: ObservableObject {
                     print("accessToken : \(credentials.accessToken)")
                     KeyChain.create(key: "ownerAccessToken", token: credentials.accessToken)
                     if let auth0Owner = Auth0Owner(from: credentials.idToken) {
-//                        self.getOwnerInfo(auth0Owner)
                         self.auth0Owner = auth0Owner
                     }
                 case .failure(let error):
@@ -96,36 +95,7 @@ class OwnerViewModel: ObservableObject {
     
     func joinCancel() {
         self.auth0Owner = nil
-//        self.owner = nil
     }
     
-    func restaurantEditerValidation(myRestaurant: Restaurant) -> Bool {
-        // name : 띄어쓰기 포함 50자 이내
-        if myRestaurant.name.count <= 50 {
-            
-        }
-        // address : 주소 형식
-        
-        // phone/mobile : -제외 11자 이내, 숫자로만 이루어짐
-        let mobile = myRestaurant.mobile.filter({ c in c != "-" })
-        if mobile.allSatisfy({ $0.isNumber }) && mobile.count < 12 {
-            
-        }
-        
-        // desc : 띄어쓰기 포함 200자 이내
-        if myRestaurant.description.count <= 200 {
-            
-        }
-        // opneTimeDesc : 띄어쓰기 포함 200자 이내
-        if myRestaurant.description.count <= 200 {
-            
-        }
-        
-        return true
-    }
-    
-    enum validationResult {
-        case fieldEmpty, nameTooLong, mobileTooLong, descriptionTooLong
-    }
 }
 

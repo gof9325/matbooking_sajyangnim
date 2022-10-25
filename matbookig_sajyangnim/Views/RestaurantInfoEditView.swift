@@ -16,13 +16,15 @@ struct RestaurantInfoEditView: View {
     @State private var isCancelled = false
     @State private var isFirstValidationPassed = false
     
+    @State var isSatisfiedRequiredValues = false
+    
     var body: some View {
         GeometryReader { proxy in
             NavigationView {
                 ScrollView {
                     PictureContentView()
                     VStack(alignment: .leading) {
-                        InPutFieldsView(proxy: proxy, myRestaurant: $myRestaurant)
+                        InPutFieldsView(proxy: proxy, myRestaurant: $myRestaurant, isSatisfiedRequiredValues: $isSatisfiedRequiredValues)
                     }
                     .padding()
                     buttonGroup
@@ -35,10 +37,12 @@ struct RestaurantInfoEditView: View {
     var buttonGroup: some View {
         VStack {
             HStack {
-                Spacer()
-                NavigationLink(destination: ReservationEditView(), isActive: $isFirstValidationPassed) {
-                    Button("다음") {
-                        isFirstValidationPassed = ownerVM.restaurantEditerValidation(myRestaurant: myRestaurant)
+                if isSatisfiedRequiredValues {
+                    Spacer()
+                    NavigationLink(destination: ReservationEditView(), isActive: $isFirstValidationPassed) {
+                        Button("다음") {
+                            isFirstValidationPassed = true
+                        }.matbookingButtonStyle(width: 100, color: Color.matNature)
                     }
                 }
                 Spacer()
@@ -95,6 +99,8 @@ struct InPutFieldsView: View {
     
     @State var selectedCuisine: String = "한식"
     
+    @Binding var isSatisfiedRequiredValues: Bool
+    
     var body: some View {
         VStack {
             InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름 (50자 이내)", textLimit: 50, inputContent: $myRestaurant.name)
@@ -114,8 +120,13 @@ struct InPutFieldsView: View {
                 self.addressSearch = false
                 
             })
-            InputFieldContentView(title: "가게 번호", placeHolder: "000-0000-0000", textLimit: 11, inputContent: $myRestaurant.mobile)
+            InputFieldContentView(title: "가게 번호", placeHolder: "01012341234", textLimit: 11, inputContent: $myRestaurant.mobile)
                 .keyboardType(.numberPad)
+                .onChange(of: myRestaurant.mobile, perform: { newMobile in
+                    if !newMobile.allSatisfy({ $0.isNumber }) {
+                        myRestaurant.mobile = ""
+                    }
+                })
             VStack {
                 HStack {
                     Text("*")
@@ -131,13 +142,21 @@ struct InPutFieldsView: View {
                 .pickerStyle(.segmented)
                 .padding()
             }
-            DescriptionContentView(title: "가게 설명", placeHolder: "가게에 대한 설명을 200자 이내로 서술하세요")
-            DescriptionContentView(title: "영업 설명", placeHolder: "영업과 관련된 설명을 200자 이내로 서술하세요")
+            DescriptionContentView(title: "가게 설명", description: $myRestaurant.description, placeHolder: "가게에 대한 설명을 200자 이내로 서술하세요")
+            DescriptionContentView(title: "영업 설명", description: $myRestaurant.openTimeDescription, placeHolder: "영업과 관련된 설명을 200자 이내로 서술하세요")
         }
         .sheet(isPresented: $addressSearch) {
             KakaoPostView(viewModel: kakaoPostVM)
                 .padding()
         }
+        .onChange(of: myRestaurant, perform: { newMyRestaurant in
+            if !newMyRestaurant.name.isEmpty && !newMyRestaurant.mobile.isEmpty && !newMyRestaurant.address.isEmpty && !newMyRestaurant.description.isEmpty {
+                isSatisfiedRequiredValues = true
+            } else {
+                isSatisfiedRequiredValues = false
+            }
+        })
+        
     }
 }
 
@@ -176,7 +195,7 @@ struct InputFieldContentView: View {
 struct DescriptionContentView: View {
     
     let title: String
-    @State var description: String = ""
+    @Binding var description: String
     let placeHolder: String
     
     @State var textColor = Color.black

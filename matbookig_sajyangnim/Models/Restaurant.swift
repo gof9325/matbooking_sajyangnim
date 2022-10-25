@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Restaurant {
+struct Restaurant: Equatable, Identifiable {
     let id = UUID()
     var name: String
     var address: String

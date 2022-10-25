@@ -13,9 +13,7 @@ struct JoinView: View {
     @State var mobile: String = ""
     
     @State var validateMobileNumber = true
-    
-//    @Binding var isPresented: Bool
-    
+
     var body: some View {
         VStack {
             VStack {
@@ -61,7 +59,6 @@ struct JoinView: View {
                     Spacer()
                     Button("취소") {
                         ownerVM.joinCancel()
-//                        isPresented = false
                     }
                     .padding()
                     .frame(width: 100)
@@ -71,11 +68,6 @@ struct JoinView: View {
                     Spacer()
                 }
             }
-//            .onReceive(ownerVM.$owner, perform: {
-//                if $0 != nil {
-//                    isPresented = false
-//                }
-//            })
         }
     }
 }

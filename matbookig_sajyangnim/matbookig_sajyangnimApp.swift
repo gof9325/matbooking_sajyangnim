@@ -12,7 +12,7 @@ struct matbookig_sajyangnimApp: App {
     var body: some Scene {
         WindowGroup {
             EmptyView()
-            ContentView( contentVM: ContentViewModel()).environmentObject(OwnerViewModel())
+            MainView(mainVM: MainViewModel()).environmentObject(OwnerViewModel())
         }
     }
 }

@@ -12,14 +12,7 @@ import WebView
 
 struct KakaoPostView: View {
     var viewModel: KakaoPostViewModel
-//    @Binding var restaurantAddress: String
-    
-//    init() {
-//        let viewModel = KakaoPostViewModel()
-//        _viewModel = StateObject(wrappedValue: viewModel)
-//
-//    }
-    
+
     var body: some View {
         NavigationView {
             WebView(webView: viewModel.webViewStore.webView)

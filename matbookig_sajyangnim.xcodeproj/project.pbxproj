@@ -26,7 +26,7 @@
 		1E21564028F5653A00B03EFB /* RestaurantRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21563F28F5653A00B03EFB /* RestaurantRouter.swift */; };
 		1E21564228F6993F00B03EFB /* UIUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21564128F6993F00B03EFB /* UIUtility.swift */; };
 		1E36D3DF28F04FDC00F228A7 /* matbookig_sajyangnimApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D3DE28F04FDC00F228A7 /* matbookig_sajyangnimApp.swift */; };
-		1E36D3E128F04FDC00F228A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D3E028F04FDC00F228A7 /* ContentView.swift */; };
+		1E36D3E128F04FDC00F228A7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D3E028F04FDC00F228A7 /* MainView.swift */; };
 		1E36D3E328F04FDD00F228A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E36D3E228F04FDD00F228A7 /* Assets.xcassets */; };
 		1E36D3E628F04FDD00F228A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E36D3E528F04FDD00F228A7 /* Preview Assets.xcassets */; };
 		1E36D3EE28F0511800F228A7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1E36D3ED28F0511800F228A7 /* Alamofire */; };
@@ -46,6 +46,7 @@
 		1E72116628F99AF6009034E0 /* KakaoPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116528F99AF6009034E0 /* KakaoPostView.swift */; };
 		1E72116828F99C15009034E0 /* KaKaoAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116728F99C15009034E0 /* KaKaoAddress.swift */; };
 		1E72116A29062F90009034E0 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116929062F90009034E0 /* ContentViewModel.swift */; };
+		1E8DFE0429077BDA00F683B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE0329077BDA00F683B6 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +70,7 @@
 		1E21564128F6993F00B03EFB /* UIUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtility.swift; sourceTree = "<group>"; };
 		1E36D3DB28F04FDC00F228A7 /* matbookig_sajyangnim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = matbookig_sajyangnim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E36D3DE28F04FDC00F228A7 /* matbookig_sajyangnimApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = matbookig_sajyangnimApp.swift; sourceTree = "<group>"; };
-		1E36D3E028F04FDC00F228A7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1E36D3E028F04FDC00F228A7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1E36D3E228F04FDD00F228A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E36D3E528F04FDD00F228A7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1E36D3F128F051E200F228A7 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 		1E72116528F99AF6009034E0 /* KakaoPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoPostView.swift; sourceTree = "<group>"; };
 		1E72116728F99C15009034E0 /* KaKaoAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAddress.swift; sourceTree = "<group>"; };
 		1E72116929062F90009034E0 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		1E8DFE0329077BDA00F683B6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +159,8 @@
 		1E36D3EF28F0517200F228A7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1E36D3E028F04FDC00F228A7 /* ContentView.swift */,
+				1E36D3E028F04FDC00F228A7 /* MainView.swift */,
+				1E8DFE0329077BDA00F683B6 /* ContentView.swift */,
 				1E36D3F528F3EE7C00F228A7 /* LoginView.swift */,
 				1E36D3F328F0522B00F228A7 /* RestaurantInfoEditView.swift */,
 				1E72115E28F82397009034E0 /* ReservationEditView.swift */,
@@ -326,7 +329,7 @@
 			files = (
 				1E21561F28F4528600B03EFB /* OwnerApiService.swift in Sources */,
 				1E21563A28F5536F00B03EFB /* RestaurantResponse.swift in Sources */,
-				1E36D3E128F04FDC00F228A7 /* ContentView.swift in Sources */,
+				1E36D3E128F04FDC00F228A7 /* MainView.swift in Sources */,
 				1E72115F28F82397009034E0 /* ReservationEditView.swift in Sources */,
 				1E21562328F4542900B03EFB /* Auth0Interceptor.swift in Sources */,
 				1E36D3F428F0522B00F228A7 /* RestaurantInfoEditView.swift in Sources */,
@@ -348,6 +351,7 @@
 				1E21563E28F564AD00B03EFB /* RestaurantApiService.swift in Sources */,
 				1E21562728F4561300B03EFB /* ApiResponse.swift in Sources */,
 				1E72116628F99AF6009034E0 /* KakaoPostView.swift in Sources */,
+				1E8DFE0429077BDA00F683B6 /* ContentView.swift in Sources */,
 				1E36D40828F4075100F228A7 /* ApiClient.swift in Sources */,
 				1E21564028F5653A00B03EFB /* RestaurantRouter.swift in Sources */,
 				1E72116828F99C15009034E0 /* KaKaoAddress.swift in Sources */,
