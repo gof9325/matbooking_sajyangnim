@@ -25,7 +25,7 @@ struct MainView: View {
                     if ownerAndRestaurant?.0 != nil && ownerAndRestaurant?.1 != nil {
                         ContentView()
                     } else if ownerAndRestaurant?.0 != nil && ownerAndRestaurant?.1 == nil {
-                        RestaurantInfoEditView(myRestaurant: Restaurant(name: "", address: "", mobile: "", description: "", openTimeDescription: ""))
+                        RestaurantInfoEditView(restaurantVM: restaurantVM, myRestaurant: Restaurant())
                     } else {
                         JoinView()
                     }

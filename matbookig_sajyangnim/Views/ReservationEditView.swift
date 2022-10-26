@@ -10,46 +10,54 @@ import SwiftUI
 struct ReservationEditView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
     
+    @ObservedObject var restaurantVM: RestaurantViewModel
+    
     @State var days = ["월", "화", "수", "목", "금", "토", "일"]
     
+    @Binding var myRestaurant: Restaurant
+    
+    @State var isSettingPaxFieldSatisfied = false
+    @State var isBusinessTimeFieldSatisfied = false
+    
     var body: some View {
-        NavigationView {
-            GeometryReader { proxy in
+        GeometryReader { proxy in
+            NavigationView {
                 ScrollView {
-                    SettingPax()
-                        .padding([.top, .bottom])
                     VStack {
-                        Text("영업날짜 & 시간")
-                        HStack {
-                            VStack{
-                                ForEach(days, id:\.self) { day in
-                                    BusinessDayView(day: day, isSelected: .constant(true), proxy: proxy)
+                        SettingPax(isPaxMinSatisfiedValue: $isSettingPaxFieldSatisfied)
+                            .padding()
+                        VStack {
+                            Text("영업날짜 & 시간")
+                            HStack {
+                                VStack{
+                                    ForEach(days, id:\.self) { day in
+                                        BusinessDayView(day: day, isBusinessFieldSatisfied: $isBusinessTimeFieldSatisfied, proxy: proxy)
+                                    }
                                 }
+                                .padding([.top, .bottom])
                             }
-                            .padding([.top, .bottom])
                         }
+                        SettingSlotGapMinutes()
+                        buttonGroup
                     }
-                    .padding([.top, .bottom])
-                    
-                    SettingSlotGapMinutes()
-                    
-                    buttonGroup
+                    .padding()
                 }
-                .padding()
+                .navigationTitle("예약 정보 설정")
             }
-            .navigationTitle("예약 정보 설정")
+            
         }
         
     }
     
     var buttonGroup: some View {
-        
         HStack {
-            Spacer()
-            Button("완료") {
-                // addRestaurant
+            if isSettingPaxFieldSatisfied && isBusinessTimeFieldSatisfied {
+                Spacer()
+                Button("완료") {
+                    restaurantVM.createRestaurant()
+                }
+                .matbookingButtonStyle(width: 100, color: Color.matNature)
             }
-            .matbookingButtonStyle(width: 100, color: Color.matNature)
             Spacer()
             Button("취소") {
                 ownerVM.joinCancel()
@@ -64,7 +72,11 @@ struct ReservationEditView: View {
 struct SettingPax: View {
     
     @State var paxMin = 1
-    @State var paxMax = 1
+    @State var paxMax = 2
+    
+    @Binding var isPaxMinSatisfiedValue: Bool
+    
+    @State var alertMessege = ""
     
     var body: some View {
         VStack {
@@ -81,11 +93,36 @@ struct SettingPax: View {
                     Text("최대인원")
                     Text("\(paxMax)")
                 }
-                
+                if !isPaxMinSatisfiedValue {
+                    Text(alertMessege)
+                        .foregroundColor(.red)
+                        .padding()
+                }
             }
+            .onAppear {
+                isPaxMinSatisfiedValue = true
+            }
+            .onChange(of: paxMax, perform: { newPaxMax in
+                if newPaxMax < paxMin {
+                    isPaxMinSatisfiedValue = false
+                    alertMessege = "최대인원은 최소인원보다 많아야 합니다."
+                } else {
+                    isPaxMinSatisfiedValue = true
+                }
+            })
+            .onChange(of: paxMin, perform: { newPaxMin in
+                if newPaxMin > paxMax {
+                    isPaxMinSatisfiedValue = false
+                    alertMessege = "최소인원은 최대인원보다 많을 수 없습니다."
+                } else if newPaxMin == 0{
+                    isPaxMinSatisfiedValue = false
+                    alertMessege = "최소인원은 0명 이상이어야 합니다."
+                } else {
+                    isPaxMinSatisfiedValue = true
+                }
+            })
         }
     }
-    
 }
 
 struct BusinessDayView: View {
@@ -100,42 +137,81 @@ struct BusinessDayView: View {
     @State private var startTime = Date()
     @State private var endTime = Date() + 1200
     
-    @Binding var isSelected: Bool
+    @State var isEndTimeBiggerThanStartTime = false
+    
+    @Binding var isBusinessFieldSatisfied: Bool
+    
+    @State var alertMessage = ""
     
     var proxy: GeometryProxy
     
     var body: some View {
-        HStack {
-            GroupBox {
-                HStack(alignment: .center, spacing: 30) {
-                    Button(day) {
-                        isSelected = false
-                    }
-                    .frame(width: proxy.size.width / 9, height: proxy.size.width / 9)
-                    .font(.title3)
-                    .background(backgroundColor)
-                    .foregroundColor(Color.matBlack)
-                    .clipShape(Circle())
-                    if isWorkDay {
-                        HStack {
-                            DatePicker("", selection: $startTime, displayedComponents: .hourAndMinute)
-                                .labelsHidden()
-                            Spacer()
-                            DatePicker("", selection: $endTime, displayedComponents: .hourAndMinute)
-                                .labelsHidden()
+        VStack {
+            HStack {
+                GroupBox {
+                    HStack(alignment: .center) {
+                        Text(day)
+                            .frame(width: proxy.size.width / 9, height: proxy.size.width / 9)
+                            .font(.title3)
+                            .background(backgroundColor)
+                            .foregroundColor(Color.matBlack)
+                            .clipShape(Circle())
+                        Spacer()
+                        if isWorkDay {
+                            HStack {
+                                Spacer()
+                                DatePicker("", selection: $startTime, displayedComponents: .hourAndMinute)
+                                    .labelsHidden()
+                                Spacer()
+                                DatePicker("", selection: $endTime, displayedComponents: .hourAndMinute)
+                                    .labelsHidden()
+                                Spacer()
+                            }
+                            .onAppear {
+                                isBusinessFieldSatisfied = true
+                            }
+                            .onChange(of: endTime, perform: { newEndTime in
+                                if newEndTime < startTime {
+                                    isEndTimeBiggerThanStartTime = false
+                                    isBusinessFieldSatisfied = false
+                                    alertMessage = "영업종료시간은 시작시간보다 작을 수 없습니다."
+                                } else {
+                                    isEndTimeBiggerThanStartTime = true
+                                    isBusinessFieldSatisfied = true
+                                }
+                            })
+                            .onChange(of: startTime, perform: { newStartTime in
+                                if newStartTime < endTime {
+                                    isEndTimeBiggerThanStartTime = false
+                                    isBusinessFieldSatisfied = false
+                                    alertMessage = "영업시작시간은 종료시간보다 클수 없습니다."
+                                } else {
+                                    isEndTimeBiggerThanStartTime = true
+                                    isBusinessFieldSatisfied = true
+                                }
+                            })
+                        } else {
+                            HStack {
+                                Text("휴무일")
+                            }
                         }
-                    } else {
-                        HStack {
-                            Text("휴무일")
-                        }
+                          
+                        Spacer()
+                        Toggle("", isOn: $isWorkDay)
+                            .tint(backgroundColor)
                     }
-                    Toggle("", isOn: $isWorkDay)
-                        .tint(backgroundColor)
+                  
                 }
+                .groupBoxStyle(TransparentGroupBox(color: isWorkDay ? Color.matWhiteGreen : Color.matLightPink))
+                .animation(.default, value: backgroundColor)
+                
             }
-            .groupBoxStyle(TransparentGroupBox(color: isWorkDay ? Color.matWhiteGreen : Color.matLightPink))
-            .animation(.default, value: backgroundColor)
         }
+        if !isEndTimeBiggerThanStartTime {
+            Text(alertMessage)
+                .foregroundColor(.red)
+        }
+      
     }
 }
 
@@ -143,7 +219,7 @@ struct SettingSlotGapMinutes: View {
     
     let times = ["60 분", "90 분", "120 분", "150 분"]
     
-    @State var selectedTime : String = "60 분"
+    @State var selectedTime = "60 분"
     
     var body: some View {
         VStack {
@@ -160,8 +236,9 @@ struct SettingSlotGapMinutes: View {
     }
 }
 
-struct ReservationEditView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReservationEditView()
-    }
-}
+//struct ReservationEditView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ReservationEditView(restaurantVM: RestaurantViewModel(), myRestaurant: .constant(Restaurant(name: "", address: "", mobile: "", description: "", openTimeDescription: "")))
+//            .previewInterfaceOrientation(.portrait)
+//    }
+//}

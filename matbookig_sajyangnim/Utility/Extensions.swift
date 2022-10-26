@@ -6,15 +6,3 @@
 //
 
 import Foundation
-import SwiftUI
-
-//extension String {
-//    func trimmingHyphen() -> Self {
-//        self.filter { character in
-//            if character != "-" {
-//                return character
-//            }
-//        }
-//        return self
-//    }
-//}

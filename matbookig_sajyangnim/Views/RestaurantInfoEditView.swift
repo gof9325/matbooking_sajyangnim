@@ -11,6 +11,8 @@ struct RestaurantInfoEditView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
     @Environment(\.dismiss) var dismiss
     
+    @ObservedObject var restaurantVM: RestaurantViewModel
+    
     @State var myRestaurant: Restaurant
     
     @State private var isCancelled = false
@@ -39,31 +41,33 @@ struct RestaurantInfoEditView: View {
             HStack {
                 if isSatisfiedRequiredValues {
                     Spacer()
-                    NavigationLink(destination: ReservationEditView(), isActive: $isFirstValidationPassed) {
-                        Button("다음") {
-                            isFirstValidationPassed = true
-                        }.matbookingButtonStyle(width: 100, color: Color.matNature)
-                    }
+                    NavigationLink("다음", destination: ReservationEditView(restaurantVM: restaurantVM, myRestaurant: $myRestaurant))
+                        .padding()
+                        .frame(width: 100)
+                        .background(Color.matNature)
+                        .cornerRadius(10)
+                        .foregroundColor(.white)
                 }
-                Spacer()
-                Button("취소") {
-                    isCancelled = true
-                }
-                .matbookingButtonStyle(width: 100, color: Color.matNature)
-                .alert("가게 정보 설정을 취소하시겠습니까?", isPresented: $isCancelled) {
-                    Button("네", role: .cancel){
-                        ownerVM.joinCancel()
-                        self.dismiss()
-                    }
-                    Button("아니오") {
-                        isCancelled = false
-                    }
-                }
-                Spacer()
             }
+            Spacer()
+            Button("취소") {
+                isCancelled = true
+            }
+            .matbookingButtonStyle(width: 100, color: Color.matNature)
+            .alert("가게 정보 설정을 취소하시겠습니까?", isPresented: $isCancelled) {
+                Button("네", role: .cancel){
+                    ownerVM.joinCancel()
+                    self.dismiss()
+                }
+                Button("아니오") {
+                    isCancelled = false
+                }
+            }
+            Spacer()
         }
     }
 }
+
 
 struct PictureContentView: View {
     
@@ -92,7 +96,7 @@ struct InPutFieldsView: View {
     @StateObject var kakaoPostVM = KakaoPostViewModel()
     
     @Binding var myRestaurant: Restaurant
-  
+    
     @State var addressSearch = false
     
     let cuisine = ["한식", "일식", "이탈리아음식"]
@@ -103,9 +107,9 @@ struct InPutFieldsView: View {
     
     var body: some View {
         VStack {
-            InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름 (50자 이내)", textLimit: 50, inputContent: $myRestaurant.name)
+            InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름 (50자 이내)", textLimit: 50, inputContent: $myRestaurant.storeInfo.name)
             ZStack(alignment: .bottomTrailing) {
-                InputFieldContentView(title: "가게 주소", placeHolder: "00시 00동 000-000", textLimit: 50, inputContent: $myRestaurant.address)
+                InputFieldContentView(title: "가게 주소", placeHolder: "00시 00동 000-000", textLimit: 50, inputContent: $myRestaurant.storeInfo.address)
                 Button(action: {
                     addressSearch = true
                 }, label: {
@@ -116,15 +120,15 @@ struct InPutFieldsView: View {
                 .foregroundColor(Color.matHavyGreen)
             }
             .onReceive(kakaoPostVM.$chosenAddress, perform: {
-                myRestaurant.address = $0?.roadAddress ?? ""
+                myRestaurant.storeInfo.address = $0?.roadAddress ?? ""
                 self.addressSearch = false
                 
             })
-            InputFieldContentView(title: "가게 번호", placeHolder: "01012341234", textLimit: 11, inputContent: $myRestaurant.mobile)
+            InputFieldContentView(title: "가게 번호", placeHolder: "01012341234", textLimit: 11, inputContent: $myRestaurant.storeInfo.phone)
                 .keyboardType(.numberPad)
-                .onChange(of: myRestaurant.mobile, perform: { newMobile in
+                .onChange(of: myRestaurant.storeInfo.phone, perform: { newMobile in
                     if !newMobile.allSatisfy({ $0.isNumber }) {
-                        myRestaurant.mobile = ""
+                        myRestaurant.storeInfo.phone = ""
                     }
                 })
             VStack {
@@ -142,15 +146,15 @@ struct InPutFieldsView: View {
                 .pickerStyle(.segmented)
                 .padding()
             }
-            DescriptionContentView(title: "가게 설명", description: $myRestaurant.description, placeHolder: "가게에 대한 설명을 200자 이내로 서술하세요")
-            DescriptionContentView(title: "영업 설명", description: $myRestaurant.openTimeDescription, placeHolder: "영업과 관련된 설명을 200자 이내로 서술하세요")
+            DescriptionContentView(title: "가게 설명", description: $myRestaurant.storeInfo.description, placeHolder: "가게에 대한 설명을 200자 이내로 서술하세요")
+            DescriptionContentView(title: "영업 설명", description: $myRestaurant.storeInfo.openingHours, placeHolder: "영업과 관련된 설명을 200자 이내로 서술하세요")
         }
         .sheet(isPresented: $addressSearch) {
             KakaoPostView(viewModel: kakaoPostVM)
                 .padding()
         }
         .onChange(of: myRestaurant, perform: { newMyRestaurant in
-            if !newMyRestaurant.name.isEmpty && !newMyRestaurant.mobile.isEmpty && !newMyRestaurant.address.isEmpty && !newMyRestaurant.description.isEmpty {
+            if !newMyRestaurant.storeInfo.name.isEmpty && !newMyRestaurant.storeInfo.address.isEmpty && !newMyRestaurant.storeInfo.phone.isEmpty && !newMyRestaurant.storeInfo.description.isEmpty {
                 isSatisfiedRequiredValues = true
             } else {
                 isSatisfiedRequiredValues = false
@@ -241,9 +245,9 @@ struct DescriptionContentView: View {
     }
 }
 
-struct SettingRestaurant_Previews: PreviewProvider {
-    static var previews: some View {
-        RestaurantInfoEditView(myRestaurant: Restaurant(name: "", address: "", mobile: "", description: "", openTimeDescription: ""))
-            .previewInterfaceOrientation(.portraitUpsideDown)
-    }
-}
+//struct SettingRestaurant_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RestaurantInfoEditView(restaurantVM: RestaurantViewModel() ,myRestaurant: Restaurant(name: "", address: "", mobile: "", description: "", openTimeDescription: ""))
+//            .previewInterfaceOrientation(.portraitUpsideDown)
+//    }
+//}

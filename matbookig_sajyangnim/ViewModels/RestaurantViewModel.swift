@@ -44,7 +44,7 @@ class RestaurantViewModel: ObservableObject {
             }).store(in: &subscription)
     }
     
-    func nameValidation() {
+    func createRestaurant() {
         
     }
 }
