@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+//var storeInfo = Restaurant.StoreInfo(name: "abc", subtitle: "abc", prictures: "abc", description: "abc", address: "abc", phone: "abc", openingHours: "abc", city: "abc", cuisine: "abc")
+//var testingRestaurant = Restaurant(reservationRestrictions: Restaurant.ReservationRestrictions(), storeInfo: storeInfo)
+
 struct RestaurantInfoEditView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
     @Environment(\.dismiss) var dismiss
@@ -37,17 +40,15 @@ struct RestaurantInfoEditView: View {
     }
     
     var buttonGroup: some View {
-        VStack {
-            HStack {
-                if isSatisfiedRequiredValues {
-                    Spacer()
-                    NavigationLink("다음", destination: ReservationEditView(restaurantVM: restaurantVM, myRestaurant: $myRestaurant))
-                        .padding()
-                        .frame(width: 100)
-                        .background(Color.matNature)
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-                }
+        HStack {
+            if isSatisfiedRequiredValues {
+                Spacer()
+                NavigationLink("다음", destination: ReservationEditView(restaurantVM: restaurantVM, myRestaurant: $myRestaurant))
+                    .padding()
+                    .frame(width: 100)
+                    .background(Color.matNature)
+                    .cornerRadius(10)
+                    .foregroundColor(.white)
             }
             Spacer()
             Button("취소") {
@@ -101,7 +102,7 @@ struct InPutFieldsView: View {
     
     let cuisine = ["한식", "일식", "이탈리아음식"]
     
-    @State var selectedCuisine: String = "한식"
+//    @State var selectedCuisine: String = "한식"
     
     @Binding var isSatisfiedRequiredValues: Bool
     
@@ -138,7 +139,7 @@ struct InPutFieldsView: View {
                     Text("음식 종류")
                 }
                 .padding(.top)
-                Picker("", selection: $selectedCuisine) {
+                Picker("", selection: $myRestaurant.storeInfo.cuisine) {
                     ForEach(cuisine, id: \.self) {
                         Text($0)
                     }
@@ -146,8 +147,8 @@ struct InPutFieldsView: View {
                 .pickerStyle(.segmented)
                 .padding()
             }
-            DescriptionContentView(title: "가게 설명", description: $myRestaurant.storeInfo.description, placeHolder: "가게에 대한 설명을 200자 이내로 서술하세요")
-            DescriptionContentView(title: "영업 설명", description: $myRestaurant.storeInfo.openingHours, placeHolder: "영업과 관련된 설명을 200자 이내로 서술하세요")
+            DescriptionContentView(title: "가게 설명", description: $myRestaurant.storeInfo.description, placeHolder: "가게에 대한 설명을 200자 이내로 서술하세요", requiredValeu: true)
+            DescriptionContentView(title: "영업 설명", description: $myRestaurant.storeInfo.openingHours, placeHolder: "영업과 관련된 설명을 200자 이내로 서술하세요", requiredValeu: false)
         }
         .sheet(isPresented: $addressSearch) {
             KakaoPostView(viewModel: kakaoPostVM)
@@ -157,7 +158,8 @@ struct InPutFieldsView: View {
             if !newMyRestaurant.storeInfo.name.isEmpty && !newMyRestaurant.storeInfo.address.isEmpty && !newMyRestaurant.storeInfo.phone.isEmpty && !newMyRestaurant.storeInfo.description.isEmpty {
                 isSatisfiedRequiredValues = true
             } else {
-                isSatisfiedRequiredValues = false
+//                isSatisfiedRequiredValues = false
+                isSatisfiedRequiredValues = true // TODO: CHANGE BACK
             }
         })
         
@@ -201,6 +203,7 @@ struct DescriptionContentView: View {
     let title: String
     @Binding var description: String
     let placeHolder: String
+    let requiredValeu: Bool
     
     @State var textColor = Color.black
     
@@ -208,7 +211,7 @@ struct DescriptionContentView: View {
         VStack(alignment: .trailing) {
             VStack(alignment: .center) {
                 HStack {
-                    if title == "가게 설명" {
+                    if requiredValeu {
                         Text("*")
                             .foregroundColor(.red)
                     }

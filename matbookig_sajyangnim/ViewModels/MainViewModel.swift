@@ -18,7 +18,7 @@ class MainViewModel: ObservableObject {
     var dataLoaded = PassthroughSubject<(Owner?, Restaurant?), Never>()
     
     func getOwnerAndRestaurantExists() {
-        Publishers.Zip(OwnerApiService.getOwnerInfo(), RestaurantApiService.getRestaurantExists())
+        Publishers.Zip(OwnerApiService.getOwnerInfo(), RestaurantApiService.getRestaurantExist())
             .sink(receiveCompletion: { completion in
                 print("completion : \(completion)")
                 switch completion {
@@ -40,7 +40,7 @@ class MainViewModel: ObservableObject {
                     newOwner = Owner(name: owner.name!, mobile: owner.mobile!)
                     self.ownerVM?.owner = newOwner
                     if restaurant.exists {
-                        self.restaurantVM?.getRestaurantInfo()
+//                        self.restaurantVM?.createRestaurant()
                         newRestaurant = self.restaurantVM?.myRestaurant
                     }
                 }

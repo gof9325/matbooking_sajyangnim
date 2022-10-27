@@ -54,7 +54,7 @@ struct ReservationEditView: View {
             if isSettingPaxFieldSatisfied && isBusinessTimeFieldSatisfied {
                 Spacer()
                 Button("완료") {
-                    restaurantVM.createRestaurant()
+                    restaurantVM.createRestaurant(newRestaurant: myRestaurant)
                 }
                 .matbookingButtonStyle(width: 100, color: Color.matNature)
             }

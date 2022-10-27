@@ -7,41 +7,37 @@
 
 import Foundation
 
-struct Restaurant: Equatable, Identifiable, Codable {
-    static func == (lhs: Restaurant, rhs: Restaurant) -> Bool {
-        return lhs.id == rhs.id
-    }
-    
-    var id = UUID()
+struct Restaurant: Equatable, Codable {
     var reservationRestrictions = ReservationRestrictions()
     var storeInfo = StoreInfo()
     
-    struct ReservationRestrictions: Codable {
+    struct ReservationRestrictions: Codable, Equatable {
         var paxMin = 0
         var paxMax = 0
         var slotGapMinutes = 0
         var daysReservableInFuture = 0
-        var openingHours = [OpeningHours()]
+//        var openingHours = [String: OpeningHours]()
+        var openingHours = ["0": OpeningHours(start: "1", end: "1")]
         
-        struct OpeningHours: Codable {
-            var additionalProp = AdditionalProp()
-            
-            struct AdditionalProp: Codable {
-                var start = ""
-                var end = ""
-            }
+//        init(openingHours: [String: OpeningHours]) {
+//            self.openingHours = openingHours
+//        }
+        
+        struct OpeningHours: Codable, Equatable {
+            var start = ""
+            var end = ""
         }
     }
-
-    struct StoreInfo: Codable {
+    
+    struct StoreInfo: Codable, Equatable {
         var name = ""
         var subtitle = ""
         var prictures = ""
         var description = ""
         var address = ""
-        var phone = ""
-        var openingHours = ""
-        var city = ""
-        var cuisine = ""
+        var phone = "021234"
+        var openingHours = "9"
+        var city = "부산"
+        var cuisine = "한식"
     }
 }

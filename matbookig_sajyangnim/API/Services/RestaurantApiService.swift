@@ -10,21 +10,35 @@ import Alamofire
 import Combine
 
 enum RestaurantApiService {
-    static func getRestaurantExists() -> AnyPublisher<ApiResponse<RestaurantExistsResponse>, AFError> {
-        print("RestaurantApiService - getRestaurantExists() called")
+    static func getRestaurantExist() -> AnyPublisher<ApiResponse<RestaurantExistsResponse>, AFError> {
+        print("RestaurantApiService - getRestaurantExist() called")
         return ApiClient.shared.session
-            .request(RestaurantRouter.getRestaurantExists)
+            .request(RestaurantRouter.getRestaurantExist)
             .publishDecodable(type: ApiResponse<RestaurantExistsResponse>.self)
             .value()
             .eraseToAnyPublisher()
     }
     
-    static func getRestaurantInfo() -> AnyPublisher<ApiResponse<RestaurantResponse>, AFError> {
+    static func getRestaurantInfo(id: String) -> AnyPublisher<ApiResponse<Restaurant>, AFError> {
         print("RestaurantApiService - getRestaurantInfo() called")
         return ApiClient.shared.session
-            .request(RestaurantRouter.getRestaurantInfo)
-            .publishDecodable(type: ApiResponse<RestaurantResponse>.self)
+            .request(RestaurantRouter.getRestaurantInfo(id: id))
+            .publishDecodable(type: ApiResponse<Restaurant>.self)
             .value()
             .eraseToAnyPublisher()
     }
+    
+    static func createRestaurant(newRestaurant: Restaurant) -> AnyPublisher<ApiResponse<Restaurant>, AFError> {
+        print("RestaurantApiService - createRestaurant() called")
+        return ApiClient.shared.session
+            .request(RestaurantRouter.createRestaurant(newRestaurant: newRestaurant))
+            .responseString { response in
+                print(response)
+            }
+            .publishDecodable(type: ApiResponse<Restaurant>.self)
+            .value()
+            .eraseToAnyPublisher()
+    }
+    
+  
 }

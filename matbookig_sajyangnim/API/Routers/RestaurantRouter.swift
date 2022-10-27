@@ -10,8 +10,9 @@ import Alamofire
 
 enum RestaurantRouter: URLRequestConvertible {
     
-    case getRestaurantExists
-    case getRestaurantInfo
+    case getRestaurantExist
+    case createRestaurant(newRestaurant: Restaurant)
+    case getRestaurantInfo(id: String)
     
     private var baseURL: URL {
         return URL(string:ApiClient.BASE_URL)!
@@ -19,26 +20,41 @@ enum RestaurantRouter: URLRequestConvertible {
     
     private var endPoint: String {
         switch self {
-        case .getRestaurantExists:
+        case .getRestaurantExist:
             return "stores/my"
-        case .getRestaurantInfo:
+        case .createRestaurant:
             return "stores"
+        case let .getRestaurantInfo(id):
+            return "stores/\(id)"
         }
     }
     
     private var method: HTTPMethod {
         switch self {
-        case .getRestaurantExists:
+        case .getRestaurantExist, .getRestaurantInfo:
             return .get
-        case .getRestaurantInfo:
+        case .createRestaurant:
             return .post
         }
     }
     
     private var parameters: Parameters {
         switch self {
-        case .getRestaurantExists, .getRestaurantInfo:
+        case .getRestaurantExist:
             return Parameters()
+        case let .getRestaurantInfo(id):
+            var parameters = Parameters()
+            parameters["id"] = id
+            return parameters
+        case let .createRestaurant(newRestaurant):
+            do {
+                let dictionary = try newRestaurant.encode()
+                print(dictionary)
+                return dictionary
+            } catch {
+                print(error)
+                return [String: Any]()
+            }
         }
     }
     

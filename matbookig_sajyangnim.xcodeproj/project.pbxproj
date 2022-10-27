@@ -20,7 +20,6 @@
 		1E21563428F54A6800B03EFB /* ReservationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21563328F54A6800B03EFB /* ReservationListView.swift */; };
 		1E21563628F54DCD00B03EFB /* RestaurantExistsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21563528F54DCD00B03EFB /* RestaurantExistsResponse.swift */; };
 		1E21563828F5508900B03EFB /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21563728F5508900B03EFB /* Restaurant.swift */; };
-		1E21563A28F5536F00B03EFB /* RestaurantResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21563928F5536F00B03EFB /* RestaurantResponse.swift */; };
 		1E21563C28F5605C00B03EFB /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21563B28F5605C00B03EFB /* RestaurantViewModel.swift */; };
 		1E21563E28F564AD00B03EFB /* RestaurantApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21563D28F564AD00B03EFB /* RestaurantApiService.swift */; };
 		1E21564028F5653A00B03EFB /* RestaurantRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21563F28F5653A00B03EFB /* RestaurantRouter.swift */; };
@@ -45,7 +44,7 @@
 		1E72116428F95CFE009034E0 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = 1E72116328F95CFE009034E0 /* WebView */; };
 		1E72116628F99AF6009034E0 /* KakaoPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116528F99AF6009034E0 /* KakaoPostView.swift */; };
 		1E72116828F99C15009034E0 /* KaKaoAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116728F99C15009034E0 /* KaKaoAddress.swift */; };
-		1E72116A29062F90009034E0 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116929062F90009034E0 /* ContentViewModel.swift */; };
+		1E72116A29062F90009034E0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116929062F90009034E0 /* MainViewModel.swift */; };
 		1E8DFE0429077BDA00F683B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE0329077BDA00F683B6 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +62,6 @@
 		1E21563328F54A6800B03EFB /* ReservationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationListView.swift; sourceTree = "<group>"; };
 		1E21563528F54DCD00B03EFB /* RestaurantExistsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantExistsResponse.swift; sourceTree = "<group>"; };
 		1E21563728F5508900B03EFB /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
-		1E21563928F5536F00B03EFB /* RestaurantResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantResponse.swift; sourceTree = "<group>"; };
 		1E21563B28F5605C00B03EFB /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
 		1E21563D28F564AD00B03EFB /* RestaurantApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantApiService.swift; sourceTree = "<group>"; };
 		1E21563F28F5653A00B03EFB /* RestaurantRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantRouter.swift; sourceTree = "<group>"; };
@@ -87,7 +85,7 @@
 		1E72115E28F82397009034E0 /* ReservationEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationEditView.swift; sourceTree = "<group>"; };
 		1E72116528F99AF6009034E0 /* KakaoPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoPostView.swift; sourceTree = "<group>"; };
 		1E72116728F99C15009034E0 /* KaKaoAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAddress.swift; sourceTree = "<group>"; };
-		1E72116929062F90009034E0 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		1E72116929062F90009034E0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		1E8DFE0329077BDA00F683B6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,7 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				1E36D41028F4080600F228A7 /* OwnerViewModel.swift */,
-				1E72116929062F90009034E0 /* ContentViewModel.swift */,
+				1E72116929062F90009034E0 /* MainViewModel.swift */,
 				1E21563B28F5605C00B03EFB /* RestaurantViewModel.swift */,
 			);
 			path = ViewModels;
@@ -239,7 +237,6 @@
 				1E21563128F548A700B03EFB /* JoinResponse.swift */,
 				1E21562628F4561300B03EFB /* ApiResponse.swift */,
 				1E21563528F54DCD00B03EFB /* RestaurantExistsResponse.swift */,
-				1E21563928F5536F00B03EFB /* RestaurantResponse.swift */,
 				1E21563728F5508900B03EFB /* Restaurant.swift */,
 				1E72116728F99C15009034E0 /* KaKaoAddress.swift */,
 			);
@@ -328,7 +325,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E21561F28F4528600B03EFB /* OwnerApiService.swift in Sources */,
-				1E21563A28F5536F00B03EFB /* RestaurantResponse.swift in Sources */,
 				1E36D3E128F04FDC00F228A7 /* MainView.swift in Sources */,
 				1E72115F28F82397009034E0 /* ReservationEditView.swift in Sources */,
 				1E21562328F4542900B03EFB /* Auth0Interceptor.swift in Sources */,
@@ -357,7 +353,7 @@
 				1E72116828F99C15009034E0 /* KaKaoAddress.swift in Sources */,
 				1E21563828F5508900B03EFB /* Restaurant.swift in Sources */,
 				1E21560328F4164300B03EFB /* ChatListView.swift in Sources */,
-				1E72116A29062F90009034E0 /* ContentViewModel.swift in Sources */,
+				1E72116A29062F90009034E0 /* MainViewModel.swift in Sources */,
 				1E21564228F6993F00B03EFB /* UIUtility.swift in Sources */,
 				1E21563428F54A6800B03EFB /* ReservationListView.swift in Sources */,
 				1E21563628F54DCD00B03EFB /* RestaurantExistsResponse.swift in Sources */,

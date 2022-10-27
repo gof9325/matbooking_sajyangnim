@@ -14,15 +14,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
-      </ContextState>
-      <ContextState
          contextName = "KakaoPostViewModel.userContentController(_:didReceive:):KakaoPostView.swift">
          <PersistentStrings>
             <PersistentString
                value = "chosenAddress">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in closure #1 in RestaurantInfoEditView.buttonGroup.getter:RestaurantInfoEditView.swift">
@@ -55,16 +55,32 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "testingRestaurant.storeInfo.name">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RestaurantInfoEditView.init(ownerVM:dismiss:restaurantVM:myRestaurant:isSatisfiedRequiredValues:):RestaurantInfoEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "testingRestaurant.storeInfo.name">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in closure #1 in closure #1 in closure #3 in closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
       </ContextState>
       <ContextState
          contextName = "Auth0Interceptor.adapt(_:for:completion:):Auth0Interceptor.swift">
          <PersistentStrings>
             <PersistentString
-               value = "KeyChain.read(key: &quot;userAccessToken&quot;)">
+               value = "request.headers">
             </PersistentString>
             <PersistentString
-               value = "request.headers">
+               value = "KeyChain.read(key: &quot;userAccessToken&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
