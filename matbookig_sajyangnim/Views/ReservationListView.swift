@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct ReservationListView: View {
+    
+    @State var reservationList = ["a", "b"]
+    @State var date = Date()
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            VStack {
+                DatePicker(
+                    "start Date",
+                    selection: $date,
+                    displayedComponents: [.date]
+                )
+                .accentColor(Color.matNature)
+                .datePickerStyle(.graphical)
+                ScrollView {
+                    ForEach(reservationList, id:\.self) { reservation in
+                        Text(reservation)
+                    }
+                }
+            }
+        }
     }
 }
 

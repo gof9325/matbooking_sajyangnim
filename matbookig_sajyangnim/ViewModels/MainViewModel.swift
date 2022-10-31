@@ -28,20 +28,22 @@ class MainViewModel: ObservableObject {
                 case .finished:
                     break
                 }
-
+                
             }, receiveValue: { result in
                 print(result)
                 let owner = result.0.data
                 let restaurant = result.1.data
                 var newOwner: Owner?
                 var newRestaurant: Restaurant?
-
+                
                 if owner.exists {
                     newOwner = Owner(name: owner.name!, mobile: owner.mobile!)
                     self.ownerVM?.owner = newOwner
                     if restaurant.exists {
-//                        self.restaurantVM?.createRestaurant()
-                        newRestaurant = self.restaurantVM?.myRestaurant
+                        if let restaurantId = result.1.data.store?.id {
+                            self.restaurantVM?.getRestaurantInfo(id: restaurantId)
+                            newRestaurant = self.restaurantVM?.myRestaurant
+                        }
                     }
                 }
                 self.dataLoaded.send((newOwner, newRestaurant))

@@ -23,9 +23,9 @@ struct MainView: View {
         VStack {
                 if auth0Owner != nil {
                     if ownerAndRestaurant?.0 != nil && ownerAndRestaurant?.1 != nil {
-                        ContentView()
+                        ContentView(restaurantVM: restaurantVM, myRestaurant: ownerAndRestaurant!.1!)
                     } else if ownerAndRestaurant?.0 != nil && ownerAndRestaurant?.1 == nil {
-                        RestaurantInfoEditView(restaurantVM: restaurantVM, myRestaurant: Restaurant())
+                        RestaurantInfoEditView(restaurantVM: restaurantVM, myRestaurant: Restaurant(id: ""))
                     } else {
                         JoinView()
                     }

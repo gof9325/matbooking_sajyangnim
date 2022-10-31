@@ -6,6 +6,17 @@
          contextName = "Color.init(r:g:b:):Extensions.swift">
       </ContextState>
       <ContextState
+         contextName = "MainView.body.getter:MainView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "ownerAndRestaurant">
+            </PersistentString>
+            <PersistentString
+               value = "auth0Owner">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "InPutFieldsView.body.getter:RestaurantInfoEditView.swift">
          <PersistentStrings>
             <PersistentString

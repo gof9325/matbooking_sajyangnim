@@ -9,5 +9,9 @@ import Foundation
 
 struct RestaurantExistsResponse: Codable {
     let exists: Bool
-    let store: String?
+    let store: Store?
+}
+
+struct Store: Codable {
+    let id: String
 }

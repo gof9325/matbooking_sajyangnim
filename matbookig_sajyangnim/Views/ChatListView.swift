@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct ChatListView: View {
+    
+    @State var chatList = ["ㅁ", "ㄴㅇ"]
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            ScrollView{
+                ForEach(chatList, id:\.self) { chat in
+                    Text(chat)
+                }
+            }
+        }
     }
 }
 

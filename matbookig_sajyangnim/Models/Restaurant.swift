@@ -8,14 +8,15 @@
 import Foundation
 
 struct Restaurant: Equatable, Codable {
+    var id: String
     var reservationRestrictions = ReservationRestrictions()
     var storeInfo = StoreInfo()
     
     struct ReservationRestrictions: Codable, Equatable {
-        var paxMin = 0
-        var paxMax = 0
-        var slotGapMinutes = 0
-        var daysReservableInFuture = 0
+        var paxMin = 2
+        var paxMax = 4
+        var slotGapMinutes = 60
+        var daysReservableInFuture = 1
 //        var openingHours = [String: OpeningHours]()
         var openingHours = ["0": OpeningHours(start: "1", end: "1")]
         
@@ -31,8 +32,8 @@ struct Restaurant: Equatable, Codable {
     
     struct StoreInfo: Codable, Equatable {
         var name = ""
-        var subtitle = ""
-        var prictures = ""
+        var subtitle = "없음"
+        var pictures: String?
         var description = ""
         var address = ""
         var phone = "021234"

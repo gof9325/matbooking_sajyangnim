@@ -46,6 +46,7 @@
 		1E72116828F99C15009034E0 /* KaKaoAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116728F99C15009034E0 /* KaKaoAddress.swift */; };
 		1E72116A29062F90009034E0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116929062F90009034E0 /* MainViewModel.swift */; };
 		1E8DFE0429077BDA00F683B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE0329077BDA00F683B6 /* ContentView.swift */; };
+		1E8DFE08290FB42600F683B6 /* MyRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE07290FB42600F683B6 /* MyRestaurantView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		1E72116728F99C15009034E0 /* KaKaoAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAddress.swift; sourceTree = "<group>"; };
 		1E72116929062F90009034E0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		1E8DFE0329077BDA00F683B6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1E8DFE07290FB42600F683B6 /* MyRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRestaurantView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				1E36D3F528F3EE7C00F228A7 /* LoginView.swift */,
 				1E36D3F328F0522B00F228A7 /* RestaurantInfoEditView.swift */,
 				1E72115E28F82397009034E0 /* ReservationEditView.swift */,
+				1E8DFE07290FB42600F683B6 /* MyRestaurantView.swift */,
 				1E21560028F4161300B03EFB /* ChatDetailView.swift */,
 				1E21560228F4164300B03EFB /* ChatListView.swift */,
 				1E21562828F4573100B03EFB /* JoinView.swift */,
@@ -339,6 +342,7 @@
 				1E36D40A28F4077600F228A7 /* ApiLogger.swift in Sources */,
 				1E36D40F28F407CF00F228A7 /* OwnerRouter.swift in Sources */,
 				1E36D3F228F051E200F228A7 /* KeyChain.swift in Sources */,
+				1E8DFE08290FB42600F683B6 /* MyRestaurantView.swift in Sources */,
 				1E36D3F628F3EE7C00F228A7 /* LoginView.swift in Sources */,
 				1E21562928F4573100B03EFB /* JoinView.swift in Sources */,
 				1E36D3DF28F04FDC00F228A7 /* matbookig_sajyangnimApp.swift in Sources */,

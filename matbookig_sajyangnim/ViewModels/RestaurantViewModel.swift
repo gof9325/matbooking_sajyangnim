@@ -17,21 +17,29 @@ class RestaurantViewModel: ObservableObject {
     // 가게 정보 생성 이벤트
 //    var setRestaurantInfo = PassthroughSubject<(), Never>()
     
-    func getRestaurantExist() {
-        print("RestaurantViewModel - getRestaurantExist() called")
-        RestaurantApiService.getRestaurantExist()
-            .sink(receiveCompletion: { completion in
-                print("RestaurantViewModel getRestaurantExist completion: \(completion)")
-            }, receiveValue: { restaurantInfo in
-                if restaurantInfo.data.exists {
-//                    self.myRestaurant = restaurantInfo.data.store
-                    print("restaurantInfo: \(restaurantInfo.data)")
-                }
-            }).store(in: &subscription)
-    }
+//    func getRestaurantExist() {
+//        print("RestaurantViewModel - getRestaurantExist() called")
+//        RestaurantApiService.getRestaurantExist()
+//            .sink(receiveCompletion: { completion in
+//                print("RestaurantViewModel getRestaurantExist completion: \(completion)")
+//            }, receiveValue: { restaurantInfo in
+//                print("0-0")
+//                if restaurantInfo.data.exists {
+//                    print("0-1")
+//                    self.myRestaurant = Restaurant()
+//                    print("restaurantInfo: \(restaurantInfo.data)")
+//                }
+//            }).store(in: &subscription)
+//    }
     
-    func getRestaurantInfo() {
-        
+    func getRestaurantInfo(id: String) {
+        print("RestaurantViewModel - getRestaurantInfo() called")
+        RestaurantApiService.getRestaurantInfo(id: id)
+            .sink(receiveCompletion: { completion in
+                print("RestaurantViewModel getRestaurantInfo completion: \(completion)")
+            }, receiveValue: { restaurantInfo in
+                self.myRestaurant = Restaurant(id: id, reservationRestrictions: restaurantInfo.data.reservationRestrictions, storeInfo: restaurantInfo.data.storeInfo)
+            }).store(in: &subscription)
     }
     
     func createRestaurant(newRestaurant: Restaurant) {
@@ -41,7 +49,7 @@ class RestaurantViewModel: ObservableObject {
                 print("RestaurantViewModel createRestaurant completion: \(completion)")
             }, receiveValue: { restaurantInfo in
                 print("restaurantInfo: \(restaurantInfo)")
-//                self.myRestaurant = newRestaurant
+                self.myRestaurant = restaurantInfo.data
             }).store(in: &subscription)
     }
 }
