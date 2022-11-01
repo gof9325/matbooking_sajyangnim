@@ -7,17 +7,23 @@
 
 import SwiftUI
 
+typealias DayTuple = (idx: String, name: String)
+
 struct ReservationEditView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
+//    @Environment(\.dismiss) var dismiss
     
     @ObservedObject var restaurantVM: RestaurantViewModel
     
-    @State var days = ["월", "화", "수", "목", "금", "토", "일"]
-    
+//    @State var days = ["월", "화", "수", "목", "금", "토", "일"]
+
     @Binding var myRestaurant: Restaurant
     
     @State var isSettingPaxFieldSatisfied = false
     @State var isBusinessTimeFieldSatisfied = false
+    @State var isEdit: Bool
+    
+    let days: [DayTuple] = [("1", "월"), ("2", "화"), ("3", "수"), ("4", "목"), ("5", "금"), ("6", "토"), ("0", "일")]
     
     var body: some View {
         GeometryReader { proxy in
@@ -30,14 +36,14 @@ struct ReservationEditView: View {
                             Text("영업날짜 & 시간")
                             HStack {
                                 VStack{
-                                    ForEach(days, id:\.self) { day in
-                                        BusinessDayView(day: day, isBusinessFieldSatisfied: $isBusinessTimeFieldSatisfied, proxy: proxy)
+                                    ForEach(days, id: \.self.idx) { dayTup in
+                                        BusinessDayView(dayTup: dayTup, myRestaurant: $myRestaurant, isBusinessFieldSatisfied: $isBusinessTimeFieldSatisfied, proxy: proxy)
                                     }
                                 }
                                 .padding([.top, .bottom])
                             }
                         }
-                        SettingSlotGapMinutes()
+                        SettingSlotGapMinutes(selectedTime: $myRestaurant.reservationRestrictions.slotGapMinutes)
                         buttonGroup
                     }
                     .padding()
@@ -54,21 +60,27 @@ struct ReservationEditView: View {
             if isSettingPaxFieldSatisfied && isBusinessTimeFieldSatisfied {
                 Spacer()
                 Button("완료") {
-                    restaurantVM.createRestaurant(newRestaurant: myRestaurant)
+                    if isEdit {
+                        print("레스토랑 정보 수정")
+//                        self.dismiss()
+                    } else {
+                        restaurantVM.createRestaurant(newRestaurant: myRestaurant)
+                    }
                 }
                 .matbookingButtonStyle(width: 100, color: Color.matNature)
             }
             Spacer()
-            Button("취소") {
-                ownerVM.joinCancel()
+            if !isEdit {
+                Button("취소") {
+                    ownerVM.joinCancel()
+                }
+                .matbookingButtonStyle(width: 100, color: Color.matNature)
+                Spacer()
             }
-            .matbookingButtonStyle(width: 100, color: Color.matNature)
-            Spacer()
         }
         
     }
 }
-
 struct SettingPax: View {
     
     @State var paxMin = 1
@@ -127,15 +139,17 @@ struct SettingPax: View {
 
 struct BusinessDayView: View {
     
-    let day: String
+    let dayTup: DayTuple
     
     @State var isWorkDay = true
     private var backgroundColor: Color {
         isWorkDay ? Color.matNature : Color.matPeach
     }
     
-    @State private var startTime = Date()
-    @State private var endTime = Date() + 1200
+    @Binding var myRestaurant: Restaurant
+    
+    @State private var startTime = Calendar.current.date(from: DateComponents(hour:9))!
+    @State private var endTime = Calendar.current.date(from: DateComponents(hour:22))!
     
     @State var isEndTimeBiggerThanStartTime = false
     
@@ -150,7 +164,7 @@ struct BusinessDayView: View {
             HStack {
                 GroupBox {
                     HStack(alignment: .center) {
-                        Text(day)
+                        Text(dayTup.1)
                             .frame(width: proxy.size.width / 9, height: proxy.size.width / 9)
                             .font(.title3)
                             .background(backgroundColor)
@@ -195,10 +209,20 @@ struct BusinessDayView: View {
                                 Text("휴무일")
                             }
                         }
-                          
                         Spacer()
                         Toggle("", isOn: $isWorkDay)
                             .tint(backgroundColor)
+                            .onChange(of: isWorkDay, perform: {
+                                if !$0 {
+                                    myRestaurant.reservationRestrictions.openingHours.removeValue(forKey: dayTup.0)
+                                } else {
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "HH:mm"
+                                    
+                                    myRestaurant.reservationRestrictions.openingHours[dayTup.idx] = Restaurant.ReservationRestrictions.OpeningHours(start: dateFormatter.string(from: startTime), end: dateFormatter.string(from: endTime))
+                                }
+                                 
+                            })
                     }
                   
                 }
@@ -217,9 +241,9 @@ struct BusinessDayView: View {
 
 struct SettingSlotGapMinutes: View {
     
-    let times = ["60 분", "90 분", "120 분", "150 분"]
+    let times = [60, 120, 180]
     
-    @State var selectedTime = "60 분"
+    @Binding var selectedTime: Int
     
     var body: some View {
         VStack {
@@ -227,7 +251,7 @@ struct SettingSlotGapMinutes: View {
                 .padding(5)
             Picker("", selection: $selectedTime) {
                 ForEach(times, id: \.self) {
-                    Text($0)
+                    Text("\($0) 분")
                 }
             }
             .pickerStyle(.segmented)

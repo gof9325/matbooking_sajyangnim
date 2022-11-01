@@ -25,7 +25,7 @@ struct MainView: View {
                     if ownerAndRestaurant?.0 != nil && ownerAndRestaurant?.1 != nil {
                         ContentView(restaurantVM: restaurantVM, myRestaurant: ownerAndRestaurant!.1!)
                     } else if ownerAndRestaurant?.0 != nil && ownerAndRestaurant?.1 == nil {
-                        RestaurantInfoEditView(restaurantVM: restaurantVM, myRestaurant: Restaurant(id: ""))
+                        ResrtaurantCreationView(restaurantVM: restaurantVM, myRestaurant: Restaurant(id: ""))
                     } else {
                         JoinView()
                     }
@@ -39,6 +39,9 @@ struct MainView: View {
             })
             .onReceive(mainVM.dataLoaded, perform: {
                 self.ownerAndRestaurant = $0
+            })
+            .onReceive(restaurantVM.$myRestaurant, perform: {
+                self.ownerAndRestaurant?.1 = $0
             })
             .onAppear() {
                 mainVM.ownerVM = ownerVM

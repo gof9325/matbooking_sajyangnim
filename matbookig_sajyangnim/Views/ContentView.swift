@@ -14,26 +14,28 @@ struct ContentView: View {
     @State var myRestaurant: Restaurant
     
     var body: some View {
-        GeometryReader { proxy in
-            TabView(selection: $selection) {
-                ChatListView()
-                    .tag(1)
-                    .tabItem{
-                        Image(systemName: "message")
-                        Text("채팅목록")
-                    }
-                ReservationListView()
-                    .tag(0)
-                    .tabItem{
-                        Image(systemName: "list.bullet")
-                        Text("예약목록")
-                    }
-                MyRestaurantView(myRestaurant: myRestaurant)
-                    .tag(2)
-                    .tabItem{
-                        Image(systemName: "house")
-                        Text("내 가게")
-                    }
+        NavigationView {
+            GeometryReader { proxy in
+                TabView(selection: $selection) {
+                    ChatListView()
+                        .tag(1)
+                        .tabItem{
+                            Image(systemName: "message")
+                            Text("채팅목록")
+                        }
+                    ReservationListView()
+                        .tag(0)
+                        .tabItem{
+                            Image(systemName: "list.bullet")
+                            Text("예약목록")
+                        }
+                    MyRestaurantView(myRestaurant: myRestaurant, restaurantVM: restaurantVM)
+                        .tag(2)
+                        .tabItem{
+                            Image(systemName: "house")
+                            Text("내 가게")
+                        }
+                }
             }
         }
     }

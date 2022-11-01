@@ -17,13 +17,16 @@ struct Restaurant: Equatable, Codable {
         var paxMax = 4
         var slotGapMinutes = 60
         var daysReservableInFuture = 1
-//        var openingHours = [String: OpeningHours]()
-        var openingHours = ["0": OpeningHours(start: "1", end: "1")]
-        
-//        init(openingHours: [String: OpeningHours]) {
-//            self.openingHours = openingHours
-//        }
-        
+        var openingHours = [
+            "0": OpeningHours(start: "09:00", end: "22:00"),
+            "1": OpeningHours(start: "09:00", end: "22:00"),
+            "2": OpeningHours(start: "09:00", end: "22:00"),
+            "3": OpeningHours(start: "09:00", end: "22:00"),
+            "4": OpeningHours(start: "09:00", end: "22:00"),
+            "5": OpeningHours(start: "09:00", end: "22:00"),
+            "6": OpeningHours(start: "09:00", end: "22:00")
+        ]
+    
         struct OpeningHours: Codable, Equatable {
             var start = ""
             var end = ""
