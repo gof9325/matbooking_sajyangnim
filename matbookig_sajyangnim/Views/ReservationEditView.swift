@@ -11,12 +11,8 @@ typealias DayTuple = (idx: String, name: String)
 
 struct ReservationEditView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
-//    @Environment(\.dismiss) var dismiss
-    
     @ObservedObject var restaurantVM: RestaurantViewModel
     
-//    @State var days = ["월", "화", "수", "목", "금", "토", "일"]
-
     @Binding var myRestaurant: Restaurant
     
     @State var isSettingPaxFieldSatisfied = false
@@ -60,9 +56,12 @@ struct ReservationEditView: View {
             if isSettingPaxFieldSatisfied && isBusinessTimeFieldSatisfied {
                 Spacer()
                 Button("완료") {
+                    
+                    
+                    
                     if isEdit {
-                        print("레스토랑 정보 수정")
-//                        self.dismiss()
+//                        print("레스토랑 정보 수정")
+                        //                        self.dismiss()
                     } else {
                         restaurantVM.createRestaurant(newRestaurant: myRestaurant)
                     }
@@ -192,6 +191,12 @@ struct BusinessDayView: View {
                                 } else {
                                     isEndTimeBiggerThanStartTime = true
                                     isBusinessFieldSatisfied = true
+                                    
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "HH:mm"
+                                    
+                                    myRestaurant.reservationRestrictions.openingHours[dayTup.idx] = Restaurant.ReservationRestrictions.OpeningHours(start: dateFormatter.string(from: startTime), end: dateFormatter.string(from: endTime))
+                                    
                                 }
                             })
                             .onChange(of: startTime, perform: { newStartTime in
@@ -202,6 +207,11 @@ struct BusinessDayView: View {
                                 } else {
                                     isEndTimeBiggerThanStartTime = true
                                     isBusinessFieldSatisfied = true
+                                    
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "HH:mm"
+                                    
+                                    myRestaurant.reservationRestrictions.openingHours[dayTup.idx] = Restaurant.ReservationRestrictions.OpeningHours(start: dateFormatter.string(from: startTime), end: dateFormatter.string(from: endTime))
                                 }
                             })
                         } else {
@@ -215,16 +225,10 @@ struct BusinessDayView: View {
                             .onChange(of: isWorkDay, perform: {
                                 if !$0 {
                                     myRestaurant.reservationRestrictions.openingHours.removeValue(forKey: dayTup.0)
-                                } else {
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "HH:mm"
-                                    
-                                    myRestaurant.reservationRestrictions.openingHours[dayTup.idx] = Restaurant.ReservationRestrictions.OpeningHours(start: dateFormatter.string(from: startTime), end: dateFormatter.string(from: endTime))
                                 }
-                                 
                             })
                     }
-                  
+                    
                 }
                 .groupBoxStyle(TransparentGroupBox(color: isWorkDay ? Color.matWhiteGreen : Color.matLightPink))
                 .animation(.default, value: backgroundColor)
@@ -235,7 +239,7 @@ struct BusinessDayView: View {
             Text(alertMessage)
                 .foregroundColor(.red)
         }
-      
+        
     }
 }
 
