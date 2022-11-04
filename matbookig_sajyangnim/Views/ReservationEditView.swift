@@ -221,6 +221,9 @@ struct BusinessDayView: View {
                             .onChange(of: isWorkDay, perform: {
                                 if !$0 {
                                     myRestaurant.reservationRestrictions.openingHours.removeValue(forKey: dayTup.0)
+                                } else {
+                                    // 새로 추가해줘야함
+                                    myRestaurant.reservationRestrictions.openingHours[dayTup.idx] = Restaurant.ReservationRestrictions.OpeningHours(start: startTime.dateFormatting(), end: endTime.dateFormatting())
                                 }
                             })
                     }
