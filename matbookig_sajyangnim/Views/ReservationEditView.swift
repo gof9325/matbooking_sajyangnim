@@ -26,7 +26,7 @@ struct ReservationEditView: View {
             NavigationView {
                 ScrollView {
                     VStack {
-                        SettingPax(paxMin: myRestaurant.reservationRestrictions.paxMin, paxMax: myRestaurant.reservationRestrictions.paxMax, isPaxMinSatisfiedValue: $isSettingPaxFieldSatisfied)
+                        SettingPax(paxMin: $myRestaurant.reservationRestrictions.paxMin, paxMax: $myRestaurant.reservationRestrictions.paxMax, isPaxMinSatisfiedValue: $isSettingPaxFieldSatisfied)
                             .padding()
                         VStack {
                             Text("영업날짜 & 시간")
@@ -57,8 +57,7 @@ struct ReservationEditView: View {
                 Spacer()
                 Button("완료") {
                     if isEdit {
-//                        print("레스토랑 정보 수정")
-                        //                        self.dismiss()
+                        restaurantVM.modifyRestaurant(newRestaurant: myRestaurant)
                     } else {
                         restaurantVM.createRestaurant(newRestaurant: myRestaurant)
                     }
@@ -79,8 +78,8 @@ struct ReservationEditView: View {
 }
 struct SettingPax: View {
     
-    @State var paxMin: Int
-    @State var paxMax: Int
+    @Binding var paxMin: Int
+    @Binding var paxMax: Int
     
     @Binding var isPaxMinSatisfiedValue: Bool
     
@@ -242,7 +241,7 @@ struct BusinessDayView: View {
 
 struct SettingSlotGapMinutes: View {
     
-    let times = [60, 120, 180]
+    let times = [60, 120]
     
     @Binding var selectedTime: Int
     

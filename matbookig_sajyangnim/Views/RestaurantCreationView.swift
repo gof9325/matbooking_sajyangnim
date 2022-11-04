@@ -1,5 +1,5 @@
 //
-//  ResrtaurantCreationView.swift
+//  RestaurantCreationView.swift
 //  matbookig_sajyangnim
 //
 //  Created by 황경원 on 2022/11/01.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ResrtaurantCreationView: View {
+struct RestaurantCreationView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
 
     @ObservedObject var restaurantVM: RestaurantViewModel
@@ -28,6 +28,6 @@ struct ResrtaurantCreationView: View {
 
 //struct ResrtaurantCreationView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ResrtaurantCreationView()
+//        RestaurantCreationView()
 //    }
 //}

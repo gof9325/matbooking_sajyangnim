@@ -13,6 +13,7 @@ enum RestaurantRouter: URLRequestConvertible {
     case getRestaurantExist
     case createRestaurant(newRestaurant: Restaurant)
     case getRestaurantInfo(id: String)
+    case modifyRestaurant(newRestaurant: Restaurant)
     
     private var baseURL: URL {
         return URL(string:ApiClient.BASE_URL)!
@@ -20,7 +21,7 @@ enum RestaurantRouter: URLRequestConvertible {
     
     private var endPoint: String {
         switch self {
-        case .getRestaurantExist:
+        case .getRestaurantExist, .modifyRestaurant:
             return "stores/my"
         case .createRestaurant:
             return "stores"
@@ -35,6 +36,8 @@ enum RestaurantRouter: URLRequestConvertible {
             return .get
         case .createRestaurant:
             return .post
+        case .modifyRestaurant:
+            return .patch
         }
     }
     
@@ -46,7 +49,7 @@ enum RestaurantRouter: URLRequestConvertible {
             var parameters = Parameters()
             parameters["id"] = id
             return parameters
-        case let .createRestaurant(newRestaurant):
+        case let .createRestaurant(newRestaurant), let .modifyRestaurant(newRestaurant):
             do {
                 let dictionary = try newRestaurant.encode()
                 print(dictionary)
@@ -62,7 +65,7 @@ enum RestaurantRouter: URLRequestConvertible {
         let url = baseURL.appendingPathComponent(endPoint)
         var request = URLRequest(url: url)
         request.method = method
-        if method == .post {
+        if method == .post || method == .patch {
             request.httpBody = try JSONEncoding.default.encode(request, with: parameters).httpBody
         }
         return request

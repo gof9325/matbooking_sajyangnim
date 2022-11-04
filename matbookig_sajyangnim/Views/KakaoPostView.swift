@@ -12,11 +12,24 @@ import WebView
 
 struct KakaoPostView: View {
     var viewModel: KakaoPostViewModel
+    
+    @Binding var addressSearch: Bool
 
     var body: some View {
         NavigationView {
-            WebView(webView: viewModel.webViewStore.webView)
-                .navigationBarTitle(Text(verbatim: viewModel.webViewStore.title ?? ""), displayMode: .inline)
+            VStack {
+                HStack {
+                    Button(action: {
+                        addressSearch = false
+                    }, label: {
+                        Text("<")
+                    })
+                    .foregroundColor(.blue)
+                    Spacer()
+                }
+                WebView(webView: viewModel.webViewStore.webView)
+                    .navigationBarTitle(Text(verbatim: viewModel.webViewStore.title ?? ""), displayMode: .inline)
+            }
         }.onAppear {
             self.viewModel.webViewStore.webView.load(URLRequest(url: URL(string: "https://gof9325.github.io/Kakao-Post/")!))
         }
@@ -52,9 +65,9 @@ class KakaoPostViewModel: NSObject, WKScriptMessageHandler, ObservableObject {
         }
    }
 }
-
-struct KakaoPostView_Previews: PreviewProvider {
-    static var previews: some View {
-        KakaoPostView(viewModel: KakaoPostViewModel())
-    }
-}
+//
+//struct KakaoPostView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        KakaoPostView(viewModel: KakaoPostViewModel())
+//    }
+//}

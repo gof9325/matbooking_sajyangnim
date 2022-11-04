@@ -13,25 +13,7 @@ class RestaurantViewModel: ObservableObject {
     private var subscription = Set<AnyCancellable>()
     
     @Published var myRestaurant: Restaurant?
-    
-    // 가게 정보 생성 이벤트
-//    var setRestaurantInfo = PassthroughSubject<(), Never>()
-    
-//    func getRestaurantExist() {
-//        print("RestaurantViewModel - getRestaurantExist() called")
-//        RestaurantApiService.getRestaurantExist()
-//            .sink(receiveCompletion: { completion in
-//                print("RestaurantViewModel getRestaurantExist completion: \(completion)")
-//            }, receiveValue: { restaurantInfo in
-//                print("0-0")
-//                if restaurantInfo.data.exists {
-//                    print("0-1")
-//                    self.myRestaurant = Restaurant()
-//                    print("restaurantInfo: \(restaurantInfo.data)")
-//                }
-//            }).store(in: &subscription)
-//    }
-    
+
     func getRestaurantInfo(id: String) {
         print("RestaurantViewModel - getRestaurantInfo() called")
         RestaurantApiService.getRestaurantInfo(id: id)
@@ -47,6 +29,17 @@ class RestaurantViewModel: ObservableObject {
         RestaurantApiService.createRestaurant(newRestaurant: newRestaurant)
             .sink(receiveCompletion: { completion in
                 print("RestaurantViewModel createRestaurant completion: \(completion)")
+            }, receiveValue: { restaurantInfo in
+                print("restaurantInfo: \(restaurantInfo)")
+                self.myRestaurant = restaurantInfo.data
+            }).store(in: &subscription)
+    }
+    
+    func modifyRestaurant(newRestaurant: Restaurant) {
+        print("RestaurantViewModel - modifyRestaurant() called")
+        RestaurantApiService.modifyRestaurant(newRestaurant: newRestaurant)
+            .sink(receiveCompletion: { completion in
+                print("RestaurantViewModel modifyRestaurant completion: \(completion)")
             }, receiveValue: { restaurantInfo in
                 print("restaurantInfo: \(restaurantInfo)")
                 self.myRestaurant = restaurantInfo.data

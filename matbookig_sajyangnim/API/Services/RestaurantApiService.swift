@@ -40,5 +40,16 @@ enum RestaurantApiService {
             .eraseToAnyPublisher()
     }
     
-  
+    static func modifyRestaurant(newRestaurant: Restaurant) -> AnyPublisher<ApiResponse<Restaurant>, AFError> {
+        print("RestaurantApiService - modifyRestaurant() called")
+        return ApiClient.shared.session
+            .request(RestaurantRouter.modifyRestaurant(newRestaurant: newRestaurant))
+            .responseString { response in
+                print(response)
+            }
+            .publishDecodable(type: ApiResponse<Restaurant>.self)
+            .value()
+            .eraseToAnyPublisher()
+    }
+    
 }

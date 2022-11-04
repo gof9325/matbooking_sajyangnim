@@ -113,8 +113,8 @@ struct InPutFieldsView: View {
                 DescriptionContentView(title: "가게 설명", description: $myRestaurant.storeInfo.description, placeHolder: "가게에 대한 설명을 200자 이내로 서술하세요", requiredValeu: true)
                 DescriptionContentView(title: "영업 설명", description: $myRestaurant.storeInfo.openingHours, placeHolder: "영업과 관련된 설명을 200자 이내로 서술하세요", requiredValeu: false)
             }
-            .sheet(isPresented: $addressSearch) {
-                KakaoPostView(viewModel: kakaoPostVM)
+            .fullScreenCover(isPresented: $addressSearch) {
+                KakaoPostView(viewModel: kakaoPostVM, addressSearch: $addressSearch)
                     .padding()
             }
             .onChange(of: myRestaurant, perform: { newMyRestaurant in

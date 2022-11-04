@@ -25,7 +25,7 @@ struct MainView: View {
                     if ownerAndRestaurant?.0 != nil && ownerAndRestaurant?.1 != nil {
                         ContentView(restaurantVM: restaurantVM, myRestaurant: ownerAndRestaurant!.1!)
                     } else if ownerAndRestaurant?.0 != nil && ownerAndRestaurant?.1 == nil {
-                        ResrtaurantCreationView(restaurantVM: restaurantVM, myRestaurant: Restaurant(id: ""))
+                        RestaurantCreationView(restaurantVM: restaurantVM, myRestaurant: Restaurant(id: ""))
                     } else {
                         JoinView()
                     }
