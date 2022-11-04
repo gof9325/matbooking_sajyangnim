@@ -40,7 +40,7 @@ struct Restaurant: Equatable, Codable {
         var description = ""
         var address = ""
         var phone = "021234"
-        var openingHours = "9"
+        var openingHours = ""
         var city = "부산"
         var cuisine = "한식"
     }

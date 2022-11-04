@@ -14,7 +14,7 @@ struct RestaurantInfoEditView: View {
     
     @State var myRestaurant: Restaurant
     
-    @State var isSatisfiedRequiredValues = false
+    @State var isSatisfiedRequiredValues = true
     
     var body: some View {
         GeometryReader { proxy in
@@ -69,7 +69,6 @@ struct InPutFieldsView: View {
     @Binding var isSatisfiedRequiredValues: Bool
     
     var body: some View {
-        
         ScrollView {
             PictureContentView()
             VStack(alignment: .leading) {
@@ -86,9 +85,8 @@ struct InPutFieldsView: View {
                     .foregroundColor(Color.matHavyGreen)
                 }
                 .onReceive(kakaoPostVM.$chosenAddress, perform: {
-                    myRestaurant.storeInfo.address = $0?.roadAddress ?? ""
+                    myRestaurant.storeInfo.address = $0?.roadAddress ?? myRestaurant.storeInfo.address
                     self.addressSearch = false
-                    
                 })
                 InputFieldContentView(title: "가게 번호", placeHolder: "01012341234", textLimit: 11, inputContent: $myRestaurant.storeInfo.phone)
                     .keyboardType(.numberPad)
@@ -123,13 +121,11 @@ struct InPutFieldsView: View {
                 if !newMyRestaurant.storeInfo.name.isEmpty && !newMyRestaurant.storeInfo.address.isEmpty && !newMyRestaurant.storeInfo.phone.isEmpty && !newMyRestaurant.storeInfo.description.isEmpty {
                     isSatisfiedRequiredValues = true
                 } else {
-                    
-                    isSatisfiedRequiredValues = true // TODO: CHANGE BACK
+                    isSatisfiedRequiredValues = false
                 }
             })
             buttonGroup
         }
-        
     }
     
     var buttonGroup: some View {
