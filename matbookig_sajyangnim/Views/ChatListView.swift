@@ -7,15 +7,27 @@
 
 import SwiftUI
 
+struct Chat: Hashable {
+    let restaurantName: String
+    let content: String
+}
+
 struct ChatListView: View {
     
-    @State var chatList = ["ㅁ", "ㄴㅇ"]
+    var chatList = [
+        Chat(restaurantName: "고객 ID1", content: "채팅 내용1"),
+        Chat(restaurantName: "고객 ID2", content: "채팅 내용2")
+    ]
     
     var body: some View {
         VStack {
-            ScrollView{
-                ForEach(chatList, id:\.self) { chat in
-                    Text(chat)
+            NavigationView {
+                List {
+                    ForEach(chatList, id:\.self) { item in
+                        NavigationLink(destination: ChatDetailView()) {
+                            ChatListItemView(chat: item)
+                        }
+                    }
                 }
             }
         }

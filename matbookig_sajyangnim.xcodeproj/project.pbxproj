@@ -48,6 +48,8 @@
 		1E8DFE0429077BDA00F683B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE0329077BDA00F683B6 /* ContentView.swift */; };
 		1E8DFE08290FB42600F683B6 /* MyRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE07290FB42600F683B6 /* MyRestaurantView.swift */; };
 		1E8DFE0A2910FBE900F683B6 /* ResrtaurantCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE092910FBE900F683B6 /* ResrtaurantCreationView.swift */; };
+		1E8DFE0F2914DE6800F683B6 /* ChatListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE0E2914DE6800F683B6 /* ChatListItemView.swift */; };
+		1E8DFE112914DEC800F683B6 /* ReservationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE102914DEC800F683B6 /* ReservationItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,8 @@
 		1E8DFE0329077BDA00F683B6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1E8DFE07290FB42600F683B6 /* MyRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRestaurantView.swift; sourceTree = "<group>"; };
 		1E8DFE092910FBE900F683B6 /* ResrtaurantCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResrtaurantCreationView.swift; sourceTree = "<group>"; };
+		1E8DFE0E2914DE6800F683B6 /* ChatListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListItemView.swift; sourceTree = "<group>"; };
+		1E8DFE102914DEC800F683B6 /* ReservationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,8 +165,10 @@
 				1E8DFE07290FB42600F683B6 /* MyRestaurantView.swift */,
 				1E21560028F4161300B03EFB /* ChatDetailView.swift */,
 				1E21560228F4164300B03EFB /* ChatListView.swift */,
+				1E8DFE0E2914DE6800F683B6 /* ChatListItemView.swift */,
 				1E21562828F4573100B03EFB /* JoinView.swift */,
 				1E72116528F99AF6009034E0 /* KakaoPostView.swift */,
+				1E8DFE102914DEC800F683B6 /* ReservationItemView.swift */,
 				1E21563328F54A6800B03EFB /* ReservationListView.swift */,
 			);
 			path = Views;
@@ -340,6 +346,7 @@
 				1E8DFE0A2910FBE900F683B6 /* ResrtaurantCreationView.swift in Sources */,
 				1E36D41128F4080600F228A7 /* OwnerViewModel.swift in Sources */,
 				1E21562128F4538B00B03EFB /* OwnerResponse.swift in Sources */,
+				1E8DFE112914DEC800F683B6 /* ReservationItemView.swift in Sources */,
 				1E21563C28F5605C00B03EFB /* RestaurantViewModel.swift in Sources */,
 				1E21562528F4558000B03EFB /* Owner.swift in Sources */,
 				1E21560128F4161300B03EFB /* ChatDetailView.swift in Sources */,
@@ -365,6 +372,7 @@
 				1E21564228F6993F00B03EFB /* UIExtensions.swift in Sources */,
 				1E21563428F54A6800B03EFB /* ReservationListView.swift in Sources */,
 				1E21563628F54DCD00B03EFB /* RestaurantExistsResponse.swift in Sources */,
+				1E8DFE0F2914DE6800F683B6 /* ChatListItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

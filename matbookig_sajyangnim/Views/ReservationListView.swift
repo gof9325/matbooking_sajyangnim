@@ -24,11 +24,12 @@ struct ReservationListView: View {
                 .datePickerStyle(.graphical)
                 ScrollView {
                     ForEach(reservationList, id:\.self) { reservation in
-                        Text(reservation)
+                        ReservationItemView()
                     }
                 }
             }
         }
+        .padding()
     }
 }
 
