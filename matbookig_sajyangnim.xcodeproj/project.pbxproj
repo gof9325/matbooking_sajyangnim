@@ -50,6 +50,8 @@
 		1E8DFE0A2910FBE900F683B6 /* RestaurantCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE092910FBE900F683B6 /* RestaurantCreationView.swift */; };
 		1E8DFE0F2914DE6800F683B6 /* ChatListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE0E2914DE6800F683B6 /* ChatListItemView.swift */; };
 		1E8DFE112914DEC800F683B6 /* ReservationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE102914DEC800F683B6 /* ReservationItemView.swift */; };
+		1E8DFE1829179CAD00F683B6 /* BSImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 1E8DFE1729179CAD00F683B6 /* BSImagePicker */; };
+		1E8DFE1A2917D8E500F683B6 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE192917D8E500F683B6 /* PhotoPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,7 @@
 		1E8DFE092910FBE900F683B6 /* RestaurantCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCreationView.swift; sourceTree = "<group>"; };
 		1E8DFE0E2914DE6800F683B6 /* ChatListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListItemView.swift; sourceTree = "<group>"; };
 		1E8DFE102914DEC800F683B6 /* ReservationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationItemView.swift; sourceTree = "<group>"; };
+		1E8DFE192917D8E500F683B6 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,7 @@
 				1E72116428F95CFE009034E0 /* WebView in Frameworks */,
 				1E36D3EE28F0511800F228A7 /* Alamofire in Frameworks */,
 				1E36D3FE28F401DB00F228A7 /* Auth0 in Frameworks */,
+				1E8DFE1829179CAD00F683B6 /* BSImagePicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +164,7 @@
 				1E8DFE0329077BDA00F683B6 /* ContentView.swift */,
 				1E36D3F528F3EE7C00F228A7 /* LoginView.swift */,
 				1E36D3F328F0522B00F228A7 /* RestaurantInfoEditView.swift */,
+				1E8DFE192917D8E500F683B6 /* PhotoPicker.swift */,
 				1E8DFE092910FBE900F683B6 /* RestaurantCreationView.swift */,
 				1E72115E28F82397009034E0 /* ReservationEditView.swift */,
 				1E8DFE07290FB42600F683B6 /* MyRestaurantView.swift */,
@@ -275,6 +280,7 @@
 				1E36D3ED28F0511800F228A7 /* Alamofire */,
 				1E36D3FD28F401DB00F228A7 /* Auth0 */,
 				1E72116328F95CFE009034E0 /* WebView */,
+				1E8DFE1729179CAD00F683B6 /* BSImagePicker */,
 			);
 			productName = matbookig_sajyangnim;
 			productReference = 1E36D3DB28F04FDC00F228A7 /* matbookig_sajyangnim.app */;
@@ -308,6 +314,7 @@
 				1E36D3EC28F0511800F228A7 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				1E36D3FC28F401DB00F228A7 /* XCRemoteSwiftPackageReference "Auth0" */,
 				1E72116228F95CFE009034E0 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
+				1E8DFE1629179CAD00F683B6 /* XCRemoteSwiftPackageReference "BSImagePicker" */,
 			);
 			productRefGroup = 1E36D3DC28F04FDC00F228A7 /* Products */;
 			projectDirPath = "";
@@ -368,6 +375,7 @@
 				1E72116828F99C15009034E0 /* KakaoAddress.swift in Sources */,
 				1E21563828F5508900B03EFB /* Restaurant.swift in Sources */,
 				1E21560328F4164300B03EFB /* ChatListView.swift in Sources */,
+				1E8DFE1A2917D8E500F683B6 /* PhotoPicker.swift in Sources */,
 				1E72116A29062F90009034E0 /* MainViewModel.swift in Sources */,
 				1E21564228F6993F00B03EFB /* UIExtensions.swift in Sources */,
 				1E21563428F54A6800B03EFB /* ReservationListView.swift in Sources */,
@@ -601,6 +609,14 @@
 				minimumVersion = 0.3.0;
 			};
 		};
+		1E8DFE1629179CAD00F683B6 /* XCRemoteSwiftPackageReference "BSImagePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mikaoj/BSImagePicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -618,6 +634,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1E72116228F95CFE009034E0 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */;
 			productName = WebView;
+		};
+		1E8DFE1729179CAD00F683B6 /* BSImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E8DFE1629179CAD00F683B6 /* XCRemoteSwiftPackageReference "BSImagePicker" */;
+			productName = BSImagePicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

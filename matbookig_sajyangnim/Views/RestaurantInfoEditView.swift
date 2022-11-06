@@ -27,20 +27,33 @@ struct RestaurantInfoEditView: View {
 
 struct PictureContentView: View {
     
-    var pictureList = [
-        "person", "shield"
-    ]
+    @State var pictureList = [UIImage]()
+    
+    @State var isPresented = false
     
     var body: some View {
         VStack {
             Text("가게 이미지")
                 .font(.largeTitle)
                 .padding(.top)
-            ImageSlider(images: pictureList)
-                .background(.green)
-                .cornerRadius(10)
-                .padding(5)
-                .frame(minHeight: 300)
+            
+            VStack {
+                if pictureList.isEmpty {
+                    Text("이미지가 없습니다.")
+                } else {
+                    ImageSlider(images: $pictureList)
+                }
+            }
+            .background(.gray)
+            .cornerRadius(10)
+            .padding(5)
+            .frame(minHeight: 300)
+            .fullScreenCover(isPresented: $isPresented) {
+                PhotoPicker(pickerResult: $pictureList, isPresented: $isPresented)
+            }
+        }
+        .onTapGesture {
+            isPresented = true
         }
     }
 }
@@ -85,7 +98,10 @@ struct InPutFieldsView: View {
                     .foregroundColor(Color.matHavyGreen)
                 }
                 .onReceive(kakaoPostVM.$chosenAddress, perform: {
-                    myRestaurant.storeInfo.address = $0?.roadAddress ?? myRestaurant.storeInfo.address
+                    if let newAddress = $0?.roadAddress {
+                        myRestaurant.storeInfo.address = newAddress
+                        myRestaurant.storeInfo.city = String(newAddress.split(separator: " ")[0])
+                    }
                     self.addressSearch = false
                 })
                 InputFieldContentView(title: "가게 번호", placeHolder: "01012341234", textLimit: 11, inputContent: $myRestaurant.storeInfo.phone)

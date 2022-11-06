@@ -11,13 +11,13 @@ import SwiftUI
 // MARK: View
 
 struct ImageSlider: View {
-
-    @State var images: [String]
+    
+    @Binding var images: [UIImage]
     
     var body: some View {
         TabView {
             ForEach(images, id: \.self) { item in
-                 Image(systemName: item)
+                Image(uiImage: item)
                     .resizable()
                     .scaledToFill()
             }

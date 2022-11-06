@@ -17,9 +17,9 @@ struct MyRestaurantView: View {
 //        NavigationView {
             VStack {
                 ScrollView {
-                    ImageSlider(images: ["house", "person"])
-                        .frame(minHeight: 300)
-                        .background(.yellow)
+//                    ImageSlider(images: ["house", "person"])
+//                        .frame(minHeight: 300)
+//                        .background(.yellow)
                     VStack(alignment: .leading) {
                         Text(myRestaurant.storeInfo.name)
                             .font(.system(size: 50, weight: .heavy))

@@ -58,7 +58,6 @@ class KakaoPostViewModel: NSObject, WKScriptMessageHandler, ObservableObject {
             let decoder = JSONDecoder()
             do {
                 chosenAddress = try decoder.decode(KakaoAddress.self, from: (message.body as! String).data(using: .utf8)!)
-                print()
             } catch let err {
                 print(err)
             }
