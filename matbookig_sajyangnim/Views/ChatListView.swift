@@ -29,6 +29,7 @@ struct ChatListView: View {
                         }
                     }
                 }
+                .navigationBarHidden(true)
             }
         }
     }

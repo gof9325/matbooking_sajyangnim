@@ -26,8 +26,10 @@ struct MainView: View {
                         ContentView(restaurantVM: restaurantVM, myRestaurant: ownerAndRestaurant!.1!)
                     } else if ownerAndRestaurant?.0 != nil && ownerAndRestaurant?.1 == nil {
                         RestaurantCreationView(restaurantVM: restaurantVM, myRestaurant: Restaurant(id: ""))
-                    } else {
+                    } else if ownerAndRestaurant?.0 == nil && ownerAndRestaurant?.1 == nil {
                         JoinView()
+                    } else {
+                        ProgressView()
                     }
                 } else {
                     LoginView(mainVM: mainVM)

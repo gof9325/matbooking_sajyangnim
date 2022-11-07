@@ -16,6 +16,8 @@ struct RestaurantCreationView: View {
     
     @State var isSatisfiedRequiredValues = false
     
+    var taskId = UUID()
+    
     var body: some View {
         GeometryReader { proxy in
             NavigationView {

@@ -23,8 +23,10 @@ struct ReservationListView: View {
                 .accentColor(Color.matNature)
                 .datePickerStyle(.graphical)
                 ScrollView {
-                    ForEach(reservationList, id:\.self) { reservation in
-                        ReservationItemView()
+                    LazyVStack {
+                        ForEach(reservationList, id:\.self) { reservation in
+                            ReservationItemView()
+                        }
                     }
                 }
             }

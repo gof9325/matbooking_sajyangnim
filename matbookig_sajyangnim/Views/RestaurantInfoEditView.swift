@@ -16,6 +16,8 @@ struct RestaurantInfoEditView: View {
     
     @State var isSatisfiedRequiredValues = true
     
+    var taskId = UUID()
+    
     var body: some View {
         GeometryReader { proxy in
             InPutFieldsView(proxy: proxy, restaurantVM: restaurantVM, myRestaurant: $myRestaurant, isEdit: true, isSatisfiedRequiredValues: $isSatisfiedRequiredValues)
@@ -36,7 +38,6 @@ struct PictureContentView: View {
             Text("가게 이미지")
                 .font(.largeTitle)
                 .padding(.top)
-            
             VStack {
                 if pictureList.isEmpty {
                     Text("이미지가 없습니다.")
