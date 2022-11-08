@@ -37,7 +37,7 @@ struct Restaurant: Equatable, Codable {
     struct StoreInfo: Codable, Equatable {
         var name = ""
         var subtitle = "없음"
-        var pictures: String?
+        var picturesFolderId: String?
         var description = ""
         var address = ""
         var phone = "021234"

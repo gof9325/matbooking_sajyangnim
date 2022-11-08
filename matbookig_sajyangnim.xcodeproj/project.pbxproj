@@ -40,7 +40,6 @@
 		1E36D40F28F407CF00F228A7 /* OwnerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D40E28F407CF00F228A7 /* OwnerRouter.swift */; };
 		1E36D41128F4080600F228A7 /* OwnerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D41028F4080600F228A7 /* OwnerViewModel.swift */; };
 		1E36D41328F4084F00F228A7 /* Auth0Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D41228F4084F00F228A7 /* Auth0Owner.swift */; };
-		1E3C4F342919250600D44932 /* ImageUploadInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3C4F332919250600D44932 /* ImageUploadInterceptor.swift */; };
 		1E3C4F362919367700D44932 /* ImageUploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3C4F352919367700D44932 /* ImageUploadResponse.swift */; };
 		1E72115F28F82397009034E0 /* ReservationEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72115E28F82397009034E0 /* ReservationEditView.swift */; };
 		1E72116428F95CFE009034E0 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = 1E72116328F95CFE009034E0 /* WebView */; };
@@ -90,7 +89,6 @@
 		1E36D40E28F407CF00F228A7 /* OwnerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerRouter.swift; sourceTree = "<group>"; };
 		1E36D41028F4080600F228A7 /* OwnerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerViewModel.swift; sourceTree = "<group>"; };
 		1E36D41228F4084F00F228A7 /* Auth0Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth0Owner.swift; sourceTree = "<group>"; };
-		1E3C4F332919250600D44932 /* ImageUploadInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadInterceptor.swift; sourceTree = "<group>"; };
 		1E3C4F352919367700D44932 /* ImageUploadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadResponse.swift; sourceTree = "<group>"; };
 		1E72115E28F82397009034E0 /* ReservationEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationEditView.swift; sourceTree = "<group>"; };
 		1E72116528F99AF6009034E0 /* KakaoPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoPostView.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				1E36D40B28F4079200F228A7 /* BaseInterceptor.swift */,
-				1E3C4F332919250600D44932 /* ImageUploadInterceptor.swift */,
 				1E21562228F4542900B03EFB /* Auth0Interceptor.swift */,
 			);
 			path = Intercepters;
@@ -370,7 +367,6 @@
 				1E36D3F628F3EE7C00F228A7 /* LoginView.swift in Sources */,
 				1E21562928F4573100B03EFB /* JoinView.swift in Sources */,
 				1E36D3DF28F04FDC00F228A7 /* matbookig_sajyangnimApp.swift in Sources */,
-				1E3C4F342919250600D44932 /* ImageUploadInterceptor.swift in Sources */,
 				1E21562C28F4578E00B03EFB /* Extensions.swift in Sources */,
 				1E36D41328F4084F00F228A7 /* Auth0Owner.swift in Sources */,
 				1E21563E28F564AD00B03EFB /* RestaurantApiService.swift in Sources */,

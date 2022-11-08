@@ -15,14 +15,18 @@ struct ImageSlider: View {
     @Binding var images: [UIImage]
     
     var body: some View {
-        TabView {
-            ForEach(images, id: \.self) { item in
-                Image(uiImage: item)
-                    .resizable()
-                    .scaledToFill()
+        if !images.isEmpty {
+            TabView {
+                ForEach(images, id: \.self) { item in
+                    Image(uiImage: item)
+                        .resizable()
+                        .scaledToFill()
+                }
             }
+            .tabViewStyle(PageTabViewStyle())
+        } else {
+            Text("이미지가 없습니다.")
         }
-        .tabViewStyle(PageTabViewStyle())
     }
 }
 

@@ -41,11 +41,11 @@ struct PictureContentView: View {
                 .font(.largeTitle)
                 .padding(.top)
             VStack {
-                if pictureList.isEmpty {
-                    Text("이미지가 없습니다.")
-                } else {
+//                if pictureList.isEmpty {
+//                    Text("이미지가 없습니다.")
+//                } else {
                     ImageSlider(images: $pictureList)
-                }
+//                }
             }
             .background(.gray)
             .cornerRadius(10)
@@ -55,6 +55,7 @@ struct PictureContentView: View {
                 PhotoPicker(pickerResult: $pictureList, isPresented: $isPresented)
             }
             .onChange(of: pictureList, perform: { newPictureList in
+                // TODO: 새로운 이미지 추가 됬는지 확인?
                 
                 if !newPictureList.isEmpty {
                     let pngPictureList = pictureList.map { image -> Data? in
@@ -64,14 +65,9 @@ struct PictureContentView: View {
                             return nil
                         }
                     }
-                    
-                    // [Data?]
-                    
                     if !pngPictureList.contains(nil) {
                         restaurantVM.sendImage(imageData: pngPictureList as! [Data], taskId: taskId.uuidString)
                     }
-                    
-                    // [Data]
                     
                 }
             })
