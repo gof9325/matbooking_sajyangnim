@@ -8,12 +8,64 @@
 import Foundation
 import Alamofire
 
+//struct AddActionEditService {
+//
+//    static let shared = AddActionEditService()
+//
+//    func editActivity (imageData: UIImage?,
+//                       taskId: String,
+//                            completion: @escaping (Result<URLRequest, Error>) -> Void) {
+//
+//        let URL = URL(string: ApiClient.BASE_URL)!.appendingPathComponent("files")
+//        let header : HTTPHeaders = [
+//            "Content-Type" : "multipart/form-data",
+//            "token" : GeneralAPI.token ]
+//
+//        let parameters: [String : Any] = [
+//            "activityContent": content,
+//            "activityYear": year,
+//            "activityMonth": month,
+//            "activityDay": day,
+//            "characterIndex": index,
+//            "activityIndex": activityIndex
+//        ]
+//        AF.upload(multipartFormData: { multipartFormData in
+//            for (key, value) in parameters {
+//                multipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
+//            }
+//            if let image = imageData?.pngData() {
+//                multipartFormData.append(image, withName: "activityImage", fileName: "\(image).png", mimeType: "image/png")
+//            }
+//        }, to: URL, usingThreshold: UInt64.init(), method: .post, headers: header).response { response in
+//            guard let statusCode = response.response?.statusCode,
+//                  statusCode == 200
+//            else { return }
+//            completion(.success(request))
+//        }
+//    }
+//}
+
+enum ImageRouter: URLRequestConvertible {
+    case sendImage
+    
+    func asURLRequest() throws -> URLRequest {
+        let url = URL(string: ApiClient.BASE_URL)!.appendingPathComponent("files")
+        var request = URLRequest(url: url)
+        request.method = .post
+        
+        return request
+        
+    }
+    
+}
+
 enum RestaurantRouter: URLRequestConvertible {
     
     case getRestaurantExist
     case createRestaurant(newRestaurant: Restaurant)
     case getRestaurantInfo(id: String)
     case modifyRestaurant(newRestaurant: Restaurant)
+    case sendImage(taskId: String)
     
     private var baseURL: URL {
         return URL(string:ApiClient.BASE_URL)!
@@ -27,6 +79,8 @@ enum RestaurantRouter: URLRequestConvertible {
             return "stores"
         case let .getRestaurantInfo(id):
             return "stores/\(id)"
+        case .sendImage:
+            return "files"
         }
     }
     
@@ -34,7 +88,7 @@ enum RestaurantRouter: URLRequestConvertible {
         switch self {
         case .getRestaurantExist, .getRestaurantInfo:
             return .get
-        case .createRestaurant:
+        case .createRestaurant, .sendImage:
             return .post
         case .modifyRestaurant:
             return .patch
@@ -58,16 +112,27 @@ enum RestaurantRouter: URLRequestConvertible {
                 print(error)
                 return [String: Any]()
             }
+        case let .sendImage(taskId):
+            var parameters = Parameters()
+            parameters["taskId"] = taskId
+            return parameters
         }
+        
     }
     
     func asURLRequest() throws -> URLRequest {
         let url = baseURL.appendingPathComponent(endPoint)
         var request = URLRequest(url: url)
         request.method = method
+        
         if method == .post || method == .patch {
-            request.httpBody = try JSONEncoding.default.encode(request, with: parameters).httpBody
+                request.httpBody = try JSONEncoding.default.encode(request, with: parameters).httpBody
+            
+//            request.httpBody = try JSONEncoding.default.encode(request).
+                
         }
+        
+        
         return request
     }
 }

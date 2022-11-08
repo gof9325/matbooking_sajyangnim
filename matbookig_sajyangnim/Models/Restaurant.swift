@@ -11,6 +11,7 @@ struct Restaurant: Equatable, Codable {
     var id: String
     var reservationRestrictions = ReservationRestrictions()
     var storeInfo = StoreInfo()
+    var taskId: String?
     
     struct ReservationRestrictions: Codable, Equatable {
         var paxMin = 2

@@ -10,21 +10,23 @@ import Alamofire
 
 final class ApiClient {
     
-    static let shared = ApiClient()
+    static let shared = ApiClient([BaseInterceptor(), Auth0Interceptor()])
+    
+    static let imageUploadShared = ApiClient([Auth0Interceptor()])
     
     static let BASE_URL = "http://165.22.105.229:3000/"
     
-    let interceptors = Interceptor(interceptors: [
-        BaseInterceptor(),
-        Auth0Interceptor()
-    ])
+//    let interceptors = Interceptor(interceptors: [
+//        BaseInterceptor(),
+//        Auth0Interceptor()
+//    ])
     
     let monitors = [ApiLogger()] as [EventMonitor]
     
     var session: Session
     
-    init() {
+    init(_ interceptors: [RequestInterceptor]) {
         print("ApiClient - init() called")
-        session = Session(interceptor: interceptors, eventMonitors: monitors)
+        session = Session(interceptor: Interceptor(interceptors:interceptors), eventMonitors: monitors)
     }
 }

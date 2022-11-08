@@ -21,7 +21,7 @@ struct RestaurantCreationView: View {
     var body: some View {
         GeometryReader { proxy in
             NavigationView {
-                InPutFieldsView(proxy: proxy, restaurantVM: restaurantVM, myRestaurant: $myRestaurant, isEdit: false, isSatisfiedRequiredValues: $isSatisfiedRequiredValues)
+                InPutFieldsView(proxy: proxy, restaurantVM: restaurantVM, myRestaurant: $myRestaurant, isEdit: false, taskId: taskId, isSatisfiedRequiredValues: $isSatisfiedRequiredValues)
                 .navigationTitle("가게 정보 설정")
             }
         }

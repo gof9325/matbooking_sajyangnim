@@ -16,6 +16,10 @@ final class ApiLogger: EventMonitor {
     // Event called when any type of Request is resumed.
     func requestDidResume(_ request: Request) {
         print("ApiLogger - Resuming: \(request)")
+        if let req = request.request {
+            print(req.url?.lastPathComponent)
+        }
+
     }
     
     // Event called whenever a DataRequest has parsed a response.

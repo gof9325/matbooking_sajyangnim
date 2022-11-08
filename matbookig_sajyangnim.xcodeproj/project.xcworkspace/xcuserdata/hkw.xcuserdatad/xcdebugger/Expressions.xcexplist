@@ -19,6 +19,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #4 in closure #1 in closure #1 in closure #1 in closure #1 in BusinessDayView.body.getter:ReservationEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "endTime">
+            </PersistentString>
+            <PersistentString
+               value = "startTime">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in closure #1 in closure #1 in InPutFieldsView.body.getter:RestaurantInfoEditView.swift">
          <PersistentStrings>
             <PersistentString
@@ -27,13 +38,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #4 in closure #1 in closure #1 in closure #1 in closure #1 in BusinessDayView.body.getter:ReservationEditView.swift">
+         contextName = "MultipartFormData.encode(_:):MultipartFormData.swift">
          <PersistentStrings>
             <PersistentString
-               value = "endTime">
-            </PersistentString>
-            <PersistentString
-               value = "startTime">
+               value = "String(decoding: encoded, as: UTF8.self)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -60,6 +68,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in static RestaurantApiService.sendImage(imageData:taskId:):RestaurantApiService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "multipartFormData.bodyParts">
+            </PersistentString>
+            <PersistentString
+               value = "taskId.data(using: .utf8)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Color.init(r:g:b:):Extensions.swift">
       </ContextState>
       <ContextState
@@ -75,6 +94,14 @@
          <PersistentStrings>
             <PersistentString
                value = "myRestaurant.reservationRestrictions.openingHours">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static RestaurantApiService.sendImage(imageData:taskId:):RestaurantApiService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -142,6 +169,20 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ImageUploadInterceptor.adapt(_:for:completion:):ImageUploadInterceptor.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MultipartFormData.encodeBodyStream(for:):MultipartFormData.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "encoded.count">
+            </PersistentString>
+            <PersistentString
+               value = "bodyPart.bodyContentLength">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #2 in closure #1 in InPutFieldsView.body.getter:RestaurantInfoEditView.swift">
       </ContextState>
       <ContextState
@@ -173,6 +214,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in Session.performUploadRequest(_:):Session.swift">
+      </ContextState>
+      <ContextState
          contextName = "OwnerViewModel.restaurantEditerValidation(myRestaurant:):OwnerViewModel.swift">
       </ContextState>
       <ContextState
@@ -183,6 +227,17 @@
          <PersistentStrings>
             <PersistentString
                value = "testingRestaurant.storeInfo.name">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ApiLogger.requestDidResume(_:):ApiLogger.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "req.httpBody">
+            </PersistentString>
+            <PersistentString
+               value = "req.allHTTPHeaderFields">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

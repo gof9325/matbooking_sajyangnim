@@ -15,12 +15,13 @@ class MainViewModel: ObservableObject {
     var ownerVM: OwnerViewModel?
     var restaurantVM: RestaurantViewModel?
     
-    var dataLoaded = PassthroughSubject<(Owner?, Restaurant?), Never>()
+    var dataLoaded = PassthroughSubject<(Restaurant?, Owner?), Never>()
     
     func getOwnerAndRestaurantExists() {
-        Publishers.Zip(OwnerApiService.getOwnerInfo(), RestaurantApiService.getRestaurantExist())
+        Publishers.Zip(RestaurantApiService.getRestaurantExist(), OwnerApiService.getOwnerInfo())
             .sink(receiveCompletion: { completion in
                 print("completion : \(completion)")
+                
                 switch completion {
                 case .failure(let error):
                     print("errr \(error)")
@@ -28,11 +29,10 @@ class MainViewModel: ObservableObject {
                 case .finished:
                     break
                 }
-                
             }, receiveValue: { result in
                 print(result)
-                let owner = result.0.data
-                let restaurant = result.1.data
+                let owner = result.1.data
+                let restaurant = result.0.data
                 var newOwner: Owner?
                 var newRestaurant: Restaurant?
                 
@@ -40,13 +40,14 @@ class MainViewModel: ObservableObject {
                     newOwner = Owner(name: owner.name!, mobile: owner.mobile!)
                     self.ownerVM?.owner = newOwner
                     if restaurant.exists {
-                        if let restaurantId = result.1.data.store?.id {
+                        if let restaurantId = result.0.data.store?.id {
                             self.restaurantVM?.getRestaurantInfo(id: restaurantId)
                             newRestaurant = self.restaurantVM?.myRestaurant
                         }
                     }
                 }
-                self.dataLoaded.send((newOwner, newRestaurant))
+                
+                self.dataLoaded.send((newRestaurant, newOwner))
             }).store(in: &subscription)
     }
     

@@ -11,7 +11,6 @@ import SwiftUI
 struct matbookig_sajyangnimApp: App {
     var body: some Scene {
         WindowGroup {
-            EmptyView()
             MainView(mainVM: MainViewModel()).environmentObject(OwnerViewModel())
         }
     }

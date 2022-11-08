@@ -20,7 +20,7 @@ struct RestaurantInfoEditView: View {
     
     var body: some View {
         GeometryReader { proxy in
-            InPutFieldsView(proxy: proxy, restaurantVM: restaurantVM, myRestaurant: $myRestaurant, isEdit: true, isSatisfiedRequiredValues: $isSatisfiedRequiredValues)
+            InPutFieldsView(proxy: proxy, restaurantVM: restaurantVM, myRestaurant: $myRestaurant, isEdit: true, taskId: taskId, isSatisfiedRequiredValues: $isSatisfiedRequiredValues)
                 .navigationTitle("가게 정보 설정")
                 .padding()
         }
@@ -29,9 +29,11 @@ struct RestaurantInfoEditView: View {
 
 struct PictureContentView: View {
     
+    @ObservedObject var restaurantVM: RestaurantViewModel
     @State var pictureList = [UIImage]()
-    
     @State var isPresented = false
+    
+    let taskId: UUID
     
     var body: some View {
         VStack {
@@ -52,6 +54,27 @@ struct PictureContentView: View {
             .fullScreenCover(isPresented: $isPresented) {
                 PhotoPicker(pickerResult: $pictureList, isPresented: $isPresented)
             }
+            .onChange(of: pictureList, perform: { newPictureList in
+                
+                if !newPictureList.isEmpty {
+                    let pngPictureList = pictureList.map { image -> Data? in
+                        if let pngImage = image.pngData() {
+                            return pngImage
+                        } else {
+                            return nil
+                        }
+                    }
+                    
+                    // [Data?]
+                    
+                    if !pngPictureList.contains(nil) {
+                        restaurantVM.sendImage(imageData: pngPictureList as! [Data], taskId: taskId.uuidString)
+                    }
+                    
+                    // [Data]
+                    
+                }
+            })
         }
         .onTapGesture {
             isPresented = true
@@ -80,11 +103,13 @@ struct InPutFieldsView: View {
     
     let cuisine = ["한식", "일식", "이탈리아음식"]
     
+    let taskId: UUID
+    
     @Binding var isSatisfiedRequiredValues: Bool
     
     var body: some View {
         ScrollView {
-            PictureContentView()
+            PictureContentView(restaurantVM: restaurantVM, taskId: taskId)
             VStack(alignment: .leading) {
                 InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름 (50자 이내)", textLimit: 50, inputContent: $myRestaurant.storeInfo.name)
                 ZStack(alignment: .bottomTrailing) {

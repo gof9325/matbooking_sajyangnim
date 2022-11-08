@@ -13,6 +13,16 @@ class RestaurantViewModel: ObservableObject {
     private var subscription = Set<AnyCancellable>()
     
     @Published var myRestaurant: Restaurant?
+    
+    func sendImage(imageData: [Data], taskId: String) {
+        print("RestaurantViewModel - sendImage() called")
+        RestaurantApiService.sendImage(imageData: imageData, taskId: taskId)
+            .sink(receiveCompletion: { completion in
+                print("RestaurantViewModel sendImage completion: \(completion)")
+            }, receiveValue: { result in
+                print("RestaurantViewModel - sendImage() result: \(result)")
+            }).store(in: &subscription)
+    }
 
     func getRestaurantInfo(id: String) {
         print("RestaurantViewModel - getRestaurantInfo() called")
