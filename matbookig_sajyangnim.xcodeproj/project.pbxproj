@@ -24,6 +24,7 @@
 		1E21563E28F564AD00B03EFB /* RestaurantApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21563D28F564AD00B03EFB /* RestaurantApiService.swift */; };
 		1E21564028F5653A00B03EFB /* RestaurantRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21563F28F5653A00B03EFB /* RestaurantRouter.swift */; };
 		1E21564228F6993F00B03EFB /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21564128F6993F00B03EFB /* UIExtensions.swift */; };
+		1E2DF796291B732D00EF0038 /* RestaurantResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2DF795291B732D00EF0038 /* RestaurantResponse.swift */; };
 		1E36D3DF28F04FDC00F228A7 /* matbookig_sajyangnimApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D3DE28F04FDC00F228A7 /* matbookig_sajyangnimApp.swift */; };
 		1E36D3E128F04FDC00F228A7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E36D3E028F04FDC00F228A7 /* MainView.swift */; };
 		1E36D3E328F04FDD00F228A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E36D3E228F04FDD00F228A7 /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		1E21563D28F564AD00B03EFB /* RestaurantApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantApiService.swift; sourceTree = "<group>"; };
 		1E21563F28F5653A00B03EFB /* RestaurantRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantRouter.swift; sourceTree = "<group>"; };
 		1E21564128F6993F00B03EFB /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		1E2DF795291B732D00EF0038 /* RestaurantResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantResponse.swift; sourceTree = "<group>"; };
 		1E36D3DB28F04FDC00F228A7 /* matbookig_sajyangnim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = matbookig_sajyangnim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E36D3DE28F04FDC00F228A7 /* matbookig_sajyangnimApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = matbookig_sajyangnimApp.swift; sourceTree = "<group>"; };
 		1E36D3E028F04FDC00F228A7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				1E3C4F352919367700D44932 /* ImageUploadResponse.swift */,
 				1E21563528F54DCD00B03EFB /* RestaurantExistsResponse.swift */,
 				1E21563728F5508900B03EFB /* Restaurant.swift */,
+				1E2DF795291B732D00EF0038 /* RestaurantResponse.swift */,
 				1E72116728F99C15009034E0 /* KakaoAddress.swift */,
 			);
 			path = Models;
@@ -357,6 +360,7 @@
 				1E36D41128F4080600F228A7 /* OwnerViewModel.swift in Sources */,
 				1E21562128F4538B00B03EFB /* OwnerResponse.swift in Sources */,
 				1E8DFE112914DEC800F683B6 /* ReservationItemView.swift in Sources */,
+				1E2DF796291B732D00EF0038 /* RestaurantResponse.swift in Sources */,
 				1E21563C28F5605C00B03EFB /* RestaurantViewModel.swift in Sources */,
 				1E21562528F4558000B03EFB /* Owner.swift in Sources */,
 				1E21560128F4161300B03EFB /* ChatDetailView.swift in Sources */,
