@@ -7,6 +7,8 @@
 
 import Foundation
 
-struct ImageUploadResponse: Codable {
-    let status: String
+struct ImageUploadResponse: Codable, Equatable {
+    let id: String
+    let fileFolderId: String
+    let url: String?
 }

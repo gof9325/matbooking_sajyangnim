@@ -11,20 +11,22 @@ import Combine
 
 enum RestaurantApiService {
     
-    static func sendImage(imageData: [Data], taskId: String) -> AnyPublisher<ApiResponse<ImageUploadResponse>, AFError> {
+    static func sendImage(imageData: [Data], taskId: String, fileFolderId: String?) -> AnyPublisher<ApiResponse<[ImageUploadResponse]>, AFError> {
         print("RestaurantApiService - sendImage() called")
         return ApiClient.imageUploadShared.session
             .upload(multipartFormData: { multipartFormData in
+                if fileFolderId != nil {
+                    multipartFormData.append(fileFolderId!.data(using: .utf8)!, withName: "fileFolderId")
+                }
                 multipartFormData.append(taskId.data(using: .utf8)!, withName: "taskId")
                 for data in imageData {
                     multipartFormData.append(data, withName: "files", fileName: "\(taskId).png" ,mimeType: "image/png")
                 }
             }, with: ImageRouter.sendImage)
-            
             .responseString { response in
                 print("RestaurantApiService - sendImage() response: \(response)")
             }
-            .publishDecodable(type: ApiResponse<ImageUploadResponse>.self)
+            .publishDecodable(type: ApiResponse<[ImageUploadResponse]>.self)
             .value()
             .eraseToAnyPublisher()
     }

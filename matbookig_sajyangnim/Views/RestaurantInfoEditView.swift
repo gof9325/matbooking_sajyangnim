@@ -33,6 +33,8 @@ struct PictureContentView: View {
     @State var pictureList = [UIImage]()
     @State var isPresented = false
     
+    @Binding var myRestaurant: Restaurant
+    
     let taskId: UUID
     
     var body: some View {
@@ -41,11 +43,7 @@ struct PictureContentView: View {
                 .font(.largeTitle)
                 .padding(.top)
             VStack {
-//                if pictureList.isEmpty {
-//                    Text("이미지가 없습니다.")
-//                } else {
-                    ImageSlider(images: $pictureList)
-//                }
+                ImageSlider(images: $pictureList)
             }
             .background(.gray)
             .cornerRadius(10)
@@ -67,9 +65,12 @@ struct PictureContentView: View {
                     }
                     if !pngPictureList.contains(nil) {
                         restaurantVM.sendImage(imageData: pngPictureList as! [Data], taskId: taskId.uuidString)
+                        myRestaurant.taskId = taskId.uuidString
                     }
-                    
                 }
+            })
+            .onReceive(restaurantVM.$myRestaurant, perform: {
+                if $0 != nil {myRestaurant.storeInfo.picturesFolderId = $0?.storeInfo.picturesFolderId}
             })
         }
         .onTapGesture {
@@ -105,7 +106,7 @@ struct InPutFieldsView: View {
     
     var body: some View {
         ScrollView {
-            PictureContentView(restaurantVM: restaurantVM, taskId: taskId)
+            PictureContentView(restaurantVM: restaurantVM, myRestaurant: $myRestaurant, taskId: taskId)
             VStack(alignment: .leading) {
                 InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름 (50자 이내)", textLimit: 50, inputContent: $myRestaurant.storeInfo.name)
                 ZStack(alignment: .bottomTrailing) {

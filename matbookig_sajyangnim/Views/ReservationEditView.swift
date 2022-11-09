@@ -14,6 +14,7 @@ struct ReservationEditView: View {
     @ObservedObject var restaurantVM: RestaurantViewModel
     
     @Binding var myRestaurant: Restaurant
+    var taskId: String?
     
     @State var isSettingPaxFieldSatisfied = false
     @State var isBusinessTimeFieldSatisfied = false

@@ -44,5 +44,6 @@ struct Restaurant: Equatable, Codable {
         var openingHours = ""
         var city = "부산"
         var cuisine = "한식"
+        var pictures: [ImageUploadResponse]?
     }
 }

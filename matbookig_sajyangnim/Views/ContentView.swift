@@ -52,11 +52,17 @@ struct ContentView: View {
                             Text("내 가게")
                         }
                 }
+                .onAppear{
+                    if myRestaurant.storeInfo.pictures != nil {
+                        
+                    }
+                }
             }
             .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
+
 
 
 struct ContentView_Previews: PreviewProvider {
