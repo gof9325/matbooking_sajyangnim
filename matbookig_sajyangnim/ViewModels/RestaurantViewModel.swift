@@ -45,7 +45,7 @@ class RestaurantViewModel: ObservableObject {
                 print("RestaurantViewModel createRestaurant completion: \(completion)")
             }, receiveValue: { restaurantInfo in
                 print("restaurantInfo: \(restaurantInfo)")
-                self.myRestaurant = restaurantInfo.data
+                self.myRestaurant = restaurantInfo.data.convertToRestaurant()
             }).store(in: &subscription)
     }
     
@@ -56,7 +56,7 @@ class RestaurantViewModel: ObservableObject {
                 print("RestaurantViewModel modifyRestaurant completion: \(completion)")
             }, receiveValue: { restaurantInfo in
                 print("restaurantInfo: \(restaurantInfo)")
-                self.myRestaurant = restaurantInfo.data
+                self.myRestaurant = restaurantInfo.data.convertToRestaurant()
             }).store(in: &subscription)
     }
     

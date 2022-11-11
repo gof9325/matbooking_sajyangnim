@@ -63,8 +63,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(restaurantVM: RestaurantViewModel(), myRestaurant: Restaurant(id: ""))
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(restaurantVM: RestaurantViewModel(), myRestaurant: Restaurant(id: ""))
+//    }
+//}

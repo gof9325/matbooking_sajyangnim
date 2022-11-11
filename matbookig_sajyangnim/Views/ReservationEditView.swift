@@ -195,7 +195,8 @@ struct BusinessDayView: View {
                                     isEndTimeBiggerThanStartTime = true
                                     isBusinessFieldSatisfied = true
                                     
-                                    myRestaurant.reservationRestrictions.openingHours[dayTup.idx] = Restaurant.ReservationRestrictions.OpeningHours(start: startTime.dateFormatting(), end: endTime.dateFormatting())
+                                    myRestaurant.reservationRestrictions.openingHours[dayTup.idx] = OpeningHours(start: startTime.dateFormatting(), end: endTime.dateFormatting())
+                                    
                                 }
                             })
                             .onChange(of: startTime, perform: { newStartTime in
@@ -207,7 +208,7 @@ struct BusinessDayView: View {
                                     isEndTimeBiggerThanStartTime = true
                                     isBusinessFieldSatisfied = true
                                     
-                                    myRestaurant.reservationRestrictions.openingHours[dayTup.idx] = Restaurant.ReservationRestrictions.OpeningHours(start: startTime.dateFormatting(), end: endTime.dateFormatting())
+                                    myRestaurant.reservationRestrictions.openingHours[dayTup.idx] = OpeningHours(start: startTime.dateFormatting(), end: endTime.dateFormatting())
                                 }
                             })
                         } else {
@@ -222,7 +223,7 @@ struct BusinessDayView: View {
                                 if !$0 {
                                     myRestaurant.reservationRestrictions.openingHours.removeValue(forKey: dayTup.0)
                                 } else {
-                                    myRestaurant.reservationRestrictions.openingHours[dayTup.idx] = Restaurant.ReservationRestrictions.OpeningHours(start: startTime.dateFormatting(), end: endTime.dateFormatting())
+                                    myRestaurant.reservationRestrictions.openingHours[dayTup.idx] = OpeningHours(start: startTime.dateFormatting(), end: endTime.dateFormatting())
                                 }
                             })
                     }

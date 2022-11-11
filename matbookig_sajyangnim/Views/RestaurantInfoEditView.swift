@@ -65,7 +65,7 @@ struct PictureContentView: View {
                     }
                     if !pngPictureList.contains(nil) {
                         restaurantVM.sendImage(imageData: pngPictureList as! [Data], taskId: taskId.uuidString)
-                        myRestaurant.taskId = taskId.uuidString
+//                        myRestaurant.taskId = taskId.uuidString
                     }
                 }
             })

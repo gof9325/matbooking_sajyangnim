@@ -88,8 +88,8 @@ struct MyRestaurantView: View {
     }
 }
 
-struct MyRestaurantView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyRestaurantView(myRestaurant: Restaurant(id: ""), restaurantVM: RestaurantViewModel())
-    }
-}
+//struct MyRestaurantView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MyRestaurantView(myRestaurant: Restaurant(id: ""), restaurantVM: RestaurantViewModel())
+//    }
+//}

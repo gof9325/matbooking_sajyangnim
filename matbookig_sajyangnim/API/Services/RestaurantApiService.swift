@@ -49,26 +49,26 @@ enum RestaurantApiService {
             .eraseToAnyPublisher()
     }
     
-    static func createRestaurant(newRestaurant: Restaurant) -> AnyPublisher<ApiResponse<Restaurant>, AFError> {
+    static func createRestaurant(newRestaurant: Restaurant) -> AnyPublisher<ApiResponse<RestaurantResponse>, AFError> {
         print("RestaurantApiService - createRestaurant() called")
         return ApiClient.shared.session
             .request(RestaurantRouter.createRestaurant(newRestaurant: newRestaurant))
             .responseString { response in
                 print(response)
             }
-            .publishDecodable(type: ApiResponse<Restaurant>.self)
+            .publishDecodable(type: ApiResponse<RestaurantResponse>.self)
             .value()
             .eraseToAnyPublisher()
     }
     
-    static func modifyRestaurant(newRestaurant: Restaurant) -> AnyPublisher<ApiResponse<Restaurant>, AFError> {
+    static func modifyRestaurant(newRestaurant: Restaurant) -> AnyPublisher<ApiResponse<RestaurantResponse>, AFError> {
         print("RestaurantApiService - modifyRestaurant() called")
         return ApiClient.shared.session
             .request(RestaurantRouter.modifyRestaurant(newRestaurant: newRestaurant))
             .responseString { response in
                 print(response)
             }
-            .publishDecodable(type: ApiResponse<Restaurant>.self)
+            .publishDecodable(type: ApiResponse<RestaurantResponse>.self)
             .value()
             .eraseToAnyPublisher()
     }

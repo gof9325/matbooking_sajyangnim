@@ -54,6 +54,7 @@
 		1E8DFE112914DEC800F683B6 /* ReservationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE102914DEC800F683B6 /* ReservationItemView.swift */; };
 		1E8DFE1829179CAD00F683B6 /* BSImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 1E8DFE1729179CAD00F683B6 /* BSImagePicker */; };
 		1E8DFE1A2917D8E500F683B6 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE192917D8E500F683B6 /* PhotoPicker.swift */; };
+		1EDE6558291D0670004CC1B7 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE6557291D0670004CC1B7 /* Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		1E8DFE0E2914DE6800F683B6 /* ChatListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListItemView.swift; sourceTree = "<group>"; };
 		1E8DFE102914DEC800F683B6 /* ReservationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationItemView.swift; sourceTree = "<group>"; };
 		1E8DFE192917D8E500F683B6 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		1EDE6557291D0670004CC1B7 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,15 +245,13 @@
 		1E36D40D28F407B700F228A7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1EDE6555291D0649004CC1B7 /* Restaurant */,
 				1E36D41228F4084F00F228A7 /* Auth0Owner.swift */,
 				1E21562028F4538B00B03EFB /* OwnerResponse.swift */,
 				1E21562428F4558000B03EFB /* Owner.swift */,
 				1E21563128F548A700B03EFB /* JoinResponse.swift */,
 				1E21562628F4561300B03EFB /* ApiResponse.swift */,
-				1E3C4F352919367700D44932 /* ImageUploadResponse.swift */,
 				1E21563528F54DCD00B03EFB /* RestaurantExistsResponse.swift */,
-				1E21563728F5508900B03EFB /* Restaurant.swift */,
-				1E2DF795291B732D00EF0038 /* RestaurantResponse.swift */,
 				1E72116728F99C15009034E0 /* KakaoAddress.swift */,
 			);
 			path = Models;
@@ -264,6 +264,25 @@
 				1E21564128F6993F00B03EFB /* UIExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1EDE6555291D0649004CC1B7 /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				1EDE6556291D0666004CC1B7 /* Common */,
+				1E3C4F352919367700D44932 /* ImageUploadResponse.swift */,
+				1E21563728F5508900B03EFB /* Restaurant.swift */,
+				1E2DF795291B732D00EF0038 /* RestaurantResponse.swift */,
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		1EDE6556291D0666004CC1B7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1EDE6557291D0670004CC1B7 /* Common.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +379,7 @@
 				1E36D41128F4080600F228A7 /* OwnerViewModel.swift in Sources */,
 				1E21562128F4538B00B03EFB /* OwnerResponse.swift in Sources */,
 				1E8DFE112914DEC800F683B6 /* ReservationItemView.swift in Sources */,
+				1EDE6558291D0670004CC1B7 /* Common.swift in Sources */,
 				1E2DF796291B732D00EF0038 /* RestaurantResponse.swift in Sources */,
 				1E21563C28F5605C00B03EFB /* RestaurantViewModel.swift in Sources */,
 				1E21562528F4558000B03EFB /* Owner.swift in Sources */,
