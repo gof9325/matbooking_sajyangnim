@@ -22,10 +22,6 @@ class OwnerViewModel: ObservableObject {
     // 회원가입 이벤트
     var haveToJoin = PassthroughSubject<(), Never>()
     
-//    init(from: String) {
-//        self.auth0Owner = Auth0Owner(from: from)
-//    }
-    
     // MARK: Intant functions
     func login() {
         Auth0

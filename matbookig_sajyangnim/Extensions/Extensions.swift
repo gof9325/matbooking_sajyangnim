@@ -26,6 +26,22 @@ extension String {
         
         return dateFormatter.date(from: self) ?? Date()
     }
+    
+    enum To: String {
+        case date = "yyyy-MM-dd EEEE"
+        case time = "a hh:mm"
+    }
+    
+    func formatting(to: To) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        guard let date = dateFormatter.date(from: self) else {
+            return nil
+        }
+        dateFormatter.dateFormat = to.rawValue
+        
+        return dateFormatter.string(from: date)
+    }
 }
 
 extension Date {

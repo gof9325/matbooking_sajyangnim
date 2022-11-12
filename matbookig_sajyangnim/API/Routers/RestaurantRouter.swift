@@ -8,20 +8,6 @@
 import Foundation
 import Alamofire
 
-enum ImageRouter: URLRequestConvertible {
-    case sendImage
-    
-    func asURLRequest() throws -> URLRequest {
-        let url = URL(string: ApiClient.BASE_URL)!.appendingPathComponent("files")
-        var request = URLRequest(url: url)
-        request.method = .post
-        
-        return request
-        
-    }
-    
-}
-
 enum RestaurantRouter: URLRequestConvertible {
     
     case getRestaurantExist
@@ -94,4 +80,18 @@ enum RestaurantRouter: URLRequestConvertible {
 
         return request
     }
+}
+
+enum ImageRouter: URLRequestConvertible {
+    case sendImage
+    
+    func asURLRequest() throws -> URLRequest {
+        let url = URL(string: ApiClient.BASE_URL)!.appendingPathComponent("files")
+        var request = URLRequest(url: url)
+        request.method = .post
+        
+        return request
+        
+    }
+    
 }

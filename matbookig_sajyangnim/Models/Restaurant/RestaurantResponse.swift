@@ -12,7 +12,6 @@ struct RestaurantResponse: Equatable, Codable {
     var reservationRestrictions: ReservationRestrictions
     var storeInfo: StoreInfo
     var taskId: String?
-
 }
 
 extension RestaurantResponse {

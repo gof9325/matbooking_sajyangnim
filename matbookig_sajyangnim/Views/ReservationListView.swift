@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ReservationListView: View {
     
-    @State var reservationList = ["a", "b"]
+    @StateObject var reservationVM = ReservationViewModel()
+    
+    @State var reservationList: [Reservation]?
     @State var date = Date()
     
     var body: some View {
@@ -24,12 +26,22 @@ struct ReservationListView: View {
                 .datePickerStyle(.graphical)
                 ScrollView {
                     LazyVStack {
-                        ForEach(reservationList, id:\.self) { reservation in
-                            ReservationItemView()
+                        if reservationList == nil {
+                            ProgressView()
+                        } else {
+                            ForEach(reservationList!, id:\.self) { reservation in
+                                ReservationItemView(reservation: reservation)
+                            }
                         }
                     }
                 }
             }
+            .onAppear {
+                reservationVM.getReservations()
+            }
+            .onReceive(reservationVM.$reservationList, perform: {
+                if $0 != nil {reservationList = $0}
+            })
         }
         .padding()
     }

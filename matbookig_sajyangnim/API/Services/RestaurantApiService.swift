@@ -40,11 +40,11 @@ enum RestaurantApiService {
             .eraseToAnyPublisher()
     }
     
-    static func getRestaurantInfo(id: String) -> AnyPublisher<ApiResponse<Restaurant>, AFError> {
+    static func getRestaurantInfo(id: String) -> AnyPublisher<ApiResponse<RestaurantResponse>, AFError> {
         print("RestaurantApiService - getRestaurantInfo() called")
         return ApiClient.shared.session
             .request(RestaurantRouter.getRestaurantInfo(id: id))
-            .publishDecodable(type: ApiResponse<Restaurant>.self)
+            .publishDecodable(type: ApiResponse<RestaurantResponse>.self)
             .value()
             .eraseToAnyPublisher()
     }
