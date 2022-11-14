@@ -14,6 +14,8 @@ struct RestaurantCreationView: View {
     
     @State var myRestaurant: Restaurant
     
+    @State var pictureList = [UIImage]()
+    
     @State var isSatisfiedRequiredValues = false
     
     var taskId = UUID()
@@ -21,7 +23,7 @@ struct RestaurantCreationView: View {
     var body: some View {
         GeometryReader { proxy in
             NavigationView {
-                InPutFieldsView(proxy: proxy, restaurantVM: restaurantVM, myRestaurant: $myRestaurant, isEdit: false, taskId: taskId, isSatisfiedRequiredValues: $isSatisfiedRequiredValues)
+                InPutFieldsView(proxy: proxy, restaurantVM: restaurantVM, myRestaurant: $myRestaurant, pictureList: $pictureList, isEdit: false, taskId: taskId, isSatisfiedRequiredValues: $isSatisfiedRequiredValues)
                 .navigationTitle("가게 정보 설정")
             }
         }

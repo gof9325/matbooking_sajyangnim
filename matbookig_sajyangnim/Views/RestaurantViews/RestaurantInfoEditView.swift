@@ -12,6 +12,8 @@ struct RestaurantInfoEditView: View {
     
     @ObservedObject var restaurantVM: RestaurantViewModel
     
+    @Binding var pictureList: [UIImage]
+    
     @State var myRestaurant: Restaurant
     
     @State var isSatisfiedRequiredValues = true
@@ -20,7 +22,7 @@ struct RestaurantInfoEditView: View {
     
     var body: some View {
         GeometryReader { proxy in
-            InPutFieldsView(proxy: proxy, restaurantVM: restaurantVM, myRestaurant: $myRestaurant, isEdit: true, taskId: taskId, isSatisfiedRequiredValues: $isSatisfiedRequiredValues)
+            InPutFieldsView(proxy: proxy, restaurantVM: restaurantVM, myRestaurant: $myRestaurant, pictureList: $pictureList, isEdit: true, taskId: taskId, isSatisfiedRequiredValues: $isSatisfiedRequiredValues)
                 .navigationTitle("가게 정보 설정")
                 .padding()
         }
@@ -30,7 +32,7 @@ struct RestaurantInfoEditView: View {
 struct PictureContentView: View {
     
     @ObservedObject var restaurantVM: RestaurantViewModel
-    @State var pictureList = [UIImage]()
+    @Binding var pictureList: [UIImage]
     @State var isPresented = false
     
     @Binding var myRestaurant: Restaurant
@@ -92,6 +94,8 @@ struct InPutFieldsView: View {
     
     @Binding var myRestaurant: Restaurant
     
+    @Binding var pictureList: [UIImage]
+    
     @State var addressSearch = false
     
     @State private var isCancelled = false
@@ -106,7 +110,7 @@ struct InPutFieldsView: View {
     
     var body: some View {
         ScrollView {
-            PictureContentView(restaurantVM: restaurantVM, myRestaurant: $myRestaurant, taskId: taskId)
+            PictureContentView(restaurantVM: restaurantVM, pictureList: $pictureList, myRestaurant: $myRestaurant, taskId: taskId)
             VStack(alignment: .leading) {
                 InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름 (50자 이내)", textLimit: 50, inputContent: $myRestaurant.storeInfo.name)
                 ZStack(alignment: .bottomTrailing) {

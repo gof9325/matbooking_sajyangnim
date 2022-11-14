@@ -14,9 +14,9 @@ enum RestaurantApiService {
     static func downloadImage(url: String) -> AnyPublisher<Data, AFError> {
         return ApiClient.imageShared.session
             .download(ImageRouter.downloadImage(url: url))
-            .responseString { response in
-                print("RestaurantApiService - downloadImage() response: \(response)")
-            }
+//            .responseString { response in
+//                print("RestaurantApiService - downloadImage() response: \(response)")
+//            }
             .publishData()
             .value()
             .eraseToAnyPublisher()

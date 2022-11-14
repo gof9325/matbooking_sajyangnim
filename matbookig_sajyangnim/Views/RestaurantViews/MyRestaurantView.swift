@@ -24,7 +24,9 @@ struct MyRestaurantView: View {
                     .padding(5)
                     .frame(minHeight: 300)
                     .onAppear {
-                        // 이미지 받아오기
+                        if pictureList.isEmpty {
+                            restaurantVM.getImages()
+                        }
                     }
                 VStack(alignment: .leading) {
                     Text(myRestaurant.storeInfo.name)
@@ -70,7 +72,7 @@ struct MyRestaurantView: View {
                     alignment: .topLeading
                 )
                 .padding()
-                NavigationLink("가게정보 수정하기", destination: RestaurantInfoEditView(restaurantVM: restaurantVM, myRestaurant: myRestaurant))
+                NavigationLink("가게정보 수정하기", destination: RestaurantInfoEditView(restaurantVM: restaurantVM, pictureList: $pictureList ,myRestaurant: myRestaurant))
                     .padding()
                     .frame(width: 160)
                     .background(Color.matNature)
@@ -79,6 +81,11 @@ struct MyRestaurantView: View {
             }
             .onReceive(restaurantVM.$myRestaurant, perform: {
                 myRestaurant = $0!
+                if !myRestaurant.imagesData.isEmpty {
+                    for data in $0!.imagesData {
+                        pictureList.append(UIImage(data: data) ?? UIImage())
+                    }
+                }
             })
         }
     }

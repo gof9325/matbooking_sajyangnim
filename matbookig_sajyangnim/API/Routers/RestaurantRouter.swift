@@ -79,7 +79,7 @@ enum ImageRouter: URLRequestConvertible {
     case sendImage
     case downloadImage(url: String)
     
-    private var url: URL {
+    private var baseURL: URL {
         switch self {
         case let .downloadImage(url):
             return URL(string: url)!
@@ -107,7 +107,13 @@ enum ImageRouter: URLRequestConvertible {
     }
     
     func asURLRequest() throws -> URLRequest {
-        let url = url.appendingPathComponent(endPoint)
+        let url: URL
+        
+        if !endPoint.isEmpty {
+            url = baseURL.appendingPathComponent(endPoint)
+        } else {
+            url = baseURL
+        }
         var request = URLRequest(url: url)
         request.method = method
         

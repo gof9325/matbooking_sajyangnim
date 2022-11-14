@@ -18,6 +18,23 @@ class RestaurantViewModel: ObservableObject {
     func getImages() {
         print("RestaurantViewModel - getImages() called")
         
+        guard let restaurantPictures = myRestaurant?.storeInfo.pictures else {
+            return
+        }
+        
+        let imageUrls = restaurantPictures.compactMap { i in
+            i.url
+        }
+        
+        _ = imageUrls.compactMap { url in
+            RestaurantApiService.downloadImage(url: url)
+                .sink(receiveCompletion:{ completion in
+                    print("RestaurantViewModel getImages completion: \(completion)")
+                }, receiveValue:{ imageData in
+                    self.myRestaurant?.imagesData.append(imageData)
+                }).store(in: &subscription)
+        }
+        
     }
         
     func sendImage(imageData: [Data], taskId: String) {
