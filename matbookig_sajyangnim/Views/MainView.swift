@@ -63,8 +63,6 @@ struct MainView: View {
             mainVM.restaurantVM = restaurantVM
         }
     }
-    
-    
 }
 
 //struct MainView_Previews: PreviewProvider {

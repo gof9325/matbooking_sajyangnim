@@ -18,18 +18,14 @@ struct MyRestaurantView: View {
     var body: some View {
         VStack {
             ScrollView {
-                VStack {
-                    if pictureList.isEmpty {
-                        Text("이미지가 없습니다.")
-                    } else {
-                        ImageSlider(images: $pictureList)
+                ImageSlider(images: $pictureList)
+                    .background(.gray)
+                    .cornerRadius(10)
+                    .padding(5)
+                    .frame(minHeight: 300)
+                    .onAppear {
+                        // 이미지 받아오기
                     }
-                }
-                .background(.gray)
-                .cornerRadius(10)
-                .padding(5)
-                .frame(minHeight: 300)
-                
                 VStack(alignment: .leading) {
                     Text(myRestaurant.storeInfo.name)
                         .font(.system(size: 50, weight: .heavy))

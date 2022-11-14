@@ -10,10 +10,21 @@ import Alamofire
 import Combine
 
 enum RestaurantApiService {
+
+    static func downloadImage(url: String) -> AnyPublisher<Data, AFError> {
+        return ApiClient.imageShared.session
+            .download(ImageRouter.downloadImage(url: url))
+            .responseString { response in
+                print("RestaurantApiService - downloadImage() response: \(response)")
+            }
+            .publishData()
+            .value()
+            .eraseToAnyPublisher()
+    }
     
-    static func sendImage(imageData: [Data], taskId: String, fileFolderId: String?) -> AnyPublisher<ApiResponse<[ImageUploadResponse]>, AFError> {
+    static func sendImage(imageData: [Data], taskId: String, fileFolderId: String?) -> AnyPublisher<ApiResponse<[ImageResponse]>, AFError> {
         print("RestaurantApiService - sendImage() called")
-        return ApiClient.imageUploadShared.session
+        return ApiClient.imageShared.session
             .upload(multipartFormData: { multipartFormData in
                 if fileFolderId != nil {
                     multipartFormData.append(fileFolderId!.data(using: .utf8)!, withName: "fileFolderId")
@@ -26,7 +37,7 @@ enum RestaurantApiService {
             .responseString { response in
                 print("RestaurantApiService - sendImage() response: \(response)")
             }
-            .publishDecodable(type: ApiResponse<[ImageUploadResponse]>.self)
+            .publishDecodable(type: ApiResponse<[ImageResponse]>.self)
             .value()
             .eraseToAnyPublisher()
     }

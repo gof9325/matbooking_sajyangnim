@@ -14,7 +14,6 @@ enum RestaurantRouter: URLRequestConvertible {
     case createRestaurant(newRestaurant: Restaurant)
     case getRestaurantInfo(id: String)
     case modifyRestaurant(newRestaurant: Restaurant)
-    case sendImage(taskId: String)
     
     private var baseURL: URL {
         return URL(string:ApiClient.BASE_URL)!
@@ -28,8 +27,6 @@ enum RestaurantRouter: URLRequestConvertible {
             return "stores"
         case let .getRestaurantInfo(id):
             return "stores/\(id)"
-        case .sendImage:
-            return "files"
         }
     }
     
@@ -37,7 +34,7 @@ enum RestaurantRouter: URLRequestConvertible {
         switch self {
         case .getRestaurantExist, .getRestaurantInfo:
             return .get
-        case .createRestaurant, .sendImage:
+        case .createRestaurant:
             return .post
         case .modifyRestaurant:
             return .patch
@@ -61,10 +58,6 @@ enum RestaurantRouter: URLRequestConvertible {
                 print(error)
                 return [String: Any]()
             }
-        case let .sendImage(taskId):
-            var parameters = Parameters()
-            parameters["taskId"] = taskId
-            return parameters
         }
         
     }
@@ -84,14 +77,41 @@ enum RestaurantRouter: URLRequestConvertible {
 
 enum ImageRouter: URLRequestConvertible {
     case sendImage
+    case downloadImage(url: String)
+    
+    private var url: URL {
+        switch self {
+        case let .downloadImage(url):
+            return URL(string: url)!
+        default:
+            return URL(string: ApiClient.BASE_URL)!
+        }
+    }
+    
+    private var endPoint: String {
+        switch self {
+        case .sendImage:
+            return "files"
+        default :
+            return ""
+        }
+    }
+    
+    private var method: HTTPMethod {
+        switch self {
+        case .sendImage:
+            return .post
+        case .downloadImage:
+            return .get
+        }
+    }
     
     func asURLRequest() throws -> URLRequest {
-        let url = URL(string: ApiClient.BASE_URL)!.appendingPathComponent("files")
+        let url = url.appendingPathComponent(endPoint)
         var request = URLRequest(url: url)
-        request.method = .post
+        request.method = method
         
         return request
-        
     }
     
 }

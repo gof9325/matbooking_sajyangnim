@@ -19,7 +19,7 @@ struct StoreInfo: Codable, Equatable{
     var name: String
     var subtitle: String
     var picturesFolderId: String?
-    var pictures: [ImageUploadResponse]?
+    var pictures: [ImageResponse]?
     var description: String
     var address: String
     var phone: String

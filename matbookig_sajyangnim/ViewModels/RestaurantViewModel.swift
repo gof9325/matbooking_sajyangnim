@@ -14,6 +14,11 @@ class RestaurantViewModel: ObservableObject {
     private var subscription = Set<AnyCancellable>()
     
     @Published var myRestaurant: Restaurant?
+    
+    func getImages() {
+        print("RestaurantViewModel - getImages() called")
+        
+    }
         
     func sendImage(imageData: [Data], taskId: String) {
         print("RestaurantViewModel - sendImage() called")
