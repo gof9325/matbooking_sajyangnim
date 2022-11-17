@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MyRestaurantView: View {
+    @EnvironmentObject var ownerVM: OwnerViewModel
     
     @State var pictureList = [UIImage]()
     
@@ -16,7 +17,7 @@ struct MyRestaurantView: View {
     @StateObject var restaurantVM: RestaurantViewModel
     
     var body: some View {
-        VStack {
+        NavigationView {
             ScrollView {
                 ImageSlider(images: $pictureList)
                     .background(.gray)
@@ -25,6 +26,7 @@ struct MyRestaurantView: View {
                     .frame(minHeight: 300)
                     .onAppear {
                         if pictureList.isEmpty {
+                            print("pictureList.isEmpty")
                             restaurantVM.getImages()
                         }
                     }
@@ -50,7 +52,7 @@ struct MyRestaurantView: View {
                                 .padding(.bottom, 5)
                             HStack {
                                 Image(systemName: "person.2")
-                                Text("2 ~ 22 명")
+                                Text("\(myRestaurant.reservationRestrictions.paxMin) ~ \(myRestaurant.reservationRestrictions.paxMax) 명")
                             }
                         }
                         Spacer()
@@ -72,19 +74,24 @@ struct MyRestaurantView: View {
                     alignment: .topLeading
                 )
                 .padding()
-                NavigationLink("가게정보 수정하기", destination: RestaurantInfoEditView(restaurantVM: restaurantVM, pictureList: $pictureList ,myRestaurant: myRestaurant))
+                NavigationLink("가게정보 수정하기", destination: RestaurantInfoEditView(restaurantVM: restaurantVM, pictureList: pictureList ,myRestaurant: myRestaurant))
                     .padding()
                     .frame(width: 160)
                     .background(Color.matNature)
                     .cornerRadius(10)
                     .foregroundColor(.white)
+                Button("로그아웃"){
+                    ownerVM.logout()
+                }
+                .matbookingButtonStyle(width: 100, color: Color.matNature)
             }
+            .navigationTitle("내 가게")
             .onReceive(restaurantVM.$myRestaurant, perform: {
                 myRestaurant = $0!
                 if !myRestaurant.imagesData.isEmpty {
                     for data in $0!.imagesData {
                         pictureList.append(UIImage(data: data) ?? UIImage())
-                    }
+                        }
                 }
             })
         }

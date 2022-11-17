@@ -17,7 +17,7 @@ struct MainView: View {
     
     @State var auth0Owner: Auth0Owner?
     
-    @State var ownerAndRestaurant: (Restaurant?, Owner?)?
+    @State var ownerAndRestaurant: (Owner?, Restaurant?)?
     
     @State var isLoaded = false
     
@@ -29,13 +29,13 @@ struct MainView: View {
                 if !isLoaded {
                     ProgressView()
                 } else {
-                    if ownerAndRestaurant?.0 != nil {
-                        ContentView(restaurantVM: restaurantVM, myRestaurant: ownerAndRestaurant!.0!)
+                    if ownerAndRestaurant?.1 != nil {
+                        ContentView(restaurantVM: restaurantVM, myRestaurant: ownerAndRestaurant!.1!)
                     } else {
-                        if ownerAndRestaurant?.1 == nil {
+                        if ownerAndRestaurant?.0 == nil {
                             JoinView()
                         } else {
-                            if ownerAndRestaurant?.0 == nil {
+                            if ownerAndRestaurant?.1 == nil {
                                 RestaurantCreationView(restaurantVM: restaurantVM, myRestaurant: Restaurant(id: ""))
                             } else {
                                 ProgressView()
@@ -51,12 +51,17 @@ struct MainView: View {
             mainVM.getOwnerAndRestaurantExists()
             self.auth0Owner = $0
         })
+        .onReceive(ownerVM.$owner, perform: {
+            if $0 != nil {
+                self.ownerAndRestaurant?.0 = $0
+            }
+        })
         .onReceive(mainVM.dataLoaded, perform: {
             self.ownerAndRestaurant = $0
             isLoaded = true
         })
         .onReceive(restaurantVM.$myRestaurant, perform: {
-            self.ownerAndRestaurant?.0 = $0
+            if $0 != nil { self.ownerAndRestaurant?.1 = $0! }
         })
         .onAppear() {
             mainVM.ownerVM = ownerVM

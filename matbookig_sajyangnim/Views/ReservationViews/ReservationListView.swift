@@ -15,7 +15,7 @@ struct ReservationListView: View {
     @State var date = Date()
     
     var body: some View {
-        VStack {
+        NavigationView {
             VStack {
                 DatePicker(
                     "start Date",
@@ -36,14 +36,15 @@ struct ReservationListView: View {
                     }
                 }
             }
+            .navigationTitle("예약목록")
             .onAppear {
                 reservationVM.getReservations()
             }
             .onReceive(reservationVM.$reservationList, perform: {
                 if $0 != nil {reservationList = $0}
             })
+            .padding()
         }
-        .padding()
     }
 }
 

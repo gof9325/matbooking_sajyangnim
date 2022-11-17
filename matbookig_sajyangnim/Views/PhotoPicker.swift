@@ -37,13 +37,14 @@ struct PhotoPicker: UIViewControllerRepresentable {
         }
         
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            parent.pickerResult.removeAll()
+            print("PhotoPicker: Emptying pictureList (State)")
             for image in results {
                 if image.itemProvider.canLoadObject(ofClass: UIImage.self) {
                     image.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] newImage, error in
                         if let error = error {
                             print("Can't load image \(error.localizedDescription)")
                         } else if let image = newImage as? UIImage {
+                            print("PhotoPicker: Appending selected picture to pictureList (State)")
                             self?.parent.pickerResult.append(image)
                         }
                     }

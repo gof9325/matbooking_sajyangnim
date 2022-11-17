@@ -26,5 +26,12 @@ final class ApiLogger: EventMonitor {
     func request<Value>(_ request: DataRequest, didParseResponse response: DataResponse<Value, AFError>) {
         debugPrint("ApiLogger - response: \(response))")
         debugPrint("ApiLogger - Finished: \(response) \(response.response?.statusCode)")
+        if response.error != nil {
+            let decoder = JSONDecoder()
+            if let data = response.data {
+                let json = try? decoder.decode(ApiResponse<[String:String]>.self, from: data)
+                print(json)
+            }
+        }
     }
 }

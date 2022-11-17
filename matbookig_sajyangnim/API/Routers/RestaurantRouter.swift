@@ -11,9 +11,9 @@ import Alamofire
 enum RestaurantRouter: URLRequestConvertible {
     
     case getRestaurantExist
-    case createRestaurant(newRestaurant: Restaurant)
+    case createRestaurant(newRestaurant: RestaurantRequest)
     case getRestaurantInfo(id: String)
-    case modifyRestaurant(newRestaurant: Restaurant)
+    case modifyRestaurant(newRestaurant: RestaurantRequest)
     
     private var baseURL: URL {
         return URL(string:ApiClient.BASE_URL)!

@@ -12,17 +12,17 @@ struct RestaurantInfoEditView: View {
     
     @ObservedObject var restaurantVM: RestaurantViewModel
     
-    @Binding var pictureList: [UIImage]
+    @State var pictureList: [UIImage]
     
     @State var myRestaurant: Restaurant
     
     @State var isSatisfiedRequiredValues = true
     
-    var taskId = UUID()
+//    let taskId: String
     
     var body: some View {
         GeometryReader { proxy in
-            InPutFieldsView(proxy: proxy, restaurantVM: restaurantVM, myRestaurant: $myRestaurant, pictureList: $pictureList, isEdit: true, taskId: taskId, isSatisfiedRequiredValues: $isSatisfiedRequiredValues)
+            InPutFieldsView(proxy: proxy, restaurantVM: restaurantVM, myRestaurant: $myRestaurant, pictureList: pictureList, isEdit: true, isSatisfiedRequiredValues: $isSatisfiedRequiredValues)
                 .navigationTitle("가게 정보 설정")
                 .padding()
         }
@@ -32,12 +32,12 @@ struct RestaurantInfoEditView: View {
 struct PictureContentView: View {
     
     @ObservedObject var restaurantVM: RestaurantViewModel
-    @Binding var pictureList: [UIImage]
+    @State var pictureList: [UIImage]
     @State var isPresented = false
     
     @Binding var myRestaurant: Restaurant
     
-    let taskId: UUID
+    let taskId: String
     
     var body: some View {
         VStack {
@@ -55,8 +55,7 @@ struct PictureContentView: View {
                 PhotoPicker(pickerResult: $pictureList, isPresented: $isPresented)
             }
             .onChange(of: pictureList, perform: { newPictureList in
-                // TODO: 새로운 이미지 추가 됬는지 확인?
-                
+                print("RestaurantInfoEditView onChange[pictureList] triggered")
                 if !newPictureList.isEmpty {
                     let pngPictureList = pictureList.map { image -> Data? in
                         if let pngImage = image.pngData() {
@@ -66,8 +65,8 @@ struct PictureContentView: View {
                         }
                     }
                     if !pngPictureList.contains(nil) {
-                        restaurantVM.sendImage(imageData: pngPictureList as! [Data], taskId: taskId.uuidString)
-//                        myRestaurant.taskId = taskId.uuidString
+                        print("RestaurantInfoEditView onChange[pictureList]: Uploading \(pngPictureList.count) images")
+                        restaurantVM.sendImage(imageData: pngPictureList as! [Data], taskId: taskId)
                     }
                 }
             })
@@ -94,7 +93,7 @@ struct InPutFieldsView: View {
     
     @Binding var myRestaurant: Restaurant
     
-    @Binding var pictureList: [UIImage]
+    @State var pictureList: [UIImage]
     
     @State var addressSearch = false
     
@@ -104,13 +103,13 @@ struct InPutFieldsView: View {
     
     let cuisine = ["한식", "일식", "이탈리아음식"]
     
-    let taskId: UUID
+    @State var taskId = UUID()
     
     @Binding var isSatisfiedRequiredValues: Bool
     
     var body: some View {
         ScrollView {
-            PictureContentView(restaurantVM: restaurantVM, pictureList: $pictureList, myRestaurant: $myRestaurant, taskId: taskId)
+            PictureContentView(restaurantVM: restaurantVM, pictureList: pictureList, myRestaurant: $myRestaurant, taskId: taskId.uuidString)
             VStack(alignment: .leading) {
                 InputFieldContentView(title: "가게 이름", placeHolder: "가게 이름 (50자 이내)", textLimit: 50, inputContent: $myRestaurant.storeInfo.name)
                 ZStack(alignment: .bottomTrailing) {
@@ -175,7 +174,7 @@ struct InPutFieldsView: View {
         HStack {
             if isSatisfiedRequiredValues {
                 Spacer()
-                NavigationLink("다음", destination: ReservationEditView(restaurantVM: restaurantVM, myRestaurant: $myRestaurant, isEdit: isEdit))
+                NavigationLink("다음", destination: ReservationEditView(restaurantVM: restaurantVM, taskId: taskId.uuidString, myRestaurant: $myRestaurant, isEdit: isEdit))
                     .padding()
                     .frame(width: 100)
                     .background(Color.matNature)

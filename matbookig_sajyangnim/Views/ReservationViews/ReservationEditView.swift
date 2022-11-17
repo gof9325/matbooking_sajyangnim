@@ -13,8 +13,9 @@ struct ReservationEditView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
     @ObservedObject var restaurantVM: RestaurantViewModel
     
+    let taskId: String?
+    
     @Binding var myRestaurant: Restaurant
-    var taskId: String?
     
     @State var isSettingPaxFieldSatisfied = false
     @State var isBusinessTimeFieldSatisfied = false
@@ -58,9 +59,9 @@ struct ReservationEditView: View {
                 Spacer()
                 Button("완료") {
                     if isEdit {
-                        restaurantVM.modifyRestaurant(newRestaurant: myRestaurant)
+                        restaurantVM.modifyRestaurant(newRestaurant: myRestaurant, taskId: taskId)
                     } else {
-                        restaurantVM.createRestaurant(newRestaurant: myRestaurant)
+                        restaurantVM.createRestaurant(newRestaurant: myRestaurant, taskId: taskId)
                     }
                 }
                 .matbookingButtonStyle(width: 100, color: Color.matNature)

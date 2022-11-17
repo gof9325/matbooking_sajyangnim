@@ -11,6 +11,7 @@
 		1E207D0D291FDAB4003B21CB /* ReservationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E207D0C291FDAB4003B21CB /* ReservationService.swift */; };
 		1E207D10291FDB72003B21CB /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E207D0F291FDB72003B21CB /* Reservation.swift */; };
 		1E207D12291FDC58003B21CB /* ReservationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E207D11291FDC58003B21CB /* ReservationViewModel.swift */; };
+		1E207D1729251977003B21CB /* RestaurantRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E207D1629251977003B21CB /* RestaurantRequest.swift */; };
 		1E21560128F4161300B03EFB /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21560028F4161300B03EFB /* ChatDetailView.swift */; };
 		1E21560328F4164300B03EFB /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21560228F4164300B03EFB /* ChatListView.swift */; };
 		1E21561F28F4528600B03EFB /* OwnerApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E21561E28F4528600B03EFB /* OwnerApiService.swift */; };
@@ -67,6 +68,7 @@
 		1E207D0E291FDB3F003B21CB /* Empty.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Empty.md; sourceTree = "<group>"; };
 		1E207D0F291FDB72003B21CB /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
 		1E207D11291FDC58003B21CB /* ReservationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewModel.swift; sourceTree = "<group>"; };
+		1E207D1629251977003B21CB /* RestaurantRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantRequest.swift; sourceTree = "<group>"; };
 		1E21560028F4161300B03EFB /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
 		1E21560228F4164300B03EFB /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		1E21561E28F4528600B03EFB /* OwnerApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerApiService.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				1EDE6556291D0666004CC1B7 /* Common */,
 				1E21563728F5508900B03EFB /* Restaurant.swift */,
 				1E2DF795291B732D00EF0038 /* RestaurantResponse.swift */,
+				1E207D1629251977003B21CB /* RestaurantRequest.swift */,
 				1E21563528F54DCD00B03EFB /* RestaurantExistsResponse.swift */,
 				1E3C4F352919367700D44932 /* ImageResponse.swift */,
 			);
@@ -444,6 +447,7 @@
 				1E72116828F99C15009034E0 /* KakaoAddress.swift in Sources */,
 				1E21563828F5508900B03EFB /* Restaurant.swift in Sources */,
 				1E21560328F4164300B03EFB /* ChatListView.swift in Sources */,
+				1E207D1729251977003B21CB /* RestaurantRequest.swift in Sources */,
 				1E8DFE1A2917D8E500F683B6 /* PhotoPicker.swift in Sources */,
 				1E72116A29062F90009034E0 /* MainViewModel.swift in Sources */,
 				1E3C4F362919367700D44932 /* ImageResponse.swift in Sources */,

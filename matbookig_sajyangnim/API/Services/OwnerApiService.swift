@@ -23,6 +23,9 @@ enum OwnerApiService {
         print("OwnerApiService - join() called")
         return ApiClient.shared.session
             .request(OwnerRouter.join(name: name, mobile: mobile))
+            .responseString { response in
+                print("OwnerApiService - join() response: \(response)")
+            }
             .publishDecodable(type: ApiResponse<JoinResponse>.self)
             .value()
             .eraseToAnyPublisher()

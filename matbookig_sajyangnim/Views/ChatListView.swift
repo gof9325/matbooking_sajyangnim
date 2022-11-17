@@ -29,7 +29,7 @@ struct ChatListView: View {
                         }
                     }
                 }
-                .navigationBarHidden(true)
+                .navigationTitle("채팅목록")
             }
         }
     }

@@ -12,7 +12,8 @@ import Combine
 enum RestaurantApiService {
 
     static func downloadImage(url: String) -> AnyPublisher<Data, AFError> {
-        return ApiClient.imageShared.session
+        print("url: \(url)")
+        return ApiClient.imageDownload.session
             .download(ImageRouter.downloadImage(url: url))
 //            .responseString { response in
 //                print("RestaurantApiService - downloadImage() response: \(response)")
@@ -60,7 +61,7 @@ enum RestaurantApiService {
             .eraseToAnyPublisher()
     }
     
-    static func createRestaurant(newRestaurant: Restaurant) -> AnyPublisher<ApiResponse<RestaurantResponse>, AFError> {
+    static func createRestaurant(newRestaurant: RestaurantRequest) -> AnyPublisher<ApiResponse<RestaurantResponse>, AFError> {
         print("RestaurantApiService - createRestaurant() called")
         return ApiClient.shared.session
             .request(RestaurantRouter.createRestaurant(newRestaurant: newRestaurant))
@@ -72,13 +73,10 @@ enum RestaurantApiService {
             .eraseToAnyPublisher()
     }
     
-    static func modifyRestaurant(newRestaurant: Restaurant) -> AnyPublisher<ApiResponse<RestaurantResponse>, AFError> {
+    static func modifyRestaurant(newRestaurant: RestaurantRequest) -> AnyPublisher<ApiResponse<RestaurantResponse>, AFError> {
         print("RestaurantApiService - modifyRestaurant() called")
         return ApiClient.shared.session
             .request(RestaurantRouter.modifyRestaurant(newRestaurant: newRestaurant))
-            .responseString { response in
-                print(response)
-            }
             .publishDecodable(type: ApiResponse<RestaurantResponse>.self)
             .value()
             .eraseToAnyPublisher()
