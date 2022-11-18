@@ -12,13 +12,11 @@ struct RestaurantInfoEditView: View {
     
     @ObservedObject var restaurantVM: RestaurantViewModel
     
-    @State var pictureList: [UIImage]
+    @State var pictureList: [Picture]
     
     @State var myRestaurant: Restaurant
     
     @State var isSatisfiedRequiredValues = true
-    
-//    let taskId: String
     
     var body: some View {
         GeometryReader { proxy in
@@ -32,7 +30,7 @@ struct RestaurantInfoEditView: View {
 struct PictureContentView: View {
     
     @ObservedObject var restaurantVM: RestaurantViewModel
-    @State var pictureList: [UIImage]
+    @State var pictureList: [Picture]
     @State var isPresented = false
     
     @Binding var myRestaurant: Restaurant
@@ -45,7 +43,7 @@ struct PictureContentView: View {
                 .font(.largeTitle)
                 .padding(.top)
             VStack {
-                ImageSlider(images: $pictureList)
+                ImageSlider(images: pictureList)
             }
             .background(.gray)
             .cornerRadius(10)
@@ -56,13 +54,19 @@ struct PictureContentView: View {
             }
             .onChange(of: pictureList, perform: { newPictureList in
                 print("RestaurantInfoEditView onChange[pictureList] triggered")
-                if !newPictureList.isEmpty {
-                    let pngPictureList = pictureList.map { image -> Data? in
-                        if let pngImage = image.pngData() {
-                            return pngImage
-                        } else {
-                            return nil
-                        }
+                if !newPictureList.isEmpty { // newPictureList가 nil이 아니라면
+                    let pictureImageList: [UIImage] = newPictureList.filter { $0.isNeedUpload }.map { $0.image }
+                    let pngPictureList = pictureImageList.map { image -> Data? in
+//                        if image != nil {
+                            if let pngImage = image.pngData() {
+                                return pngImage
+                            }
+                        else {
+                                return nil
+                            }
+//                        } else {
+//                            return nil
+//                        }
                     }
                     if !pngPictureList.contains(nil) {
                         print("RestaurantInfoEditView onChange[pictureList]: Uploading \(pngPictureList.count) images")
@@ -93,7 +97,7 @@ struct InPutFieldsView: View {
     
     @Binding var myRestaurant: Restaurant
     
-    @State var pictureList: [UIImage]
+    @State var pictureList: [Picture]
     
     @State var addressSearch = false
     

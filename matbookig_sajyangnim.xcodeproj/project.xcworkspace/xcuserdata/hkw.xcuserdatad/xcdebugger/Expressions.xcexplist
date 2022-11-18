@@ -34,9 +34,25 @@
       </ContextState>
       <ContextState
          contextName = "closure #2 in closure #1 in MyRestaurantView.body.getter:MyRestaurantView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.pictureList">
+            </PersistentString>
+            <PersistentString
+               value = "pictureList">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "closure #1 in Session.performUploadRequest(_:):Session.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in closure #1 in MyRestaurantView.body.getter:MyRestaurantView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "$0">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "closure #1 in closure #1 in closure #1 in closure #1 in BusinessDayView.body.getter:ReservationEditView.swift">
@@ -167,6 +183,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in PhotoPicker.Coordinator.picker(_:didFinishPicking:):PhotoPicker.swift">
+      </ContextState>
+      <ContextState
+         contextName = "property wrapper backing initializer of ImageSlider.images:UIExtensions.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.images">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #2 in closure #1 in closure #1 in closure #1 in closure #1 in BusinessDayView.body.getter:ReservationEditView.swift">
          <PersistentStrings>
             <PersistentString
@@ -187,6 +214,9 @@
                value = "request.headers">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #3 in closure #1 in PictureContentView.body.getter:RestaurantInfoEditView.swift">
       </ContextState>
       <ContextState
          contextName = "ImageUploadInterceptor.adapt(_:for:completion:):ImageUploadInterceptor.swift">
@@ -243,7 +273,10 @@
          contextName = "closure #1 in closure #1 in ReservationEditView.buttonGroup.getter:ReservationEditView.swift">
       </ContextState>
       <ContextState
-         contextName = "ImageSlider.body.getter:UIExtensions.swift">
+         contextName = "closure #4 in closure #1 in PictureContentView.body.getter:RestaurantInfoEditView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in MyRestaurantView.body.getter:MyRestaurantView.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in closure #1 in closure #1 in InPutFieldsView.body.getter:RestaurantInfoEditView.swift">

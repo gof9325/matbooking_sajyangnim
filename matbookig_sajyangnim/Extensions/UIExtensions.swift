@@ -11,13 +11,12 @@ import SwiftUI
 // MARK: View
 
 struct ImageSlider: View {
-    
-    @Binding var images: [UIImage]
+    var images: [Picture]
     
     var body: some View {
         if !images.isEmpty {
             TabView {
-                ForEach(images, id: \.self) { item in
+                ForEach(images.map {$0.image}, id: \.self) { item in
                     Image(uiImage: item)
                         .resizable()
                         .scaledToFill()
@@ -95,5 +94,3 @@ extension Color {
     // rgb(92, 141, 137)
     static let matHavyGreen = Color(r: 92, g: 141, b: 137)
 }
-
-

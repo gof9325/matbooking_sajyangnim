@@ -10,7 +10,7 @@ import SwiftUI
 struct MyRestaurantView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
     
-    @State var pictureList = [UIImage]()
+    @State var pictureList = [Picture]()
     
     @State var myRestaurant: Restaurant
     
@@ -19,14 +19,13 @@ struct MyRestaurantView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                ImageSlider(images: $pictureList)
+                ImageSlider(images: pictureList)
                     .background(.gray)
                     .cornerRadius(10)
                     .padding(5)
                     .frame(minHeight: 300)
                     .onAppear {
                         if pictureList.isEmpty {
-                            print("pictureList.isEmpty")
                             restaurantVM.getImages()
                         }
                     }
@@ -90,7 +89,7 @@ struct MyRestaurantView: View {
                 myRestaurant = $0!
                 if !myRestaurant.imagesData.isEmpty {
                     for data in $0!.imagesData {
-                        pictureList.append(UIImage(data: data) ?? UIImage())
+                        pictureList.append(Picture(isNeedUpload: false, image: UIImage(data: data) ?? UIImage()))
                         }
                 }
             })

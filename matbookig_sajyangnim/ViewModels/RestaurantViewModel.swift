@@ -29,7 +29,6 @@ class RestaurantViewModel: ObservableObject {
         }
         
         let imageUrls = restaurantPictures.compactMap { i in
-//            print("i.url: \(i.url)")
             return i.url
         }
         
@@ -111,7 +110,6 @@ class RestaurantViewModel: ObservableObject {
     
     func createRestaurant(newRestaurant: Restaurant, taskId: String?) {
         print("RestaurantViewModel - createRestaurant() called")
-        
         let storeInfo = newRestaurant.storeInfo
         
         let restaurantRequest = RestaurantRequest(reservationRestrictions: newRestaurant.reservationRestrictions, storeInfo: RestaurantRequest.StoreInfo(name: storeInfo.name, subtitle: storeInfo.subtitle, picturesFolderId: storeInfo.picturesFolderId ?? "", description: storeInfo.description, address: storeInfo.address, phone: storeInfo.phone, openingHours: storeInfo.openingHours, city: storeInfo.city, cuisine: storeInfo.cuisine), taskId: taskId ?? nil)
@@ -127,7 +125,6 @@ class RestaurantViewModel: ObservableObject {
     
     func modifyRestaurant(newRestaurant: Restaurant, taskId: String?) {
         print("RestaurantViewModel - modifyRestaurant() called")
-        
         let storeInfo = newRestaurant.storeInfo
         
         let restaurantRequest = RestaurantRequest(reservationRestrictions: newRestaurant.reservationRestrictions, storeInfo: RestaurantRequest.StoreInfo(name: storeInfo.name, subtitle: storeInfo.subtitle, picturesFolderId: storeInfo.picturesFolderId ?? "", description: storeInfo.description, address: storeInfo.address, phone: storeInfo.phone, openingHours: storeInfo.openingHours, city: storeInfo.city, cuisine: storeInfo.cuisine), taskId: taskId ?? nil)
@@ -140,30 +137,5 @@ class RestaurantViewModel: ObservableObject {
                 self.myRestaurant = restaurantInfo.data.convertToRestaurant()
             }).store(in: &subscription)
     }
-    
-//    func makeUIImageArray() -> [UIImage] {
-//        var UIImageList = [UIImage]()
-//
-//        if let pictures = myRestaurant?.storeInfo.pictures {
-//            for imageResponse in pictures {
-//
-//                let url = URL(string: imageResponse.url!) //입력받은 url string을 URL로 변경
-//                        //main thread에서 load할 경우 URL 로딩이 길면 화면이 멈춘다.
-//                        //이를 방지하기 위해 다른 thread에서 처리함.
-//                        DispatchQueue.global().async { [weak self] in
-//                            if let data = try? Data(contentsOf: url!) {
-//                                if let image = UIImage(data: data) {
-//                                    //UI 변경 작업은 main thread에서 해야함.
-//                                    DispatchQueue.main.async {
-//                                        self?.photoImageView.image = image
-//                                    }
-//                                }
-//                            }
-//                        }
-//
-//
-//            }
-//        }
-//    }
     
 }

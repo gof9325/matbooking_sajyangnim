@@ -14,7 +14,7 @@ struct RestaurantCreationView: View {
     
     @State var myRestaurant: Restaurant
     
-    @State var pictureList = [UIImage]()
+    @State var pictureList = [Picture(image: UIImage())]
     
     @State var isSatisfiedRequiredValues = false
     

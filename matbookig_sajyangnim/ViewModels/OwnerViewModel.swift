@@ -13,6 +13,11 @@ import Alamofire
 class OwnerViewModel: ObservableObject {
     private var subscription = Set<AnyCancellable>()
     
+    enum LoginState {
+        case beforeTapped, didTapped, loginSuccess, loginFail
+    }
+    
+    @Published var loginState: LoginState = .beforeTapped
     @Published var auth0Owner: Auth0Owner?
     @Published var owner: Owner?
     
@@ -24,12 +29,14 @@ class OwnerViewModel: ObservableObject {
     
     // MARK: Intant functions
     func login() {
+        loginState = .didTapped
         Auth0
             .webAuth()
             .audience("matbooking-owner.kr")
             .start { result in
                 switch result {
                 case .success(let credentials):
+                    self.loginState = .loginSuccess
                     print("Auth0 Login Succeess")
                     print("accessToken : \(credentials.accessToken)")
                     KeyChain.create(key: "ownerAccessToken", token: credentials.accessToken)
@@ -37,6 +44,7 @@ class OwnerViewModel: ObservableObject {
                         self.auth0Owner = auth0Owner
                     }
                 case .failure(let error):
+                    self.loginState = .loginFail
                     print("Failed with: \(error)")
                 }
             }

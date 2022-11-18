@@ -10,7 +10,7 @@ import PhotosUI
 
 struct PhotoPicker: UIViewControllerRepresentable {
     
-    @Binding var pickerResult: [UIImage]
+    @Binding var pickerResult: [Picture]
     @Binding var isPresented: Bool
     
     func makeUIViewController(context: Context) -> some UIViewController {
@@ -45,7 +45,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
                             print("Can't load image \(error.localizedDescription)")
                         } else if let image = newImage as? UIImage {
                             print("PhotoPicker: Appending selected picture to pictureList (State)")
-                            self?.parent.pickerResult.append(image)
+                            self?.parent.pickerResult.append(Picture(isNeedUpload: true, image: image))
                         }
                     }
                 } else {
