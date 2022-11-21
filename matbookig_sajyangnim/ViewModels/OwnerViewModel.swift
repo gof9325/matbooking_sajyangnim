@@ -24,9 +24,6 @@ class OwnerViewModel: ObservableObject {
     // 로그인 실패 이벤트
     var loginFail = PassthroughSubject<(), AFError>()
     
-    // 회원가입 이벤트
-    var haveToJoin = PassthroughSubject<(), Never>()
-    
     // MARK: Intant functions
     func login() {
         loginState = .didTapped
@@ -81,8 +78,6 @@ class OwnerViewModel: ObservableObject {
             }, receiveValue: { ownerInfo in
                 if ownerInfo.data.exists {
                     self.owner = Owner(id: auth0Owner.id, name: ownerInfo.data.name!, mobile: ownerInfo.data.mobile!)
-                } else {
-                    self.haveToJoin.send()
                 }
             }).store(in: &subscription)
     }

@@ -20,20 +20,28 @@ struct ReservationListView: View {
                 DatePicker(
                     "start Date",
                     selection: $date,
+                    in: Date()...,
                     displayedComponents: [.date]
                 )
                 .accentColor(Color.matNature)
                 .datePickerStyle(.graphical)
-                ScrollView {
-                    LazyVStack {
-                        if reservationList == nil {
-                            ProgressView()
-                        } else {
-                            ForEach(reservationList!, id:\.self) { reservation in
-                                ReservationItemView(reservation: reservation)
+                VStack {
+                    Spacer()
+                    switch reservationVM.reservationLoadingState {
+                    case .beforeLoaded:
+                        ProgressView()
+                    case .didLoaded, .loadSuccess:
+                        ScrollView {
+                            LazyVStack {
+                                ForEach(reservationList!, id:\.self) { reservation in
+                                    ReservationItemView(reservation: reservation)
+                                }
                             }
                         }
+                    case .loadFail:
+                        Text("로딩실패")
                     }
+                    Spacer()
                 }
             }
             .navigationTitle("예약목록")
@@ -46,10 +54,10 @@ struct ReservationListView: View {
             .padding()
         }
     }
-}
-
-struct ReservationListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReservationListView()
+    
+    struct ReservationListView_Previews: PreviewProvider {
+        static var previews: some View {
+            ReservationListView()
+        }
     }
 }

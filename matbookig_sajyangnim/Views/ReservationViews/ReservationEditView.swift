@@ -48,9 +48,7 @@ struct ReservationEditView: View {
                 }
                 .navigationTitle("예약 정보 설정")
             }
-            
         }
-        
     }
     
     var buttonGroup: some View {
@@ -60,6 +58,7 @@ struct ReservationEditView: View {
                 Button("완료") {
                     if isEdit {
                         restaurantVM.modifyRestaurant(newRestaurant: myRestaurant, taskId: taskId)
+                        restaurantVM.getImageState = .loading
                     } else {
                         restaurantVM.createRestaurant(newRestaurant: myRestaurant, taskId: taskId)
                     }

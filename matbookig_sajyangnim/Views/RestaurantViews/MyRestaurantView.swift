@@ -10,7 +10,7 @@ import SwiftUI
 struct MyRestaurantView: View {
     @EnvironmentObject var ownerVM: OwnerViewModel
     
-    @State var pictureList = [Picture]()
+    var pictureList: [Picture]
     
     @State var myRestaurant: Restaurant
     
@@ -19,16 +19,26 @@ struct MyRestaurantView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                ImageSlider(images: pictureList)
-                    .background(.gray)
-                    .cornerRadius(10)
-                    .padding(5)
-                    .frame(minHeight: 300)
-                    .onAppear {
-                        if pictureList.isEmpty {
-                            restaurantVM.getImages()
-                        }
+                VStack{
+                    switch restaurantVM.getImageState {
+                    case .beforeLoad:
+                        Text("로딩전")
+                    case .loading:
+                        ProgressView()
+                    case .didLoaded:
+                        ImageSlider(images: pictureList)
                     }
+                }
+                .background(.gray)
+                .cornerRadius(10)
+                .padding(5)
+                .frame(minHeight: 300)
+                .onAppear {
+                    if pictureList.isEmpty {
+                        restaurantVM.getImages()
+                        restaurantVM.getImageState = .loading
+                    }
+                }
                 VStack(alignment: .leading) {
                     Text(myRestaurant.storeInfo.name)
                         .font(.system(size: 50, weight: .heavy))
@@ -73,12 +83,10 @@ struct MyRestaurantView: View {
                     alignment: .topLeading
                 )
                 .padding()
-                NavigationLink("가게정보 수정하기", destination: RestaurantInfoEditView(restaurantVM: restaurantVM, pictureList: pictureList ,myRestaurant: myRestaurant))
-                    .padding()
-                    .frame(width: 160)
-                    .background(Color.matNature)
-                    .cornerRadius(10)
-                    .foregroundColor(.white)
+                Button("가게정보 수정하기"){
+                    restaurantVM.restaurantInfoState = .editing
+                }
+                .matbookingButtonStyle(width: 100, color: Color.matNature)
                 Button("로그아웃"){
                     ownerVM.logout()
                 }
@@ -87,11 +95,6 @@ struct MyRestaurantView: View {
             .navigationTitle("내 가게")
             .onReceive(restaurantVM.$myRestaurant, perform: {
                 myRestaurant = $0!
-                if !myRestaurant.imagesData.isEmpty {
-                    for data in $0!.imagesData {
-                        pictureList.append(Picture(isNeedUpload: false, image: UIImage(data: data) ?? UIImage()))
-                        }
-                }
             })
         }
     }

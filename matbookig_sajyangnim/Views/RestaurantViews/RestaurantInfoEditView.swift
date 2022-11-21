@@ -54,19 +54,15 @@ struct PictureContentView: View {
             }
             .onChange(of: pictureList, perform: { newPictureList in
                 print("RestaurantInfoEditView onChange[pictureList] triggered")
-                if !newPictureList.isEmpty { // newPictureList가 nil이 아니라면
+                if !newPictureList.isEmpty {
                     let pictureImageList: [UIImage] = newPictureList.filter { $0.isNeedUpload }.map { $0.image }
                     let pngPictureList = pictureImageList.map { image -> Data? in
-//                        if image != nil {
-                            if let pngImage = image.pngData() {
-                                return pngImage
-                            }
+                        if let pngImage = image.pngData() {
+                            return pngImage
+                        }
                         else {
-                                return nil
-                            }
-//                        } else {
-//                            return nil
-//                        }
+                            return nil
+                        }
                     }
                     if !pngPictureList.contains(nil) {
                         print("RestaurantInfoEditView onChange[pictureList]: Uploading \(pngPictureList.count) images")
@@ -105,7 +101,7 @@ struct InPutFieldsView: View {
     @State private var isFirstValidationPassed = false
     @State var isEdit: Bool
     
-    let cuisine = ["한식", "일식", "이탈리아음식"]
+    private let cuisine = ["한식", "일식", "이탈리아음식"]
     
     @State var taskId = UUID()
     

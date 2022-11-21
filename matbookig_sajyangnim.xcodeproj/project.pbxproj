@@ -163,6 +163,16 @@
 			path = Owner;
 			sourceTree = "<group>";
 		};
+		1E207D1A2927A80F003B21CB /* ChatVies */ = {
+			isa = PBXGroup;
+			children = (
+				1E8DFE0E2914DE6800F683B6 /* ChatListItemView.swift */,
+				1E21560228F4164300B03EFB /* ChatListView.swift */,
+				1E21560028F4161300B03EFB /* ChatDetailView.swift */,
+			);
+			path = ChatVies;
+			sourceTree = "<group>";
+		};
 		1E36D3D228F04FDC00F228A7 = {
 			isa = PBXGroup;
 			children = (
@@ -190,8 +200,8 @@
 				1E36D40228F4065C00F228A7 /* ViewModels */,
 				1E36D40D28F407B700F228A7 /* Models */,
 				1E36D3EF28F0517200F228A7 /* Views */,
-				1E36D3DE28F04FDC00F228A7 /* matbookig_sajyangnimApp.swift */,
 				1E36D3E228F04FDD00F228A7 /* Assets.xcassets */,
+				1E36D3DE28F04FDC00F228A7 /* matbookig_sajyangnimApp.swift */,
 				1E36D3E428F04FDD00F228A7 /* Preview Content */,
 			);
 			path = matbookig_sajyangnim;
@@ -212,11 +222,9 @@
 				1E8DFE0329077BDA00F683B6 /* ContentView.swift */,
 				1E207D13291FE3F6003B21CB /* RestaurantViews */,
 				1E207D14291FE41A003B21CB /* ReservationViews */,
+				1E207D1A2927A80F003B21CB /* ChatVies */,
 				1E36D3F528F3EE7C00F228A7 /* LoginView.swift */,
 				1E8DFE192917D8E500F683B6 /* PhotoPicker.swift */,
-				1E21560028F4161300B03EFB /* ChatDetailView.swift */,
-				1E21560228F4164300B03EFB /* ChatListView.swift */,
-				1E8DFE0E2914DE6800F683B6 /* ChatListItemView.swift */,
 				1E21562828F4573100B03EFB /* JoinView.swift */,
 				1E72116528F99AF6009034E0 /* KakaoPostView.swift */,
 			);

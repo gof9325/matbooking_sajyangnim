@@ -8,11 +8,24 @@
 import Foundation
 import Combine
 import Alamofire
-import UIKit
+import SwiftUI
 
 class RestaurantViewModel: ObservableObject {
     private var subscription = Set<AnyCancellable>()
     
+    enum GetImageState {
+        case beforeLoad, loading, didLoaded
+    }
+    
+    enum RestaurantInfoState {
+        case editing, none
+    }
+    
+    var getImageFinished = PassthroughSubject<
+    [Data], Never>()
+    
+    @Published var restaurantInfoState: RestaurantInfoState = .none
+    @Published var getImageState: GetImageState = .beforeLoad
     @Published var myRestaurant: Restaurant?
     
     func makePublisherForUrl(url: String) -> AnyPublisher<(Data, String), AFError> {
@@ -36,53 +49,25 @@ class RestaurantViewModel: ObservableObject {
             self.makePublisherForUrl(url: url)
         }.collect()
         .sink(receiveCompletion: { completion in
-            print("RestaurantViewModel getImages completion: \(completion)")
             switch completion {
             case .failure(let err):
-                print("err: \(err)")
+                print("RestaurantViewModel getImages err: \(err)")
             case .finished:
-                print("finished")
+                print("RestaurantViewModel getImages finished")
             }
+            self.getImageState = .didLoaded
         }, receiveValue: { valueTups in
+            print("RestaurantViewModel getImages value receive")
             for valueTup in valueTups {
                 let url = valueTup.1
-                let imagedata = valueTup.0
+                _ = valueTup.0
                 print("ReceiveValue url: \(url)")
             }
             self.myRestaurant?.imagesData = valueTups.map {
                 $0.0
             }
-//            self.myRestaurant?.imagesData.append(contentsOf: imageData)
+            self.getImageFinished.send(self.myRestaurant!.imagesData)
         }).store(in: &subscription)
-                
-        
-        
-        // ---Original, zipless version--
-//        imageUrls.publisher.flatMap { url in
-//            RestaurantApiService.downloadImage(url: url)
-//        }.collect()
-//        .sink(receiveCompletion: { completion in
-//            print("RestaurantViewModel getImages completion: \(completion)")
-//            switch completion {
-//            case .failure(let err):
-//                print("err: \(err)")
-//            case .finished:
-//                print("finished")
-//            }
-//        }, receiveValue: { imageData in
-//            self.myRestaurant?.imagesData = imageData
-////            self.myRestaurant?.imagesData.append(contentsOf: imageData)
-//        }).store(in: &subscription)
-        
-//        _ = imageUrls.compactMap { url in
-//            RestaurantApiService.downloadImage(url: url)
-//                .sink(receiveCompletion:{ completion in
-//                    print("RestaurantViewModel getImages completion: \(completion)")
-//                }, receiveValue:{ imageData in
-//                    self.myRestaurant?.imagesData.append(imageData)
-//                }).store(in: &subscription)
-//        }
-        
     }
         
     func sendImage(imageData: [Data], taskId: String) {
@@ -132,9 +117,18 @@ class RestaurantViewModel: ObservableObject {
         RestaurantApiService.modifyRestaurant(newRestaurant: restaurantRequest)
             .sink(receiveCompletion: { completion in
                 print("RestaurantViewModel modifyRestaurant completion: \(completion)")
+                switch completion {
+                case .finished:
+                    self.getImages()
+                    self.restaurantInfoState = .none
+                    break
+                case .failure(let err):
+                    print("err: \(err)")
+                    break
+                }
             }, receiveValue: { restaurantInfo in
                 print("restaurantInfo: \(restaurantInfo)")
-                self.myRestaurant = restaurantInfo.data.convertToRestaurant()
+                self.myRestaurant =  restaurantInfo.data.convertToRestaurant()
             }).store(in: &subscription)
     }
     
