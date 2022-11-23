@@ -16,9 +16,8 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            
             switch mainVM.ownerVM?.loginState {
-            case .beforeTapped:
+            case .beforeTapped, .none:
                 Group {
                     Text("맛북킹 사장님")
                         .font(.title)
@@ -37,13 +36,16 @@ struct LoginView: View {
                     }
                 }
             case .loginSuccess:
-                EmptyView()
+//                EmptyView()
+                Text("로그인성공")
             case .loginFail:
-                EmptyView()
+//                EmptyView()
+                Text("로그인실패")
             case .didTapped:
                 ProgressView()
-            case .none:
-                EmptyView()
+//            case .none:
+//                EmptyView()
+//                Text("none")
             }
         }
         .frame(width: 300, height: 200)

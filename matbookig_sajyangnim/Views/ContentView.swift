@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State var selection = 0
     
+    @StateObject var chatVM = ChatViewModel()
     @StateObject var restaurantVM: RestaurantViewModel
     @State var myRestaurant: Restaurant
     
@@ -22,7 +23,7 @@ struct ContentView: View {
                 case .none:
                     GeometryReader { proxy in
                         TabView(selection: $selection) {
-                            ChatListView()
+                            ChatListView(chatVM: chatVM)
                                 .tag(1)
                                 .tabItem{
                                     Image(systemName: "message")

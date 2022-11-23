@@ -10,6 +10,15 @@ import SwiftUI
 struct ChatDetailView: View {
     @State var inputText: String = ""
     
+    @ObservedObject var chatVM: ChatViewModel
+    
+//    @State var chatDetailList = [ChatDetail]()
+    
+//    let needsToControlTabbar: Bool
+    
+    let restuarant: ChatListResponse
+
+    
     var body: some View {
         VStack {
             Text("맛집사냥꾼 님과의 대화")
@@ -43,8 +52,8 @@ struct ChatDetailView: View {
     }
 }
 
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatDetailView()
-    }
-}
+//struct ChatView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatDetailView()
+//    }
+//}
