@@ -52,6 +52,12 @@
 		1E47F1D9292E15900035F873 /* ChatApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E47F1D8292E15900035F873 /* ChatApiService.swift */; };
 		1E47F1DB292E15C20035F873 /* ChatListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E47F1DA292E15C20035F873 /* ChatListResponse.swift */; };
 		1E47F1DD292E16260035F873 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E47F1DC292E16260035F873 /* ChatViewModel.swift */; };
+		1E47F1DF292E3C600035F873 /* ChatAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E47F1DE292E3C600035F873 /* ChatAuth.swift */; };
+		1E47F1E1292E3C950035F873 /* ChatDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E47F1E0292E3C950035F873 /* ChatDetail.swift */; };
+		1E47F1E3292E3CB30035F873 /* ChatDetailListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E47F1E2292E3CB30035F873 /* ChatDetailListResponse.swift */; };
+		1E47F1E5292E3CC60035F873 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E47F1E4292E3CC60035F873 /* Chat.swift */; };
+		1E47F1E8292E3F920035F873 /* CodableWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E47F1E7292E3F920035F873 /* CodableWebSocket.swift */; };
+		1E47F1EA292E3FA80035F873 /* CodableWebsocketSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E47F1E9292E3FA80035F873 /* CodableWebsocketSubscription.swift */; };
 		1E72115F28F82397009034E0 /* ReservationEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72115E28F82397009034E0 /* ReservationEditView.swift */; };
 		1E72116428F95CFE009034E0 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = 1E72116328F95CFE009034E0 /* WebView */; };
 		1E72116628F99AF6009034E0 /* KakaoPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E72116528F99AF6009034E0 /* KakaoPostView.swift */; };
@@ -64,7 +70,6 @@
 		1E8DFE112914DEC800F683B6 /* ReservationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE102914DEC800F683B6 /* ReservationItemView.swift */; };
 		1E8DFE1829179CAD00F683B6 /* BSImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 1E8DFE1729179CAD00F683B6 /* BSImagePicker */; };
 		1E8DFE1A2917D8E500F683B6 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8DFE192917D8E500F683B6 /* PhotoPicker.swift */; };
-		1EBEDC42292C98B200FB41B8 /* CodableWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 1EBEDC41292C98B200FB41B8 /* CodableWebSocket */; };
 		1EDE6558291D0670004CC1B7 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE6557291D0670004CC1B7 /* Common.swift */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +120,12 @@
 		1E47F1D8292E15900035F873 /* ChatApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatApiService.swift; sourceTree = "<group>"; };
 		1E47F1DA292E15C20035F873 /* ChatListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListResponse.swift; sourceTree = "<group>"; };
 		1E47F1DC292E16260035F873 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		1E47F1DE292E3C600035F873 /* ChatAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAuth.swift; sourceTree = "<group>"; };
+		1E47F1E0292E3C950035F873 /* ChatDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetail.swift; sourceTree = "<group>"; };
+		1E47F1E2292E3CB30035F873 /* ChatDetailListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailListResponse.swift; sourceTree = "<group>"; };
+		1E47F1E4292E3CC60035F873 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		1E47F1E7292E3F920035F873 /* CodableWebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableWebSocket.swift; sourceTree = "<group>"; };
+		1E47F1E9292E3FA80035F873 /* CodableWebsocketSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableWebsocketSubscription.swift; sourceTree = "<group>"; };
 		1E72115E28F82397009034E0 /* ReservationEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationEditView.swift; sourceTree = "<group>"; };
 		1E72116528F99AF6009034E0 /* KakaoPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoPostView.swift; sourceTree = "<group>"; };
 		1E72116728F99C15009034E0 /* KakaoAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAddress.swift; sourceTree = "<group>"; };
@@ -134,7 +145,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E72116428F95CFE009034E0 /* WebView in Frameworks */,
-				1EBEDC42292C98B200FB41B8 /* CodableWebSocket in Frameworks */,
 				1E36D3EE28F0511800F228A7 /* Alamofire in Frameworks */,
 				1E36D3FE28F401DB00F228A7 /* Auth0 in Frameworks */,
 				1E8DFE1829179CAD00F683B6 /* BSImagePicker in Frameworks */,
@@ -169,6 +179,7 @@
 			children = (
 				1E21562428F4558000B03EFB /* Owner.swift */,
 				1E21562028F4538B00B03EFB /* OwnerResponse.swift */,
+				1E36D41228F4084F00F228A7 /* Auth0Owner.swift */,
 			);
 			path = Owner;
 			sourceTree = "<group>";
@@ -309,10 +320,9 @@
 			children = (
 				1EDE6555291D0649004CC1B7 /* Restaurant */,
 				1E207D15291FE43C003B21CB /* Owner */,
-				1E36D41228F4084F00F228A7 /* Auth0Owner.swift */,
+				1E47F1E6292E3CDE0035F873 /* Chat */,
 				1E21563128F548A700B03EFB /* JoinResponse.swift */,
 				1E21562628F4561300B03EFB /* ApiResponse.swift */,
-				1E47F1DA292E15C20035F873 /* ChatListResponse.swift */,
 				1E72116728F99C15009034E0 /* KakaoAddress.swift */,
 				1E207D0F291FDB72003B21CB /* Reservation.swift */,
 				1E207D1829267172003B21CB /* Picture.swift */,
@@ -321,11 +331,33 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		1E47F1E6292E3CDE0035F873 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				1E47F1E4292E3CC60035F873 /* Chat.swift */,
+				1E47F1DA292E15C20035F873 /* ChatListResponse.swift */,
+				1E47F1E0292E3C950035F873 /* ChatDetail.swift */,
+				1E47F1E2292E3CB30035F873 /* ChatDetailListResponse.swift */,
+				1E47F1DE292E3C600035F873 /* ChatAuth.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		1E47F1EB292E3FB80035F873 /* CodableWebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				1E47F1E7292E3F920035F873 /* CodableWebSocket.swift */,
+				1E47F1E9292E3FA80035F873 /* CodableWebsocketSubscription.swift */,
+			);
+			path = CodableWebSocket;
+			sourceTree = "<group>";
+		};
 		1E8DFE0D2913FA9200F683B6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				1E21562B28F4578E00B03EFB /* Extensions.swift */,
 				1E21564128F6993F00B03EFB /* UIExtensions.swift */,
+				1E47F1EB292E3FB80035F873 /* CodableWebSocket */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -372,7 +404,6 @@
 				1E36D3FD28F401DB00F228A7 /* Auth0 */,
 				1E72116328F95CFE009034E0 /* WebView */,
 				1E8DFE1729179CAD00F683B6 /* BSImagePicker */,
-				1EBEDC41292C98B200FB41B8 /* CodableWebSocket */,
 			);
 			productName = matbookig_sajyangnim;
 			productReference = 1E36D3DB28F04FDC00F228A7 /* matbookig_sajyangnim.app */;
@@ -407,7 +438,6 @@
 				1E36D3FC28F401DB00F228A7 /* XCRemoteSwiftPackageReference "Auth0" */,
 				1E72116228F95CFE009034E0 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
 				1E8DFE1629179CAD00F683B6 /* XCRemoteSwiftPackageReference "BSImagePicker" */,
-				1EBEDC40292C98B200FB41B8 /* XCRemoteSwiftPackageReference "CodableWebsocket" */,
 			);
 			productRefGroup = 1E36D3DC28F04FDC00F228A7 /* Products */;
 			projectDirPath = "";
@@ -440,17 +470,21 @@
 				1E21561F28F4528600B03EFB /* OwnerApiService.swift in Sources */,
 				1E36D3E128F04FDC00F228A7 /* MainView.swift in Sources */,
 				1E72115F28F82397009034E0 /* ReservationEditView.swift in Sources */,
+				1E47F1EA292E3FA80035F873 /* CodableWebsocketSubscription.swift in Sources */,
 				1E21562328F4542900B03EFB /* Auth0Interceptor.swift in Sources */,
+				1E47F1E1292E3C950035F873 /* ChatDetail.swift in Sources */,
 				1E36D3F428F0522B00F228A7 /* RestaurantInfoEditView.swift in Sources */,
 				1E36D40C28F4079200F228A7 /* BaseInterceptor.swift in Sources */,
 				1E21563228F548A700B03EFB /* JoinResponse.swift in Sources */,
 				1E47F1DB292E15C20035F873 /* ChatListResponse.swift in Sources */,
+				1E47F1E8292E3F920035F873 /* CodableWebSocket.swift in Sources */,
 				1E8DFE0A2910FBE900F683B6 /* RestaurantCreationView.swift in Sources */,
 				1E47F1D9292E15900035F873 /* ChatApiService.swift in Sources */,
 				1E36D41128F4080600F228A7 /* OwnerViewModel.swift in Sources */,
 				1E21562128F4538B00B03EFB /* OwnerResponse.swift in Sources */,
 				1E8DFE112914DEC800F683B6 /* ReservationItemView.swift in Sources */,
 				1E47F1D7292E14F90035F873 /* ChatRouter.swift in Sources */,
+				1E47F1DF292E3C600035F873 /* ChatAuth.swift in Sources */,
 				1E207D1929267172003B21CB /* Picture.swift in Sources */,
 				1EDE6558291D0670004CC1B7 /* Common.swift in Sources */,
 				1E207D10291FDB72003B21CB /* Reservation.swift in Sources */,
@@ -462,6 +496,7 @@
 				1E21560128F4161300B03EFB /* ChatDetailView.swift in Sources */,
 				1E36D40A28F4077600F228A7 /* ApiLogger.swift in Sources */,
 				1E36D40F28F407CF00F228A7 /* OwnerRouter.swift in Sources */,
+				1E47F1E5292E3CC60035F873 /* Chat.swift in Sources */,
 				1E36D3F228F051E200F228A7 /* KeyChain.swift in Sources */,
 				1E8DFE08290FB42600F683B6 /* MyRestaurantView.swift in Sources */,
 				1E36D3F628F3EE7C00F228A7 /* LoginView.swift in Sources */,
@@ -481,6 +516,7 @@
 				1E21560328F4164300B03EFB /* ChatListView.swift in Sources */,
 				1E207D1729251977003B21CB /* RestaurantRequest.swift in Sources */,
 				1E8DFE1A2917D8E500F683B6 /* PhotoPicker.swift in Sources */,
+				1E47F1E3292E3CB30035F873 /* ChatDetailListResponse.swift in Sources */,
 				1E72116A29062F90009034E0 /* MainViewModel.swift in Sources */,
 				1E3C4F362919367700D44932 /* ImageResponse.swift in Sources */,
 				1E21564228F6993F00B03EFB /* UIExtensions.swift in Sources */,
@@ -723,14 +759,6 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		1EBEDC40292C98B200FB41B8 /* XCRemoteSwiftPackageReference "CodableWebsocket" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/quantumOrange/CodableWebsocket";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -753,11 +781,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1E8DFE1629179CAD00F683B6 /* XCRemoteSwiftPackageReference "BSImagePicker" */;
 			productName = BSImagePicker;
-		};
-		1EBEDC41292C98B200FB41B8 /* CodableWebSocket */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1EBEDC40292C98B200FB41B8 /* XCRemoteSwiftPackageReference "CodableWebsocket" */;
-			productName = CodableWebSocket;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

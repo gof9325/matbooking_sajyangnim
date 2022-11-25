@@ -27,7 +27,7 @@ struct ChatListView: View {
                     } else {
                         List {
                             ForEach(chatList, id:\.self) { item in
-                                NavigationLink(destination: ChatDetailView(chatVM: chatVM, restuarant: item)) {
+                                NavigationLink(destination: ChatDetailView(chatVM: chatVM, customer: item)) {
                                     ChatListItemView(chat: item)
                                 }
                             }

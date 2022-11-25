@@ -11,6 +11,7 @@ import Alamofire
 enum ChatRouter: URLRequestConvertible {
     
     case getChatList
+case getChatDetailList(id: String)
     
     private var baseURL: URL {
         return URL(string:ApiClient.BASE_URL)!
@@ -20,12 +21,14 @@ enum ChatRouter: URLRequestConvertible {
         switch self {
         case .getChatList:
             return "stores/my/chat-messages"
+        case let .getChatDetailList(id):
+            return "stores/my/chat-messages/\(id)"
         }
     }
     
     private var method: HTTPMethod {
         switch self {
-        case .getChatList:
+        case .getChatList, .getChatDetailList:
             return .get
         }
     }

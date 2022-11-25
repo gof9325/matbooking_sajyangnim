@@ -21,5 +21,19 @@ enum ChatApiService {
             .eraseToAnyPublisher()
     }
     
+    static func getChatDetailList(id: String) -> AnyPublisher<[ChatDetailListResponse], AFError> {
+        print("ChatApiService - getChatDetailList() called")
+        
+        return ApiClient.shared.session
+            .request(ChatRouter.getChatDetailList(id: id))
+//            .responseString{ res in
+//                print("ChatApiService - getChatDetailList() res: \(res)")
+//            }
+            .publishDecodable(type: ApiResponse<[ChatDetailListResponse]>.self)
+            .value()
+            .map{ $0.data }
+            .eraseToAnyPublisher()
+    }
+    
 }
 

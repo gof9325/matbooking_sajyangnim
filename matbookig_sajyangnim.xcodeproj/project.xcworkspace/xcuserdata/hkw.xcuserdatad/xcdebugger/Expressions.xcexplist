@@ -3,21 +3,29 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "Color.init(r:g:b:):Extensions.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in InPutField.body.getter:RestaurantInfoEditView.swift">
+         contextName = "RestaurantInfoEditView.init(ownerVM:dismiss:restaurantVM:myRestaurant:isSatisfiedRequiredValues:):RestaurantInfoEditView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "restaurantDescription.isEmpty">
+               value = "testingRestaurant.storeInfo.name">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in RestaurantInfoEditView.buttonGroup.getter:RestaurantInfoEditView.swift">
+         contextName = "closure #4 in RestaurantViewModel.getImages():RestaurantViewModel.swift">
          <PersistentStrings>
             <PersistentString
-               value = "isSatisfiedRequiredValues">
+               value = "myRestaurant!.imagesData">
+            </PersistentString>
+            <PersistentString
+               value = "imageUrls">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #3 in closure #1 in ContentView.body.getter:ContentView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "auth0Owner">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -30,35 +38,26 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
-      </ContextState>
-      <ContextState
-         contextName = "specialized closure #1 in Interceptor.adapt(_:using:adapters:completion:):RequestInterceptor.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #2 in closure #1 in MyRestaurantView.body.getter:MyRestaurantView.swift">
+         contextName = "YeoboViewModel.userContentController(_:didReceive:):RestaurantInfoEditView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.pictureList">
+               value = "chosenAddress">
             </PersistentString>
             <PersistentString
-               value = "pictureList">
+               value = "message.body">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in Session.performUploadRequest(_:):Session.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in closure #1 in closure #1 in BusinessDayView.body.getter:ReservationEditView.swift">
+         contextName = "KakaoPostViewModel.userContentController(_:didReceive:):KakaoPostView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "myRestaurant.reservationRestrictions.openingHours">
+               value = "chosenAddress">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #3 in closure #1 in closure #1 in MyRestaurantView.body.getter:MyRestaurantView.swift">
+         contextName = "ImageUploadInterceptor.adapt(_:for:completion:):ImageUploadInterceptor.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in static RestaurantApiService.sendImage(imageData:taskId:):RestaurantApiService.swift">
@@ -80,13 +79,71 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.buttonGroup.getter:RestaurantInfoEditView.swift">
+         contextName = "closure #1 in CodableWebSocket.codable():CodableWebSocket.swift">
          <PersistentStrings>
             <PersistentString
-               value = "isFirstValidationPassed">
+               value = "codable">
             </PersistentString>
             <PersistentString
-               value = "ownerVM.restaurantEditerValidation(myRestaurant: myRestaurant)">
+               value = "socketdata">
+            </PersistentString>
+            <PersistentString
+               value = "decoder.decode(ChatMessageIncoming.self, from: Data(messageString.utf8))">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "testingRestaurant.storeInfo.name">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ApiLogger.request&lt;&#x3c4;_0_0&gt;(_:didParseResponse:):ApiLogger.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.response.debugDescription">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in CodableWebsocketSubscription.receive():CodableWebsocketSubscription.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Auth0Interceptor.adapt(_:for:completion:):Auth0Interceptor.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "KeyChain.read(key: &quot;userAccessToken&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "request.headers">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ApiLogger.requestDidResume(_:):ApiLogger.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "req.httpBody">
+            </PersistentString>
+            <PersistentString
+               value = "req.allHTTPHeaderFields">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #4 in closure #1 in closure #1 in closure #1 in closure #1 in BusinessDayView.body.getter:ReservationEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "endTime">
+            </PersistentString>
+            <PersistentString
+               value = "startTime">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -99,7 +156,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in InPutFieldsView.body.getter:RestaurantInfoEditView.swift">
+         contextName = "specialized closure #1 in Interceptor.adapt(_:using:adapters:completion:):RequestInterceptor.swift">
       </ContextState>
       <ContextState
          contextName = "closure #3 in RestaurantViewModel.getImages():RestaurantViewModel.swift">
@@ -110,21 +167,19 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MultipartFormData.encode(_:):MultipartFormData.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "String(decoding: encoded, as: UTF8.self)">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "closure #4 in closure #1 in PictureContentView.body.getter:RestaurantInfoEditView.swift">
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in closure #1 in closure #3 in closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
+         contextName = "PhotoPicker.Coordinator.picker(_:didFinishPicking:):PhotoPicker.swift">
       </ContextState>
       <ContextState
-         contextName = "KakaoPostViewModel.userContentController(_:didReceive:):KakaoPostView.swift">
+         contextName = "BusinessDayView.body.getter:ReservationEditView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in InPutFieldsView.buttonGroup.getter:RestaurantInfoEditView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "chosenAddress">
+               value = "taskId">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -133,6 +188,33 @@
          <PersistentStrings>
             <PersistentString
                value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in Session.performUploadRequest(_:):Session.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in InPutField.body.getter:RestaurantInfoEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "restaurantDescription.isEmpty">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in closure #1 in closure #1 in BusinessDayView.body.getter:ReservationEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "myRestaurant.reservationRestrictions.openingHours">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "InPutFieldsView.body.getter:RestaurantInfoEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "isSatisfiedRequiredValues">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -148,165 +230,27 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #2 in RestaurantViewModel.sendImage(imageData:taskId:):RestaurantViewModel.swift">
+         contextName = "closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.buttonGroup.getter:RestaurantInfoEditView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.myRestaurant?.storeInfo.picturesFolderId">
+               value = "isFirstValidationPassed">
+            </PersistentString>
+            <PersistentString
+               value = "ownerVM.restaurantEditerValidation(myRestaurant: myRestaurant)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in static RestaurantApiService.sendImage(imageData:taskId:fileFolderId:):RestaurantApiService.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #2 in closure #1 in InPutFieldsView.body.getter:RestaurantInfoEditView.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MainView.body.getter:MainView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "ownerAndRestaurant">
-            </PersistentString>
-            <PersistentString
-               value = "auth0Owner">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in PhotoPicker.Coordinator.picker(_:didFinishPicking:):PhotoPicker.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "testingRestaurant.storeInfo.name">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "property wrapper backing initializer of ImageSlider.images:UIExtensions.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.images">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #2 in closure #1 in closure #1 in closure #1 in closure #1 in BusinessDayView.body.getter:ReservationEditView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "time.start.dateFormatting()">
-            </PersistentString>
-            <PersistentString
-               value = "time.end.dateFormatting()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Auth0Interceptor.adapt(_:for:completion:):Auth0Interceptor.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "request.headers">
-            </PersistentString>
-            <PersistentString
-               value = "KeyChain.read(key: &quot;userAccessToken&quot;)">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #3 in closure #1 in PictureContentView.body.getter:RestaurantInfoEditView.swift">
-      </ContextState>
-      <ContextState
-         contextName = "ImageUploadInterceptor.adapt(_:for:completion:):ImageUploadInterceptor.swift">
+         contextName = "closure #1 in closure #1 in closure #1 in closure #3 in closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in ImageSlider.body.getter:UIExtensions.swift">
       </ContextState>
       <ContextState
-         contextName = "OwnerViewModel.restaurantEditerValidation(myRestaurant:):OwnerViewModel.swift">
+         contextName = "closure #3 in closure #1 in closure #1 in MyRestaurantView.body.getter:MyRestaurantView.swift">
       </ContextState>
       <ContextState
-         contextName = "PhotoPicker.Coordinator.picker(_:didFinishPicking:):PhotoPicker.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #4 in closure #1 in closure #1 in closure #1 in closure #1 in BusinessDayView.body.getter:ReservationEditView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "endTime">
-            </PersistentString>
-            <PersistentString
-               value = "startTime">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "BusinessDayView.body.getter:ReservationEditView.swift">
-      </ContextState>
-      <ContextState
-         contextName = "ApiLogger.requestDidResume(_:):ApiLogger.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "req.httpBody">
-            </PersistentString>
-            <PersistentString
-               value = "req.allHTTPHeaderFields">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "YeoboViewModel.userContentController(_:didReceive:):RestaurantInfoEditView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "chosenAddress">
-            </PersistentString>
-            <PersistentString
-               value = "message.body">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "RestaurantViewModel.getImages():RestaurantViewModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "myRestaurant">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in ReservationEditView.buttonGroup.getter:ReservationEditView.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #4 in closure #1 in PictureContentView.body.getter:RestaurantInfoEditView.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in MyRestaurantView.body.getter:MyRestaurantView.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #4 in RestaurantViewModel.getImages():RestaurantViewModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "myRestaurant!.imagesData">
-            </PersistentString>
-            <PersistentString
-               value = "imageUrls">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in closure #1 in InPutFieldsView.body.getter:RestaurantInfoEditView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "myRestaurant.storeInfo.address">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #3 in closure #1 in ContentView.body.getter:ContentView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "auth0Owner">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "closure #3 in closure #1 in PictureContentView.body.getter:RestaurantInfoEditView.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in closure #1 in closure #3 in closure #1 in closure #1 in closure #1 in RestaurantInfoEditView.body.getter:RestaurantInfoEditView.swift">
@@ -323,7 +267,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "InPutFieldsView.body.getter:RestaurantInfoEditView.swift">
+         contextName = "closure #1 in static RestaurantApiService.sendImage(imageData:taskId:fileFolderId:):RestaurantApiService.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in MyRestaurantView.body.getter:MyRestaurantView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in RestaurantInfoEditView.buttonGroup.getter:RestaurantInfoEditView.swift">
          <PersistentStrings>
             <PersistentString
                value = "isSatisfiedRequiredValues">
@@ -331,28 +281,95 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ApiLogger.request&lt;&#x3c4;_0_0&gt;(_:didParseResponse:):ApiLogger.swift">
+         contextName = "OwnerViewModel.restaurantEditerValidation(myRestaurant:):OwnerViewModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Color.init(r:g:b:):Extensions.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MultipartFormData.encode(_:):MultipartFormData.swift">
          <PersistentStrings>
             <PersistentString
-               value = "response.response.debugDescription">
+               value = "String(decoding: encoded, as: UTF8.self)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "RestaurantInfoEditView.init(ownerVM:dismiss:restaurantVM:myRestaurant:isSatisfiedRequiredValues:):RestaurantInfoEditView.swift">
+         contextName = "closure #1 in PhotoPicker.Coordinator.picker(_:didFinishPicking:):PhotoPicker.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in closure #1 in InPutFieldsView.body.getter:RestaurantInfoEditView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in RestaurantViewModel.sendImage(imageData:taskId:):RestaurantViewModel.swift">
          <PersistentStrings>
             <PersistentString
-               value = "testingRestaurant.storeInfo.name">
+               value = "self.myRestaurant?.storeInfo.picturesFolderId">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in InPutFieldsView.buttonGroup.getter:RestaurantInfoEditView.swift">
+         contextName = "closure #2 in closure #1 in MyRestaurantView.body.getter:MyRestaurantView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "taskId">
+               value = "self.pictureList">
+            </PersistentString>
+            <PersistentString
+               value = "pictureList">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RestaurantViewModel.getImages():RestaurantViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "myRestaurant">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainView.body.getter:MainView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "ownerAndRestaurant">
+            </PersistentString>
+            <PersistentString
+               value = "auth0Owner">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in closure #1 in InPutFieldsView.body.getter:RestaurantInfoEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "myRestaurant.storeInfo.address">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in closure #1 in closure #1 in closure #1 in closure #1 in BusinessDayView.body.getter:ReservationEditView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "time.start.dateFormatting()">
+            </PersistentString>
+            <PersistentString
+               value = "time.end.dateFormatting()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "property wrapper backing initializer of ImageSlider.images:UIExtensions.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.images">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in InPutFieldsView.body.getter:RestaurantInfoEditView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in ReservationEditView.buttonGroup.getter:ReservationEditView.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
