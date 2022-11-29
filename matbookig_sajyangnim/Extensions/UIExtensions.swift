@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 // MARK: View
-
 struct ImageSlider: View {
     var images: [Picture]
     

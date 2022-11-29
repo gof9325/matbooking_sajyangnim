@@ -33,7 +33,6 @@ class ChatViewModel: ObservableObject {
             }, receiveValue: { chatMessage in
                 print("Receved:\(chatMessage)")
                 self.chatDetailList?.append(ChatDetail(id: UUID().uuidString, createdAt: Date(), message: chatMessage.data, type: .CustomerToStore))
-                
             })
     }
     
