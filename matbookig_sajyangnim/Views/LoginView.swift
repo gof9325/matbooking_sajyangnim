@@ -36,16 +36,11 @@ struct LoginView: View {
                     }
                 }
             case .loginSuccess:
-//                EmptyView()
                 Text("로그인성공")
             case .loginFail:
-//                EmptyView()
                 Text("로그인실패")
             case .didTapped:
                 ProgressView()
-//            case .none:
-//                EmptyView()
-//                Text("none")
             }
         }
         .frame(width: 300, height: 200)

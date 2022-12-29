@@ -29,7 +29,7 @@ struct ChatDetailView: View {
     @State var messageReceived = false
     @State var isFirstSetting = true
     
-    var lastChat: ChatDetail? {
+    private var lastChat: ChatDetail? {
         chatDetailList.last
     }
     
@@ -65,7 +65,7 @@ struct ChatDetailView: View {
             self.offset = offset
         }
     }
-
+    
     var body: some View {
         GeometryReader { geometryReaderProxy in
             VStack{
@@ -77,10 +77,6 @@ struct ChatDetailView: View {
                                     Group{
                                         if chat.type == .CustomerToStore {
                                             HStack {
-                                                Image(systemName: "person")
-                                                    .padding()
-                                                    .background(.gray.opacity(0.5))
-                                                    .clipShape(Circle())
                                                 Text("\(chat.message)")
                                                     .padding()
                                                     .background(Color.matNature)
@@ -96,17 +92,12 @@ struct ChatDetailView: View {
                                                     .background(Color.matGreen)
                                                     .cornerRadius(20)
                                                     .foregroundColor(.white)
-                                                Image(systemName: "person")
-                                                    .padding()
-                                                    .background(.gray.opacity(0.5))
-                                                    .clipShape(Circle())
                                             }
                                         }
                                     }
                                     .id(chat)
                                 }
                             }
-                            scrollObservableView
                         }
                         .onChange(of: chatDetailList, perform: { _ in
                             if isFirstSetting {
@@ -119,13 +110,13 @@ struct ChatDetailView: View {
                                     sendNewMessage = false
                                 }
                             } else {
-                                if !(viewModel.offset <= 800) { // 메세지 받았는데 가장 하단이 아니면 메세지 받음 활성화
+                                if !(viewModel.offset <= 1000) { // 메세지 받았는데 가장 하단이 아니면 메세지 받음 활성화
                                     messageReceived = true
                                 }
                             }
                         })
                     }
-                    
+                    scrollObservableView
                     if messageReceived {
                         GeometryReader {  proxy in
                             HStack {
@@ -154,7 +145,7 @@ struct ChatDetailView: View {
                 }
                 .onPreferenceChange(ScrollOffsetKey.self) {  // 추가부분
                     viewModel.setOffset($0)
-                    if viewModel.offset <= 800 {
+                    if viewModel.offset <= 1000 {
                         messageReceived = false
                     }
                 }
@@ -166,16 +157,19 @@ struct ChatDetailView: View {
                         .background(.gray.opacity(0.3))
                         .cornerRadius(15)
                     Button("send") {
-                        _ = chatVM.socket.receive(.outgoingMessage(ChatSocketSend(data: ChatSocketSend.ChatData(to: customer.customer.id, message: inputText))))
-                        chatDetailList.append(ChatDetail(id: UUID().uuidString, createdAt: Date(), message: inputText, type: .StoreToCustomer))
-                        inputText = ""
-                        sendNewMessage = true
+                        print("viewModel.offset: \(viewModel.offset)")
+                        if !inputText.isEmpty {
+                            _ = chatVM.socket.receive(.outgoingMessage(ChatSocketSend(data: ChatSocketSend.ChatData(to: customer.customer.id, message: inputText))))
+                            chatVM.chatDetailList?.append(ChatDetail(id: UUID().uuidString, createdAt: Date(), message: inputText, type: .StoreToCustomer))
+                            inputText = ""
+                            sendNewMessage = true
+                        }
                     }
                     .matbookingButtonStyle(width: 80,color: Color.matNature)
                 }
             }
         }
-        .padding()
+        .padding([.trailing, .leading])
         .onAppear {
             _ = chatVM.socket.receive(.outgoingMessage(ChatAuth()))
             chatVM.getChatDetailList(id: customer.customer.id)
