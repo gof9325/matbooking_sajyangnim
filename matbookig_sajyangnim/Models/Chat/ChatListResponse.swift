@@ -12,8 +12,9 @@ struct ChatListResponse: Codable, Hashable {
     let customer: Customer
     let createdAt: String
     
-    struct Customer: Codable, Hashable {
-        let id: String
-        let name: String
-    }
+}
+
+struct Customer: Codable, Hashable {
+    let id: String
+    let name: String
 }

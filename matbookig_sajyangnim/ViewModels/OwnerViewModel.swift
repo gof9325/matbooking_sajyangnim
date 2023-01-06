@@ -54,6 +54,7 @@ class OwnerViewModel: ObservableObject {
             .clearSession { result in
                 switch result {
                 case .success:
+                    self.loginState = .beforeTapped
                     self.auth0Owner = nil
                     self.owner = nil
                     KeyChain.delete(key: "ownerAccessToken")

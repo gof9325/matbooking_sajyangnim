@@ -115,10 +115,10 @@
          contextName = "Auth0Interceptor.adapt(_:for:completion:):Auth0Interceptor.swift">
          <PersistentStrings>
             <PersistentString
-               value = "KeyChain.read(key: &quot;userAccessToken&quot;)">
+               value = "request.headers">
             </PersistentString>
             <PersistentString
-               value = "request.headers">
+               value = "KeyChain.read(key: &quot;userAccessToken&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -296,6 +296,11 @@
       </ContextState>
       <ContextState
          contextName = "closure #1 in PhotoPicker.Coordinator.picker(_:didFinishPicking:):PhotoPicker.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "closure #2 in closure #1 in InPutFieldsView.body.getter:RestaurantInfoEditView.swift">

@@ -83,14 +83,19 @@ struct MyRestaurantView: View {
                     alignment: .topLeading
                 )
                 .padding()
-                Button("가게정보 수정하기"){
-                    restaurantVM.restaurantInfoState = .editing
+                HStack {
+                    Spacer()
+                    Button("가게정보 수정하기"){
+                        restaurantVM.restaurantInfoState = .editing
+                    }
+                    .matbookingButtonStyle(width: 200, color: Color.matNature)
+                    Spacer()
+                    Button("로그아웃"){
+                        ownerVM.logout()
+                    }
+                    .matbookingButtonStyle(width: 100, color: Color.matNature)
+                    Spacer()
                 }
-                .matbookingButtonStyle(width: 100, color: Color.matNature)
-                Button("로그아웃"){
-                    ownerVM.logout()
-                }
-                .matbookingButtonStyle(width: 100, color: Color.matNature)
             }
             .navigationTitle("내 가게")
             .onReceive(restaurantVM.$myRestaurant, perform: {

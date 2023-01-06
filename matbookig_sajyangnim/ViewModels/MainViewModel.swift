@@ -21,7 +21,6 @@ class MainViewModel: ObservableObject {
         Publishers.Zip(OwnerApiService.getOwnerInfo(), RestaurantApiService.getRestaurantExist())
             .sink(receiveCompletion: { completion in
                 print("completion : \(completion)")
-                
                 switch completion {
                 case .failure(let error):
                     print("errr \(error)")

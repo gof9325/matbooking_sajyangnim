@@ -97,7 +97,7 @@ class RestaurantViewModel: ObservableObject {
         print("RestaurantViewModel - createRestaurant() called")
         let storeInfo = newRestaurant.storeInfo
         
-        let restaurantRequest = RestaurantRequest(reservationRestrictions: newRestaurant.reservationRestrictions, storeInfo: RestaurantRequest.StoreInfo(name: storeInfo.name, subtitle: storeInfo.subtitle, picturesFolderId: storeInfo.picturesFolderId ?? "", description: storeInfo.description, address: storeInfo.address, phone: storeInfo.phone, openingHours: storeInfo.openingHours, city: storeInfo.city, cuisine: storeInfo.cuisine), taskId: taskId ?? nil)
+        let restaurantRequest = RestaurantRequest(reservationRestrictions: newRestaurant.reservationRestrictions, storeInfo: RestaurantRequest.StoreInfo(name: storeInfo.name, subtitle: storeInfo.subtitle, picturesFolderId: storeInfo.picturesFolderId, description: storeInfo.description, address: storeInfo.address, phone: storeInfo.phone, openingHours: storeInfo.openingHours, city: storeInfo.city, cuisine: storeInfo.cuisine), taskId: storeInfo.picturesFolderId != nil ? taskId : nil)
         
         RestaurantApiService.createRestaurant(newRestaurant: restaurantRequest)
             .sink(receiveCompletion: { completion in

@@ -15,7 +15,7 @@ struct RestaurantRequest: Codable {
     struct StoreInfo: Codable {
         let name: String
         let subtitle: String
-        let picturesFolderId: String
+        let picturesFolderId: String?
         let description: String
         let address: String
         let phone: String
